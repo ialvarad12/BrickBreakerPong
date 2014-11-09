@@ -43,7 +43,7 @@ namespace BrickBreakerPong
         {
             get { return new Point(Position.X + (Width/2.0), Position.Y + (Height/2.0)); }
         }
-        public List<Point> CircularPoints
+        public List<Point> Boundaries
         {
             get
             {
@@ -74,8 +74,17 @@ namespace BrickBreakerPong
 
         
 
-        private bool Collides(List<Point> objectBallMayCollideWith)
+        public bool Collides(List<Point> objectBallMayCollideWith)
         {
+            //List<Point> ballCoordinates = Boundaries;
+            //ballCoordinates.Any(bC =>
+            //    {
+            //        // Fall within the object
+
+            //    });
+
+
+
             return true;
 
             //return (HitsTopWall() ||
@@ -83,7 +92,7 @@ namespace BrickBreakerPong
             //        HitsLeftPaddle() ||
             //        HitsRightPaddle());
         }
-        private void SwitchDirection()
+        public void SwitchDirection()
         {
             // If the angle is switching, it is assumed that the  collided
             if (currentDirection == Direction.CLOCKWISE)

@@ -19,6 +19,8 @@ namespace BrickBreakerPong
 
         public Ball ball;
         private List<Point> bricks;
+        //private List<Point> topWall;
+        //private List<Point> bottomWall;
         public HumanPaddle leftPaddle;
         public HumanPaddle rightPaddle;
         public  IPaddle currentPlayer;
@@ -56,10 +58,15 @@ namespace BrickBreakerPong
             leftPaddle = new HumanPaddle(leftPaddlePosition, 50.0, 200.0);
             rightPaddle = new HumanPaddle(rightPaddlePosition, 50.0, 200.0);
 
-
             // Reset ball
             Point ballPosition = new Point(boardWidth / 2.0, boardHeight / 2.0);
             ball = new Ball(ballPosition, 50.0, 50.0, HumanPaddle.Speed / 3.0);
+
+            // Create walls
+            //topWall.Add(new Point(0, 0));
+            //topWall.Add(new Point(boardWidth, 0));
+            //bottomWall.Add(new Point(0, boardHeight));
+            //bottomWall.Add(new Point(boardWidth, boardHeight));
 
             gameIsInPlay = false;
             gameOver = false;
@@ -68,6 +75,8 @@ namespace BrickBreakerPong
         public void Run()
         {
             CheckKeyboardPress();
+            //if (ball.Collides(topWall) || ball.Collides(bottomWall))
+               // ball.SwitchDirection();
             ball.Move();
         }
         private void CheckKeyboardPress()
