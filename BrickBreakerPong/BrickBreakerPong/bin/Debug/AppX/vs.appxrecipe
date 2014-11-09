@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>SI-20112</Machine>
+    <WindowsUser>ialvarad</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>f818ea8e-b28a-431c-842a-1da060037e3d</PackageIdentityName>
+    <RegisteredManifestChecksum>F43CC559B308F13ABBC891BA106191A4E35664D64BA8214E1B81C0B3B5BDB1D5</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>f818ea8e-b28a-431c-842a-1da060037e3d_1.0.0.0_neutral__11ccc81v8dg5t</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>f818ea8e-b28a-431c-842a-1da060037e3d_11ccc81v8dg5t!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>f818ea8e-b28a-431c-842a-1da060037e3d</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=ialvarad</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-11-07T00:03:10.500</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
+      <PackagePath>BrickBreakerPong.exe</PackagePath>
+      <Modified>2014-11-08T23:45:40.977</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T11:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T11:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T11:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-07-23T11:01:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2014-11-06T00:19:30.993</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2014-11-07T21:17:38.276</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Projects\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2014-11-07T00:03:09.535</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
