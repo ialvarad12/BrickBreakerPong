@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Shapes;
 
 namespace BrickBreakerPong
 {
@@ -22,6 +23,10 @@ namespace BrickBreakerPong
         private enum Direction { CLOCKWISE, COUNTER_CLOCKWISE };
         private Direction currentDirection;
 
+        public enum Collision { WALLS, SIDES};
+
+        private double _radius;
+
         public Point Position;
         public double Height;
         public double Width;
@@ -29,14 +34,11 @@ namespace BrickBreakerPong
         {
             get
             {
-                return Radius;
-            }
-            set
-            {
                 if (Height > 0.0 && Width > 0.0)
                 {
-                    Radius = Width / 2.0;
+                    _radius = Width / 2.0;
                 }
+                return _radius;
             }
         }
         private Point Origin
@@ -74,25 +76,25 @@ namespace BrickBreakerPong
 
         
 
-        public bool Collides(List<Point> objectBallMayCollideWith)
+        public bool Collides(List<Rectangle> objectBallMayCollideWith)
         {
-            //List<Point> ballCoordinates = Boundaries;
-            //ballCoordinates.Any(bC =>
-            //    {
-            //        // Fall within the object
+            List<Point> ballCoordinates = Boundaries;
+            var collidedObject = objectBallMayCollideWith.Where(s => ballCoordinates.Any(p =>
+                                                                    p.X >= s.Margin.Left - Speed &&
+                                                                    p.X <= s.Margin.Left + s.Width + Speed &&
+                                                                    p.Y <= s.Margin.Top + s.Height + Speed &&
+                                                                    p.Y >= s.Margin.Top));
 
-            //    });
 
 
-
-            return true;
+            return collidedObject.ElementAtOrDefault(0) != null;
 
             //return (HitsTopWall() ||
             //        HitsBottomWall() ||
             //        HitsLeftPaddle() ||
             //        HitsRightPaddle());
         }
-        public void SwitchDirection()
+        public void SwitchDirection(Collision objectCollided)
         {
             // If the angle is switching, it is assumed that the  collided
             if (currentDirection == Direction.CLOCKWISE)
@@ -103,21 +105,21 @@ namespace BrickBreakerPong
                         currentAngle = Angle.TOP_LEFT;
                         break;
                     case Angle.BOTTOM_RIGHT:
-                        //if (HitsBottomWall())
-                        //{
-                        //    currentDirection = Direction.COUNTER_CLOCKWISE;
-                        //    currentAngle = Angle.TOP_RIGHT;
-                        //}
-                        //else // ball hit right paddle
+                        if (objectCollided == Collision.WALLS)
+                        {
+                            currentDirection = Direction.COUNTER_CLOCKWISE;
+                            currentAngle = Angle.TOP_RIGHT;
+                        }
+                        else // ball hit right paddle
                             currentAngle = Angle.BOTTOM_LEFT;
                         break;
                     case Angle.TOP_LEFT:
-                        //if (HitsTopWall())
-                        //{
-                        //    currentDirection = Direction.COUNTER_CLOCKWISE;
-                        //    currentAngle = Angle.BOTTOM_LEFT;
-                        //}
-                        //else // ball hit left paddle
+                        if (objectCollided == Collision.WALLS)
+                        {
+                            currentDirection = Direction.COUNTER_CLOCKWISE;
+                            currentAngle = Angle.BOTTOM_LEFT;
+                        }
+                        else // ball hit left paddle
                             currentAngle = Angle.TOP_RIGHT;
                         break;
                     case Angle.TOP_RIGHT:
@@ -130,12 +132,12 @@ namespace BrickBreakerPong
                 switch (currentAngle)
                 {
                     case Angle.BOTTOM_LEFT:
-                        //if (HitsBottomWall())
-                        //{
-                        //    currentDirection = Direction.CLOCKWISE;
-                        //    currentAngle = Angle.TOP_LEFT;
-                        //}
-                        //else // ball hit left paddle
+                        if (objectCollided == Collision.WALLS)
+                        {
+                            currentDirection = Direction.CLOCKWISE;
+                            currentAngle = Angle.TOP_LEFT;
+                        }
+                        else // ball hit left paddle
                             currentAngle = Angle.BOTTOM_RIGHT;
                         break;
                     case Angle.BOTTOM_RIGHT:
@@ -145,12 +147,12 @@ namespace BrickBreakerPong
                         currentAngle = Angle.BOTTOM_LEFT;
                         break;
                     case Angle.TOP_RIGHT:
-                        //if (HitsTopWall())
-                        //{
-                        //    currentDirection = Direction.CLOCKWISE;
-                        //    currentAngle = Angle.BOTTOM_RIGHT;
-                        //}
-                        //else // ball hit right paddle
+                        if (objectCollided == Collision.WALLS)
+                        {
+                            currentDirection = Direction.CLOCKWISE;
+                            currentAngle = Angle.BOTTOM_RIGHT;
+                        }
+                        else // ball hit right paddle
                             currentAngle = Angle.TOP_LEFT;
                         break;
                 }
@@ -187,7 +189,7 @@ namespace BrickBreakerPong
         {
             // TODO
             //if (Collides())
-                SwitchDirection();
+                //SwitchDirection();
 
             // Move [currentDirection] at a [currentAngle] angle
             switch (currentAngle)

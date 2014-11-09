@@ -8,6 +8,7 @@ using Windows.Foundation;
 using Windows.UI.Core;
 using System.Runtime.InteropServices;
 using Windows.System;
+using Windows.UI.Xaml.Shapes;
 
 namespace BrickBreakerPong
 {
@@ -18,9 +19,11 @@ namespace BrickBreakerPong
         public static extern int GetKeyboardState(byte[] keystate);
 
         public Ball ball;
-        private List<Point> bricks;
-        //private List<Point> topWall;
-        //private List<Point> bottomWall;
+        private List<Rectangle> bricks;
+        private Rectangle topWall;
+        private Rectangle bottomWall;
+        private List<Rectangle> walls;
+        private List<Rectangle> paddles;
         public HumanPaddle leftPaddle;
         public HumanPaddle rightPaddle;
         public  IPaddle currentPlayer;
@@ -30,7 +33,8 @@ namespace BrickBreakerPong
 
         public double boardHeight;
         public double boardWidth;
-        private const double LOSE_ZONE = -5.0;
+        public const double WALL_WIDTH = 30.0;
+        private const double LOSE_ZONE = 20.0;
         public Game(double boardWidth = 0.0,
                     double boardHeight = 0.0)
         {
@@ -45,7 +49,7 @@ namespace BrickBreakerPong
             else
                 this.boardHeight = boardHeight;
 
-
+            
             Reset();
 
         }
@@ -54,19 +58,34 @@ namespace BrickBreakerPong
         {
             // Reset Paddles
             Point leftPaddlePosition = new Point(LOSE_ZONE, (boardHeight / 2.0) - (200.0 / 2.0));
-            Point rightPaddlePosition = new Point (boardWidth - (LOSE_ZONE * -1.0) - 50.0, (boardHeight / 2.0) - (200.0 / 2.0));
-            leftPaddle = new HumanPaddle(leftPaddlePosition, 50.0, 200.0);
-            rightPaddle = new HumanPaddle(rightPaddlePosition, 50.0, 200.0);
+            Point rightPaddlePosition = new Point (boardWidth + (LOSE_ZONE * -1.0) - 50.0, (boardHeight / 2.0) - (200.0 / 2.0));
+            leftPaddle = new HumanPaddle(leftPaddlePosition, 50.0, 200.0, 5.0);
+            rightPaddle = new HumanPaddle(rightPaddlePosition, 50.0, 200.0, 5.0);
 
+            paddles = new List<Rectangle>();
             // Reset ball
             Point ballPosition = new Point(boardWidth / 2.0, boardHeight / 2.0);
             ball = new Ball(ballPosition, 50.0, 50.0, HumanPaddle.Speed / 3.0);
 
             // Create walls
-            //topWall.Add(new Point(0, 0));
-            //topWall.Add(new Point(boardWidth, 0));
-            //bottomWall.Add(new Point(0, boardHeight));
-            //bottomWall.Add(new Point(boardWidth, boardHeight));
+            topWall = new Rectangle();
+            topWall.HorizontalAlignment = HorizontalAlignment.Left;
+            topWall.VerticalAlignment = VerticalAlignment.Top;
+            topWall.Margin = new Thickness(0, -5.0, 0, 0);
+            topWall.Width = boardWidth;
+            topWall.Height = 1.0;
+
+            bottomWall = new Rectangle();
+            bottomWall.HorizontalAlignment = HorizontalAlignment.Left;
+            bottomWall.VerticalAlignment = VerticalAlignment.Top;
+            bottomWall.Width = boardWidth;
+            bottomWall.Height = 1.0;
+            bottomWall.Margin = new Thickness(0, boardHeight, 0, 0);
+            
+
+            walls = new List<Rectangle>();
+            walls.Add(topWall);
+            walls.Add(bottomWall);
 
             gameIsInPlay = false;
             gameOver = false;
@@ -75,9 +94,21 @@ namespace BrickBreakerPong
         public void Run()
         {
             CheckKeyboardPress();
+
+            
+            paddles.Add(leftPaddle.GetRectangle);
+            paddles.Add(rightPaddle.GetRectangle);
+
+            if (ball.Collides(walls))
+                ball.SwitchDirection(Ball.Collision.WALLS);
+            else if (ball.Collides(paddles))
+                ball.SwitchDirection(Ball.Collision.SIDES);
             //if (ball.Collides(topWall) || ball.Collides(bottomWall))
                // ball.SwitchDirection();
+            paddles.Clear();
             ball.Move();
+            if (BallIsOutOfBounds())
+                Reset();
         }
         private void CheckKeyboardPress()
         {

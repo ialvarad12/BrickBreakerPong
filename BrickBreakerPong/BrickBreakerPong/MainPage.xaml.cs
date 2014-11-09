@@ -70,10 +70,17 @@ namespace BrickBreakerPong
         public MainPage()
         {
             this.InitializeComponent();
-            game = new Game();
+            game = new Game(Window.Current.Bounds.Width, Window.Current.Bounds.Height);
 
             mainGrid.Height = game.boardHeight;
             mainGrid.Width = game.boardWidth;
+
+            topWall.Width = game.boardWidth;
+            topWall.Height = Game.WALL_WIDTH;
+
+            bottomWall.Margin = new Thickness(0, game.boardHeight - Game.WALL_WIDTH, 0, 0);
+            bottomWall.Width = game.boardWidth;
+            bottomWall.Height = Game.WALL_WIDTH;
 
             UpdateGrid();
             //ResetGame();

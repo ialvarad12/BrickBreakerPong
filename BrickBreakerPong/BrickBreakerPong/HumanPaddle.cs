@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Shapes;
 namespace BrickBreakerPong
 {
     public class HumanPaddle
@@ -23,18 +25,19 @@ namespace BrickBreakerPong
         {
             Position.Y += Speed;
         }
-        List<Point> RectangularCoordinates
+        public Rectangle GetRectangle
         {
             get
             {
-                List<Point> pointList = new List<Point>();
+                Rectangle paddle = new Rectangle();
 
-                pointList.Add(new Point(Position.X, Position.Y));
-                pointList.Add(new Point(Position.X + Width, Position.Y));
-                pointList.Add(new Point(Position.X, Position.Y + Height));
-                pointList.Add(new Point(Position.X + Width, Position.Y + Height));
+                paddle.HorizontalAlignment = HorizontalAlignment.Left;
+                paddle.VerticalAlignment = VerticalAlignment.Top;
+                paddle.Margin = new Thickness(Position.X, Position.Y, 0, 0);
+                paddle.Height = Height;
+                paddle.Width = Width;
 
-                return pointList;
+                return paddle;
             }
         }
         public Point Position;
