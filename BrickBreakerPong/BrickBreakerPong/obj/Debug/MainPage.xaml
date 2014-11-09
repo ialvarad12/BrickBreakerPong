@@ -8,8 +8,8 @@
     mc:Ignorable="d" x:Name="mainPage">
 
     <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="auto" Width="auto"  >
-        <Rectangle x:Name="leftPaddle"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0,0,0" Width="50" Height="200" Fill="White"/>
-        <Rectangle x:Name="rightPaddle" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,50,0" Width="50" Height="200" Fill="White"/>
+        <Rectangle x:Name="leftPaddle"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="White"/>
+        <Rectangle x:Name="rightPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="White"/>
         <Ellipse x:Name="ball" Fill="#FFF4F4F5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Stroke="Black"  Width="50"/>
     </Grid>
 </Page>

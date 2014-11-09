@@ -11,7 +11,7 @@ namespace BrickBreakerPong
 {
     public class Ball
     {
-        private double SPEED; // In constructor
+        public static double Speed; // In constructor
         private enum Angle
         {
             BOTTOM_RIGHT, BOTTOM_LEFT,
@@ -22,25 +22,66 @@ namespace BrickBreakerPong
         private enum Direction { CLOCKWISE, COUNTER_CLOCKWISE };
         private Direction currentDirection;
 
-        private double Height;
-        private double Width;
-
-        private Thickness Margin;
-
-        public Ball(int speed, double height, double width, Thickness margin)
+        public Point Position;
+        public double Height;
+        public double Width;
+        private double Radius
         {
-            this.Height = height;
-            this.Width = width;
-            this.Margin = margin;
-            SPEED = speed;
+            get
+            {
+                return Radius;
+            }
+            set
+            {
+                if (Height > 0.0 && Width > 0.0)
+                {
+                    Radius = Width / 2.0;
+                }
+            }
+        }
+        private Point Origin
+        {
+            get { return new Point(Position.X + (Width/2.0), Position.Y + (Height/2.0)); }
+        }
+        public List<Point> CircularPoints
+        {
+            get
+            {
+
+                List<Point> pointLists = new List<Point>();
+                Point point;
+                for (int i = 0; i < 360; i = i + 1)
+                {
+                    point = new Point();
+
+                    point.X = (int)Math.Round(Origin.X + Radius * Math.Sin(i));
+                    point.Y = (int)(Width + Math.Round(Origin.Y - Radius * Math.Cos(i)));
+                    pointLists.Add(point);
+                }
+
+                return pointLists;
+            }
         }
 
-        private bool Collides()
+
+        public Ball(Point ballPosition, double ballHeight, double ballWidth, double ballSpeed = 20.0)
         {
-            return (HitsTopWall() ||
-                    HitsBottomWall() ||
-                    HitsLeftPaddle() ||
-                    HitsRightPaddle());
+            this.Height = ballHeight;
+            this.Width = ballWidth;
+            this.Position = ballPosition;
+            Ball.Speed = ballSpeed;
+        }
+
+        
+
+        private bool Collides(List<Point> objectBallMayCollideWith)
+        {
+            return true;
+
+            //return (HitsTopWall() ||
+            //        HitsBottomWall() ||
+            //        HitsLeftPaddle() ||
+            //        HitsRightPaddle());
         }
         private void SwitchDirection()
         {
@@ -53,21 +94,21 @@ namespace BrickBreakerPong
                         currentAngle = Angle.TOP_LEFT;
                         break;
                     case Angle.BOTTOM_RIGHT:
-                        if (HitsBottomWall())
-                        {
-                            currentDirection = Direction.COUNTER_CLOCKWISE;
-                            currentAngle = Angle.TOP_RIGHT;
-                        }
-                        else // ball hit right paddle
+                        //if (HitsBottomWall())
+                        //{
+                        //    currentDirection = Direction.COUNTER_CLOCKWISE;
+                        //    currentAngle = Angle.TOP_RIGHT;
+                        //}
+                        //else // ball hit right paddle
                             currentAngle = Angle.BOTTOM_LEFT;
                         break;
                     case Angle.TOP_LEFT:
-                        if (HitsTopWall())
-                        {
-                            currentDirection = Direction.COUNTER_CLOCKWISE;
-                            currentAngle = Angle.BOTTOM_LEFT;
-                        }
-                        else // ball hit left paddle
+                        //if (HitsTopWall())
+                        //{
+                        //    currentDirection = Direction.COUNTER_CLOCKWISE;
+                        //    currentAngle = Angle.BOTTOM_LEFT;
+                        //}
+                        //else // ball hit left paddle
                             currentAngle = Angle.TOP_RIGHT;
                         break;
                     case Angle.TOP_RIGHT:
@@ -80,12 +121,12 @@ namespace BrickBreakerPong
                 switch (currentAngle)
                 {
                     case Angle.BOTTOM_LEFT:
-                        if (HitsBottomWall())
-                        {
-                            currentDirection = Direction.CLOCKWISE;
-                            currentAngle = Angle.TOP_LEFT;
-                        }
-                        else // ball hit left paddle
+                        //if (HitsBottomWall())
+                        //{
+                        //    currentDirection = Direction.CLOCKWISE;
+                        //    currentAngle = Angle.TOP_LEFT;
+                        //}
+                        //else // ball hit left paddle
                             currentAngle = Angle.BOTTOM_RIGHT;
                         break;
                     case Angle.BOTTOM_RIGHT:
@@ -95,79 +136,101 @@ namespace BrickBreakerPong
                         currentAngle = Angle.BOTTOM_LEFT;
                         break;
                     case Angle.TOP_RIGHT:
-                        if (HitsTopWall())
-                        {
-                            currentDirection = Direction.CLOCKWISE;
-                            currentAngle = Angle.BOTTOM_RIGHT;
-                        }
-                        else // ball hit right paddle
+                        //if (HitsTopWall())
+                        //{
+                        //    currentDirection = Direction.CLOCKWISE;
+                        //    currentAngle = Angle.BOTTOM_RIGHT;
+                        //}
+                        //else // ball hit right paddle
                             currentAngle = Angle.TOP_LEFT;
                         break;
                 }
             }
         }
-        private bool HitsTopWall()
-        {
-            return (this.Margin.Top - SPEED) <= 0.0;
-        }
-        private bool HitsBottomWall()
-        {
-            return true; //return (this.Margin.Top + this.Height + SPEED) > mainGrid.Height;
-        }
-        public bool HitsLeftPaddle()
-        {
-            //GeneralTransform generalTransform = ball.TransformToVisual(leftPaddle);
-            //Point distanceBetweenLeftPaddleAndBall = generalTransform.TransformPoint(new Point(0, 0));
+        //private bool HitsTopWall()
+        //{
+        //    return (this.Position.Top - Speed) <= 0.0;
+        //}
+        //private bool HitsBottomWall()
+        //{
+        //    return true; //return (this.Margin.Top + this.Height + SPEED) > mainGrid.Height;
+        //}
+        //public bool HitsLeftPaddle()
+        //{
+        //    //GeneralTransform generalTransform = ball.TransformToVisual(leftPaddle);
+        //    //Point distanceBetweenLeftPaddleAndBall = generalTransform.TransformPoint(new Point(0, 0));
 
 
-            return true;// return (distanceBetweenLeftPaddleAndBall.X - SPEED <= leftPaddle.Width &&
-                     //distanceBetweenLeftPaddleAndBall.Y - SPEED <= leftPaddle.Height);
+        //    return true;// return (distanceBetweenLeftPaddleAndBall.X - SPEED <= leftPaddle.Width &&
+        //             //distanceBetweenLeftPaddleAndBall.Y - SPEED <= leftPaddle.Height);
 
-        }
-        private bool HitsRightPaddle()
+        //}
+        //private bool HitsRightPaddle()
+        //{
+        //    //GeneralTransform generalTransform = ball.TransformToVisual(rightPaddle);
+        //    //Point distanceBetweenBallAndRightPaddle = generalTransform.TransformPoint(new Point(0, 0));
+
+
+        //    return true;// return ((distanceBetweenBallAndRightPaddle.X * -1.0) - ball.Width - SPEED <= 0.0 &&
+        //             //distanceBetweenBallAndRightPaddle.Y - SPEED <= rightPaddle.Height);
+        //}
+        public void Move()
         {
-            //GeneralTransform generalTransform = ball.TransformToVisual(rightPaddle);
-            //Point distanceBetweenBallAndRightPaddle = generalTransform.TransformPoint(new Point(0, 0));
-
-
-            return true;// return ((distanceBetweenBallAndRightPaddle.X * -1.0) - ball.Width - SPEED <= 0.0 &&
-                     //distanceBetweenBallAndRightPaddle.Y - SPEED <= rightPaddle.Height);
-        }
-        public Thickness Move()
-        {
-            if (Collides())
+            // TODO
+            //if (Collides())
                 SwitchDirection();
 
             // Move [currentDirection] at a [currentAngle] angle
             switch (currentAngle)
             {
                 case Angle.BOTTOM_LEFT:
-                    this.Margin = new Thickness(this.Margin.Left - SPEED, // pull ball left
-                                                this.Margin.Top + SPEED,  // push ball down
-                                                this.Margin.Right,
-                                                this.Margin.Bottom);
+                    this.Position.X -= Speed;
+                    this.Position.Y += Speed;
                     break;
                 case Angle.BOTTOM_RIGHT:
-                    this.Margin = new Thickness(this.Margin.Left + SPEED, // push ball right
-                                                this.Margin.Top + SPEED,  // push ball down
-                                                this.Margin.Right,
-                                                this.Margin.Bottom);
+                    this.Position.X += Speed;
+                    this.Position.Y += Speed;
                     break;
                 case Angle.TOP_LEFT:
-                    this.Margin = new Thickness(this.Margin.Left - SPEED, // pull ball left
-                                                this.Margin.Top - SPEED,  // pull ball up
-                                                this.Margin.Right,
-                                                this.Margin.Bottom);
+                    this.Position.X -= Speed;
+                    this.Position.Y -= Speed;
                     break;
                 case Angle.TOP_RIGHT:
-                    this.Margin = new Thickness(this.Margin.Left + SPEED, // push ball right
-                                                this.Margin.Top - SPEED,  // pull ball up
-                                                this.Margin.Right,
-                                                this.Margin.Bottom);
+                    this.Position.X += Speed;
+                    this.Position.Y -= Speed;
                     break;
             }
 
-            return this.Margin;
+
+            //switch (currentAngle)
+            //{
+            //    case Angle.BOTTOM_LEFT:
+            //        this.Position = new Thickness(this.Position.Left - Speed, // pull ball left
+            //                                    this.Position.Top + Speed,  // push ball down
+            //                                    this.Position.Right,
+            //                                    this.Position.Bottom);
+            //        break;
+            //    case Angle.BOTTOM_RIGHT:
+            //        this.Position = new Thickness(this.Position.Left + Speed, // push ball right
+            //                                    this.Position.Top + Speed,  // push ball down
+            //                                    this.Position.Right,
+            //                                    this.Position.Bottom);
+            //        break;
+            //    case Angle.TOP_LEFT:
+            //        this.Position = new Thickness(this.Position.Left - Speed, // pull ball left
+            //                                    this.Position.Top - Speed,  // pull ball up
+            //                                    this.Position.Right,
+            //                                    this.Position.Bottom);
+            //        break;
+            //    case Angle.TOP_RIGHT:
+            //        this.Position = new Thickness(this.Position.Left + Speed, // push ball right
+            //                                    this.Position.Top - Speed,  // pull ball up
+            //                                    this.Position.Right,
+            //                                    this.Position.Bottom);
+            //        break;
+            //}
+
+            //return this.Position;
         }
     }
 }
