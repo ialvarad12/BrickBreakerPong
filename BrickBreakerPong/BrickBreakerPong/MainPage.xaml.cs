@@ -117,9 +117,9 @@ namespace BrickBreakerPong
            //bricksGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
             Rectangle rect;
-            for (int i = 0; i < distanceBetweenPaddles/25; i += 1)
+            for (int i = 2; i < distanceBetweenPaddles/25; i += 10)
             {
-                for (int j = 0; j < distanceBetweenWalls/25; j += 5)
+                for (int j = 0; j < distanceBetweenWalls/25; j += 4)
                 {
                     rect = new Rectangle();
                     rect.Fill = new SolidColorBrush(Colors.Gray);
@@ -133,9 +133,15 @@ namespace BrickBreakerPong
                                                 topWall.Height + (j * distanceBetweenWalls / 25.0), 0, 0);
                     //Grid.SetRow(rect, 0);
                     //Grid.SetColumn(rect, 0);
-                    mainGrid.Children.Add(rect);
 
-                    game.bricks.Add(rect);
+                    // Don't know exactly why it goes out of bounds, but this prevents it :)
+                    if (topWall.Height + (j * distanceBetweenWalls / 25.0)  < distanceBetweenWalls &&
+                        leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / 25.0)< distanceBetweenPaddles)
+                    {
+                        mainGrid.Children.Add(rect);
+
+                        game.bricks.Add(rect);
+                    }
                 }
             }
         }

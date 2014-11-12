@@ -63,7 +63,7 @@ namespace BrickBreakerPong
 
             paddles = new List<Rectangle>();
             // Reset ball
-            Point ballPosition = new Point(boardWidth / 2.0, boardHeight / 2.0);
+            Point ballPosition = new Point(boardWidth / 2.0 + 30.0, boardHeight / 2.0 + 30.0);
             ball = new Ball(ballPosition, 50.0, 50.0);
 
             // Create walls
