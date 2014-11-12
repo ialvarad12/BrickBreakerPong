@@ -12,6 +12,7 @@ namespace BrickBreakerPong
 {
     public class Ball
     {
+        #region MOVEMENT
         public static double Speed; // In constructor
         private enum Angle
         {
@@ -23,13 +24,15 @@ namespace BrickBreakerPong
         private enum Direction { CLOCKWISE, COUNTER_CLOCKWISE };
         private Direction currentDirection;
 
-        public enum Collision { WALLS, SIDES};
+        public enum Collision { TOP, BOTTOM, LEFT, RIGHT, NONE};
+        #endregion
 
+        #region DIMENSIONS
         private double _radius;
+        private double _width;
+        private double _height;
 
         public Point Position;
-        public double Height;
-        public double Width;
         private double Radius
         {
             get
@@ -41,42 +44,60 @@ namespace BrickBreakerPong
                 return _radius;
             }
         }
+        public double Width
+        {
+            get { return _width; }
+            set
+            {
+                if (value < 0.0)
+                    _width = 0.0;
+                else
+                    _width = value;
+            }
+        }
+        public double Height
+        {
+            get { return _height; }
+            set
+            {
+                if (value < 0.0)
+                    _height = 0.0;
+                else
+                    _height = value;
+            }
+        }
         private Point Origin
         {
-            get { return new Point(Position.X + (Width/2.0), Position.Y + (Height/2.0)); }
+            get { return new Point(Position.X + (Width/2.0), Position.Y - (Height/2.0)); }
         }
         public List<Point> Boundaries
         {
             get
             {
-
                 List<Point> pointLists = new List<Point>();
                 Point point;
                 for (int i = 0; i < 360; i = i + 1)
                 {
                     point = new Point();
 
-                    point.X = (int)Math.Round(Origin.X + Radius * Math.Sin(i));
-                    point.Y = (int)(Width + Math.Round(Origin.Y - Radius * Math.Cos(i)));
+                    point.X = (int)Math.Round(Origin.X + (int)Radius * Math.Sin(i));
+                    point.Y = (int)(Width + Math.Round(Origin.Y - (int)Radius * Math.Cos(i)));
                     pointLists.Add(point);
                 }
 
                 return pointLists;
             }
         }
+        #endregion
 
-
-        public Ball(Point ballPosition, double ballHeight, double ballWidth, double ballSpeed = 20.0)
+        public Ball(Point ballPosition, double ballWidth, double ballHeight, double ballSpeed = 5.0)
         {
-            this.Height = ballHeight;
             this.Width = ballWidth;
+            this.Height = ballHeight;
             this.Position = ballPosition;
             Ball.Speed = ballSpeed;
         }
-
-        
-
-        public bool Collides(List<Rectangle> objectBallMayCollideWith)
+        public Collision[] WillCollide(List<Rectangle> objectBallMayCollideWith)
         {
             List<Point> ballCoordinates = Boundaries;
             var collidedObject = objectBallMayCollideWith.Where(s => ballCoordinates.Any(p =>
@@ -84,18 +105,42 @@ namespace BrickBreakerPong
                                                                     p.X <= s.Margin.Left + s.Width + Speed &&
                                                                     p.Y <= s.Margin.Top + s.Height + Speed &&
                                                                     p.Y >= s.Margin.Top));
+            Collision[] whereBallCollided = new Collision[2];
 
+            if (collidedObject.ElementAtOrDefault(0) != null)
+            {
+                 Rectangle rec = collidedObject.ElementAt(0);
+                 if (ballCoordinates.All(p =>
+                                         p.Y >= rec.Margin.Top + rec.Height))
+                     whereBallCollided[0] = Collision.BOTTOM;
+                 else if (ballCoordinates.All(p =>
+                                             p.Y <= rec.Margin.Top))
+                     whereBallCollided[0] = Collision.TOP;
+                 else
+                     whereBallCollided[0] = Collision.NONE;
 
+                 if (ballCoordinates.All(p =>
+                                         p.X <= rec.Margin.Left))
+                     whereBallCollided[1] = Collision.LEFT;
+                 else if (ballCoordinates.All(p =>
+                                         p.X >= rec.Margin.Left + rec.Width))
+                     whereBallCollided[1] = Collision.RIGHT;
+                 else
+                     whereBallCollided[1] = Collision.NONE;
+            }
+            else
+                whereBallCollided = null;
 
-            return collidedObject.ElementAtOrDefault(0) != null;
+            return whereBallCollided;
 
             //return (HitsTopWall() ||
             //        HitsBottomWall() ||
             //        HitsLeftPaddle() ||
             //        HitsRightPaddle());
         }
-        public void SwitchDirection(Collision objectCollided)
+        public void SwitchDirection(Collision[] objectCollided)
         {
+            if(objectCollided != null)
             // If the angle is switching, it is assumed that the  collided
             if (currentDirection == Direction.CLOCKWISE)
             {
@@ -105,7 +150,7 @@ namespace BrickBreakerPong
                         currentAngle = Angle.TOP_LEFT;
                         break;
                     case Angle.BOTTOM_RIGHT:
-                        if (objectCollided == Collision.WALLS)
+                        if (objectCollided[0] == Collision.TOP)
                         {
                             currentDirection = Direction.COUNTER_CLOCKWISE;
                             currentAngle = Angle.TOP_RIGHT;
@@ -114,7 +159,7 @@ namespace BrickBreakerPong
                             currentAngle = Angle.BOTTOM_LEFT;
                         break;
                     case Angle.TOP_LEFT:
-                        if (objectCollided == Collision.WALLS)
+                        if (objectCollided[0] == Collision.BOTTOM)
                         {
                             currentDirection = Direction.COUNTER_CLOCKWISE;
                             currentAngle = Angle.BOTTOM_LEFT;
@@ -132,25 +177,55 @@ namespace BrickBreakerPong
                 switch (currentAngle)
                 {
                     case Angle.BOTTOM_LEFT:
-                        if (objectCollided == Collision.WALLS)
+                        if (objectCollided[0] == Collision.TOP)
                         {
+                            if (objectCollided[1] == Collision.RIGHT)
+                                currentAngle = Angle.TOP_RIGHT;
+                            else
+                                currentAngle = Angle.TOP_LEFT;
+
                             currentDirection = Direction.CLOCKWISE;
-                            currentAngle = Angle.TOP_LEFT;
+                            
                         }
                         else // ball hit left paddle
                             currentAngle = Angle.BOTTOM_RIGHT;
                         break;
                     case Angle.BOTTOM_RIGHT:
-                        currentAngle = Angle.TOP_RIGHT;
+                        if(objectCollided[1] == Collision.LEFT)
+                        {
+                            if (objectCollided[0] == Collision.TOP)
+                                currentAngle = Angle.TOP_LEFT;
+                            else
+                                currentAngle = Angle.BOTTOM_LEFT;
+                        }
+                        else 
+                            currentAngle = Angle.TOP_RIGHT;
                         break;
                     case Angle.TOP_LEFT:
-                        currentAngle = Angle.BOTTOM_LEFT;
+                        // Most likely hit a brick
+                        if(objectCollided[1] == Collision.RIGHT)
+                        {
+                            // Hits the corner of a brick
+                            if (objectCollided[0] == Collision.BOTTOM)
+                                currentAngle = Angle.BOTTOM_RIGHT;
+                            else
+                                currentAngle = Angle.TOP_RIGHT;
+
+                            currentDirection = Direction.CLOCKWISE;
+                        }
+                        else // Hit the bottom 
+                            currentAngle = Angle.BOTTOM_LEFT;
                         break;
                     case Angle.TOP_RIGHT:
-                        if (objectCollided == Collision.WALLS)
+                        if (objectCollided[0] == Collision.BOTTOM)
                         {
+                            // Hit bottom corner of right paddle
+                            if (objectCollided[1] == Collision.LEFT)
+                                currentAngle = Angle.BOTTOM_LEFT;
+                            else // Hit top wall
+                                currentAngle = Angle.BOTTOM_RIGHT;
                             currentDirection = Direction.CLOCKWISE;
-                            currentAngle = Angle.BOTTOM_RIGHT;
+                            
                         }
                         else // ball hit right paddle
                             currentAngle = Angle.TOP_LEFT;

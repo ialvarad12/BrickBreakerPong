@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Runtime.InteropServices;
 using Windows.Graphics.Display;
+using Windows.UI;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -76,20 +77,38 @@ namespace BrickBreakerPong
             mainGrid.Width = game.boardWidth;
 
             topWall.Width = game.boardWidth;
-            topWall.Height = Game.WALL_WIDTH;
-
-            bottomWall.Margin = new Thickness(0, game.boardHeight - Game.WALL_WIDTH, 0, 0);
             bottomWall.Width = game.boardWidth;
-            bottomWall.Height = Game.WALL_WIDTH;
 
+            bottomWall.Margin = new Thickness(0, game.boardHeight - bottomWall.Height, 0, 0);
+
+            
+       
+            
             UpdateGrid();
-            //ResetGame();
+            CreateBricks();
+            
 
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
 
             timer = new DispatcherTimer();
             timer.Start();
             timer.Tick += timer_Tick;
+
+
+        }
+        private void CreateBricks()
+        {
+            // Position
+            bricksGrid.Margin = new Thickness(game.leftPaddle.Position.X + game.leftPaddle.Width, topWall.Height, 0, 0);
+            
+            // Resize
+            double distanceBetweenPaddles = (uint)(rightPaddle.Margin.Left - (leftPaddle.Margin.Left + leftPaddle.Width));
+            bricksGrid.Width = distanceBetweenPaddles;
+            bricksGrid.Height = game.boardHeight - topWall.Height - bottomWall.Height;
+            
+            // Color
+            bricksGrid.Background = new SolidColorBrush(Colors.Black);
+
 
 
         }
