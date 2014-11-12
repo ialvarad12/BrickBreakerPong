@@ -7,13 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="mainPage">
 
-    <Grid x:Name="mainGrid" Background="#FF1D1D1D" Height="auto" Width="auto"  >
+    <Grid x:Name="mainGrid" Background="Black" Height="auto" Width="auto"  >
         <Rectangle x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="30" Fill="White" />
         <Rectangle x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="30" Fill="White" />
         <Rectangle x:Name="leftPaddle"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Blue"/>
         <Rectangle x:Name="rightPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Red"/>
-        <Grid x:Name="bricksGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Grid>
-        <Ellipse x:Name="ball" Fill="#FFF4F4F5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Stroke="Black"  Width="50"/>
+        <!--<Grid x:Name="bricksGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Grid>
+        --><Ellipse x:Name="ball" Fill="#FFF4F4F5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Stroke="Black"  Width="50"/>
     </Grid>
 </Page>
 

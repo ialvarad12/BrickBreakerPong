@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Runtime.InteropServices;
 using Windows.Graphics.Display;
 using Windows.UI;
+using Windows.UI.Xaml.Shapes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -82,11 +83,8 @@ namespace BrickBreakerPong
             bottomWall.Margin = new Thickness(0, game.boardHeight - bottomWall.Height, 0, 0);
 
             
-       
-            
             UpdateGrid();
             CreateBricks();
-            
 
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
 
@@ -99,18 +97,47 @@ namespace BrickBreakerPong
         private void CreateBricks()
         {
             // Position
-            bricksGrid.Margin = new Thickness(game.leftPaddle.Position.X + game.leftPaddle.Width, topWall.Height, 0, 0);
+            //bricksGrid.Margin = new Thickness(game.leftPaddle.Position.X + game.leftPaddle.Width, topWall.Height, 0, 0);
             
             // Resize
             double distanceBetweenPaddles = (uint)(rightPaddle.Margin.Left - (leftPaddle.Margin.Left + leftPaddle.Width));
-            bricksGrid.Width = distanceBetweenPaddles;
-            bricksGrid.Height = game.boardHeight - topWall.Height - bottomWall.Height;
+            double distanceBetweenWalls = game.boardHeight - topWall.Height - bottomWall.Height;
+            //bricksGrid.Width = distanceBetweenPaddles;
+            //bricksGrid.Height = distanceBetweenWalls;
             
             // Color
-            bricksGrid.Background = new SolidColorBrush(Colors.Black);
+            //bricksGrid.Background = new SolidColorBrush(Colors.Gray);
 
+            // Add Rows
+            //for (int i = 0; i < 25; i++)
+            //bricksGrid.RowDefinitions.Add(new RowDefinition());
 
+            //// Add Columns
+            //for (int i = 0; i < 25; i++)
+           //bricksGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
+            Rectangle rect;
+            for (int i = 0; i < distanceBetweenPaddles/25; i += 1)
+            {
+                for (int j = 0; j < distanceBetweenWalls/25; j += 5)
+                {
+                    rect = new Rectangle();
+                    rect.Fill = new SolidColorBrush(Colors.Gray);
+                    rect.Stroke = new SolidColorBrush(Colors.White);
+                    rect.StrokeThickness = -1.0;
+                    rect.Width = distanceBetweenPaddles / 25.0;
+                    rect.Height = distanceBetweenWalls / 25.0;
+                    rect.HorizontalAlignment = HorizontalAlignment.Left;
+                    rect.VerticalAlignment = VerticalAlignment.Top;
+                    rect.Margin = new Thickness(leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / 25.0), 
+                                                topWall.Height + (j * distanceBetweenWalls / 25.0), 0, 0);
+                    //Grid.SetRow(rect, 0);
+                    //Grid.SetColumn(rect, 0);
+                    mainGrid.Children.Add(rect);
+
+                    game.bricks.Add(rect);
+                }
+            }
         }
         void timer_Tick(object sender, object e)
         {

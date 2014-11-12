@@ -19,7 +19,7 @@ namespace BrickBreakerPong
         public static extern int GetKeyboardState(byte[] keystate);
 
         public Ball ball;
-        private List<Rectangle> bricks;
+        public List<Rectangle> bricks;
         private Rectangle topWall;
         private Rectangle bottomWall;
         private List<Rectangle> walls;
@@ -47,7 +47,7 @@ namespace BrickBreakerPong
                 this.boardHeight = Window.Current.Bounds.Height;
             else
                 this.boardHeight = boardHeight;
-
+            bricks = new List<Rectangle>();
             
             Reset();
 
@@ -86,6 +86,7 @@ namespace BrickBreakerPong
             walls.Add(topWall);
             walls.Add(bottomWall);
 
+            
             gameIsInPlay = false;
             gameOver = false;
         }
@@ -100,6 +101,7 @@ namespace BrickBreakerPong
 
             ball.SwitchDirection(ball.WillCollide(walls));
             ball.SwitchDirection(ball.WillCollide(paddles));
+            ball.SwitchDirection(ball.WillCollide(bricks));
             //if (ball.Collides(topWall) || ball.Collides(bottomWall))
                // ball.SwitchDirection();
             paddles.Clear();

@@ -76,7 +76,7 @@ namespace BrickBreakerPong
             {
                 List<Point> pointLists = new List<Point>();
                 Point point;
-                for (int i = 0; i < 360; i = i + 1)
+                for (int i = 0; i < 360; i = i + 24)
                 {
                     point = new Point();
 
@@ -90,12 +90,15 @@ namespace BrickBreakerPong
         }
         #endregion
 
-        public Ball(Point ballPosition, double ballWidth, double ballHeight, double ballSpeed = 5.0)
+        public Ball(Point ballPosition, double ballWidth, double ballHeight, double ballSpeed = 10.0)
         {
             this.Width = ballWidth;
             this.Height = ballHeight;
             this.Position = ballPosition;
             Ball.Speed = ballSpeed;
+
+            currentAngle = Angle.BOTTOM_RIGHT;
+            currentDirection = Direction.COUNTER_CLOCKWISE;
         }
         public Collision[] WillCollide(List<Rectangle> objectBallMayCollideWith)
         {
@@ -104,26 +107,25 @@ namespace BrickBreakerPong
                                                                     p.X >= s.Margin.Left - Speed &&
                                                                     p.X <= s.Margin.Left + s.Width + Speed &&
                                                                     p.Y <= s.Margin.Top + s.Height + Speed &&
-                                                                    p.Y >= s.Margin.Top));
-            Collision[] whereBallCollided = new Collision[2];
-
+                                                                    p.Y >= s.Margin.Top - Speed));
+            Collision[] whereBallCollided = new Collision[2]; 
             if (collidedObject.ElementAtOrDefault(0) != null)
             {
                  Rectangle rec = collidedObject.ElementAt(0);
                  if (ballCoordinates.All(p =>
-                                         p.Y >= rec.Margin.Top + rec.Height))
+                                         p.Y + Speed >= rec.Margin.Top + rec.Height))
                      whereBallCollided[0] = Collision.BOTTOM;
                  else if (ballCoordinates.All(p =>
-                                             p.Y <= rec.Margin.Top))
+                                             p.Y - Speed <= rec.Margin.Top))
                      whereBallCollided[0] = Collision.TOP;
                  else
                      whereBallCollided[0] = Collision.NONE;
 
                  if (ballCoordinates.All(p =>
-                                         p.X <= rec.Margin.Left))
+                                         p.X - Speed <= rec.Margin.Left))
                      whereBallCollided[1] = Collision.LEFT;
                  else if (ballCoordinates.All(p =>
-                                         p.X >= rec.Margin.Left + rec.Width))
+                                         p.X + Speed >= rec.Margin.Left + rec.Width))
                      whereBallCollided[1] = Collision.RIGHT;
                  else
                      whereBallCollided[1] = Collision.NONE;
