@@ -30,7 +30,6 @@ namespace BrickBreakerPong
         public bool gameIsInPlay;
         public bool gameOver;
 
-
         public double boardHeight;
         public double boardWidth;
         private const double LOSE_ZONE = -5.0;
