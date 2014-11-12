@@ -117,9 +117,9 @@ namespace BrickBreakerPong
            //bricksGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
             Rectangle rect;
-            for (int i = 2; i < distanceBetweenPaddles/25; i += 10)
+            for (int i = 0; i < distanceBetweenPaddles/25; i += 1)
             {
-                for (int j = 0; j < distanceBetweenWalls/25; j += 4)
+                for (int j = 0; j < distanceBetweenWalls/25; j += 5)
                 {
                     rect = new Rectangle();
                     rect.Fill = new SolidColorBrush(Colors.Gray);
@@ -131,6 +131,7 @@ namespace BrickBreakerPong
                     rect.VerticalAlignment = VerticalAlignment.Top;
                     rect.Margin = new Thickness(leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / 25.0), 
                                                 topWall.Height + (j * distanceBetweenWalls / 25.0), 0, 0);
+   
                     //Grid.SetRow(rect, 0);
                     //Grid.SetColumn(rect, 0);
 

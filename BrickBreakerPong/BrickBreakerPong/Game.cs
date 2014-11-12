@@ -62,6 +62,7 @@ namespace BrickBreakerPong
             rightPaddle = new HumanPaddle(rightPaddlePosition, 50.0, 200.0);
 
             paddles = new List<Rectangle>();
+            
             // Reset ball
             Point ballPosition = new Point(boardWidth / 2.0 + 30.0, boardHeight / 2.0 + 30.0);
             ball = new Ball(ballPosition, 50.0, 50.0);
@@ -95,13 +96,13 @@ namespace BrickBreakerPong
         {
             CheckKeyboardPress();
 
-            
+
             paddles.Add(leftPaddle.GetRectangle);
             paddles.Add(rightPaddle.GetRectangle);
 
-            ball.SwitchDirection(ball.WillCollide(walls));
-            ball.SwitchDirection(ball.WillCollide(paddles));
-            ball.SwitchDirection(ball.WillCollide(bricks));
+            ball.SwitchDirection(ball.WillCollide(walls, false));
+            ball.SwitchDirection(ball.WillCollide(paddles, false));
+            ball.SwitchDirection(ball.WillCollide(bricks, true));
             //if (ball.Collides(topWall) || ball.Collides(bottomWall))
                // ball.SwitchDirection();
             paddles.Clear();

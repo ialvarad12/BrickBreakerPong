@@ -100,7 +100,7 @@ namespace BrickBreakerPong
             currentAngle = Angle.BOTTOM_RIGHT;
             currentDirection = Direction.COUNTER_CLOCKWISE;
         }
-        public Collision[] WillCollide(List<Rectangle> objectBallMayCollideWith)
+        public Collision[] WillCollide(List<Rectangle> objectBallMayCollideWith, bool deleteObject)
         {
             List<Point> ballCoordinates = Boundaries;
             var collidedObject = objectBallMayCollideWith.Where(s => ballCoordinates.Any(p =>
@@ -129,6 +129,15 @@ namespace BrickBreakerPong
                      whereBallCollided[1] = Collision.RIGHT;
                  else
                      whereBallCollided[1] = Collision.NONE;
+                 if (deleteObject)
+                 {
+                     rec.Visibility = Visibility.Collapsed;
+                     int index = objectBallMayCollideWith.FindIndex(o =>
+                         {
+                             return (rec.Equals(o));
+                         });
+                     objectBallMayCollideWith.RemoveAt(index);
+                 }
             }
             else
                 whereBallCollided = null;
