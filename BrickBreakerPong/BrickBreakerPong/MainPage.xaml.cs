@@ -66,7 +66,7 @@ namespace BrickBreakerPong
         //    }
         ///}
         //#endregion
-
+        public static MediaElement sfx;
         Game game;
         private DispatcherTimer timer;
         public MainPage()
@@ -81,18 +81,19 @@ namespace BrickBreakerPong
             bottomWall.Width = game.boardWidth;
 
             bottomWall.Margin = new Thickness(0, game.boardHeight - bottomWall.Height, 0, 0);
-
+            sfx = soundEffects;
             
             UpdateGrid();
             CreateBricks();
 
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
 
+            sfx.DefaultPlaybackRate = 6.0;
             timer = new DispatcherTimer();
             timer.Start();
             timer.Tick += timer_Tick;
 
-
+            musicPlayer.Play();
         }
         private void CreateBricks()
         {
@@ -123,6 +124,7 @@ namespace BrickBreakerPong
                 {
                     rect = new Rectangle();
                     rect.Fill = new SolidColorBrush(Colors.Gray);
+                    //rect.Fill = new SolidColorBrush(Color.FromArgb(255,41,169,198));
                     rect.Stroke = new SolidColorBrush(Colors.White);
                     rect.StrokeThickness = -1.0;
                     rect.Width = distanceBetweenPaddles / 25.0;
@@ -131,7 +133,7 @@ namespace BrickBreakerPong
                     rect.VerticalAlignment = VerticalAlignment.Top;
                     rect.Margin = new Thickness(leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / 25.0), 
                                                 topWall.Height + (j * distanceBetweenWalls / 25.0), 0, 0);
-   
+
                     //Grid.SetRow(rect, 0);
                     //Grid.SetColumn(rect, 0);
 
@@ -141,14 +143,14 @@ namespace BrickBreakerPong
                     {
                         mainGrid.Children.Add(rect);
 
-                        game.bricks.Add(rect);
+                        game.AddBrick(rect);
                     }
                 }
             }
         }
         void timer_Tick(object sender, object e)
         {
-            if (game.gameIsInPlay)
+            if (game.IsInPlay())
             {
                 game.Run();
                 UpdateGrid();
@@ -159,13 +161,42 @@ namespace BrickBreakerPong
         {
             if (args.VirtualKey.ToString() == "Space")
             {
-                if (game.gameIsInPlay)
-                    game.gameIsInPlay = false;
+                if (game.IsInPlay())
+                {
+                    musicPlayer.Pause();
+                    game.Stop();
+                    TurnOnInstructions();
+                    timer.Stop();
+                }
                 else
-                    game.gameIsInPlay = true;
+                {
+                    musicPlayer.Play();
+                    game.Continue();
+                    TurnOffInstructions();
+                    timer.Start();
+                }
+
+            }
+
+            if(args.VirtualKey.ToString() == "F5")
+            {
+                TurnOnInstructions();
+                game.Restart();
+                UpdateGrid();
+                timer.Stop();
             }
         }
-        
+        private void TurnOffInstructions()
+        {
+            startGameLabel.Visibility = Visibility.Collapsed;
+            restartLevelLabel.Visibility = Visibility.Collapsed;
+
+        }
+        private void TurnOnInstructions()
+        {
+            startGameLabel.Visibility = Visibility.Visible;
+            restartLevelLabel.Visibility = Visibility.Visible;
+        }
         void UpdateGrid()
         {
             rightPaddle.Margin = new Thickness(game.rightPaddle.Position.X,

@@ -125,6 +125,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Music\adagio_for_tron.mp3" />
+    <Content Include="Music\beep_ping.mp3" />
+    <Content Include="Music\beep_ping2.mp3" />
+    <Content Include="Music\robo_blip.mp3" />
+    <Content Include="Music\the_son_of_flynn.mp3" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />

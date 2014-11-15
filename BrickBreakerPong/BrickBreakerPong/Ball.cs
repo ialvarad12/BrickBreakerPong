@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
@@ -89,14 +90,14 @@ namespace BrickBreakerPong
             }
         }
         #endregion
-
+        TimeSpan bounce;
         public Ball(Point ballPosition, double ballWidth, double ballHeight, double ballSpeed = 10.0)
         {
             this.Width = ballWidth;
             this.Height = ballHeight;
             this.Position = ballPosition;
             Ball.Speed = ballSpeed;
-
+            bounce = new TimeSpan(DateTime.Now.Ticks);
             currentAngle = Angle.BOTTOM_RIGHT;
             currentDirection = Direction.COUNTER_CLOCKWISE;
         }
@@ -111,6 +112,7 @@ namespace BrickBreakerPong
             Collision[] whereBallCollided = new Collision[2]; 
             if (collidedObject.ElementAtOrDefault(0) != null)
             {
+                MainPage.sfx.Play();
                  Rectangle rec = collidedObject.ElementAt(0);
                  if (ballCoordinates.All(p =>
                                          p.Y + Speed >= rec.Margin.Top + rec.Height))
@@ -138,6 +140,7 @@ namespace BrickBreakerPong
                          });
                      objectBallMayCollideWith.RemoveAt(index);
                  }
+                 
             }
             else
                 whereBallCollided = null;

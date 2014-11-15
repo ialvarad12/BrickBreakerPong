@@ -9,6 +9,7 @@ using Windows.UI.Core;
 using System.Runtime.InteropServices;
 using Windows.System;
 using Windows.UI.Xaml.Shapes;
+using Windows.UI.Xaml.Controls;
 
 namespace BrickBreakerPong
 {
@@ -19,7 +20,8 @@ namespace BrickBreakerPong
         public static extern int GetKeyboardState(byte[] keystate);
 
         public Ball ball;
-        public List<Rectangle> bricks;
+        private List<Rectangle> bricks;
+        private List<Rectangle> bricksCache;
         private Rectangle topWall;
         private Rectangle bottomWall;
         private List<Rectangle> walls;
@@ -27,7 +29,7 @@ namespace BrickBreakerPong
         public HumanPaddle leftPaddle;
         public HumanPaddle rightPaddle;
         public  IPaddle currentPlayer;
-        public bool gameIsInPlay;
+        private bool gameIsInPlay;
         public bool gameOver;
 
         public double boardHeight;
@@ -36,7 +38,6 @@ namespace BrickBreakerPong
         public Game(double boardWidth = 0.0,
                     double boardHeight = 0.0)
         {
-            
             if (boardWidth <= 0.0)
                 this.boardWidth = Window.Current.Bounds.Width;
             else
@@ -47,9 +48,8 @@ namespace BrickBreakerPong
             else
                 this.boardHeight = boardHeight;
             bricks = new List<Rectangle>();
-            
+            bricksCache = new List<Rectangle>();
             Reset();
-
         }
 
         private void Reset()
@@ -90,7 +90,34 @@ namespace BrickBreakerPong
             gameIsInPlay = false;
             gameOver = false;
         }
+        public void Restart()
+        {
+            Reset();
+            ResetBricks();
+        }
+        private void ResetBricks()
+        {
+            Stop();
+            bricks.Clear();
+            bricks.AddRange(bricksCache.ToArray());
 
+            foreach(Rectangle brick in bricks)
+            {
+                brick.Visibility = Visibility.Visible;
+            }
+        }
+        public void Stop()
+        {
+            gameIsInPlay = false;
+        }
+        public bool IsInPlay()
+        {
+            return gameIsInPlay;
+        }
+        public void Continue()
+        {
+            gameIsInPlay = true;
+        }
         public void Run()
         {
             CheckKeyboardPress();
@@ -99,6 +126,9 @@ namespace BrickBreakerPong
             paddles.Add(leftPaddle.GetRectangle);
             paddles.Add(rightPaddle.GetRectangle);
 
+            //ball.WillCollide(walls, false);
+            //ball.WillCollide(paddles, false);
+            //ball.WillCollide(bricks, true);
             ball.SwitchDirection(ball.WillCollide(walls, false));
             ball.SwitchDirection(ball.WillCollide(paddles, false));
             ball.SwitchDirection(ball.WillCollide(bricks, true));
@@ -108,6 +138,7 @@ namespace BrickBreakerPong
             ball.Move();
             if (BallIsOutOfBounds())
                 Reset();
+
         }
         private void CheckKeyboardPress()
         {
@@ -151,6 +182,11 @@ namespace BrickBreakerPong
             //}
         }
 
+        public void AddBrick(Rectangle brick)
+        {
+            bricks.Add(brick);
+            bricksCache.Add(brick);
+        }
 
         private bool BallIsOutOfBounds()
         {

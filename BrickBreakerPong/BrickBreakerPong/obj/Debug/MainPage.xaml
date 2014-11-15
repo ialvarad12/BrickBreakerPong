@@ -5,7 +5,7 @@
     xmlns:local="using:BrickBreakerPong"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" x:Name="mainPage">
+    mc:Ignorable="d" x:Name="mainPage" >
 
     <Grid x:Name="mainGrid" Background="Black" Height="auto" Width="auto"  >
         <Rectangle x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="30" Fill="White" />
@@ -13,7 +13,12 @@
         <Rectangle x:Name="leftPaddle"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Blue"/>
         <Rectangle x:Name="rightPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Red"/>
         <!--<Grid x:Name="bricksGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Grid>
-        --><Ellipse x:Name="ball" Fill="#FFF4F4F5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Stroke="Black"  Width="50"/>
+        -->
+        <Ellipse x:Name="ball"  Fill="#29A9C6" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Stroke="Black"  Width="50"/>
+        <TextBox x:Name="startGameLabel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50"  Width="auto" Height="auto" Text="Start Game: Space" TextAlignment="Center" FontFamily="TRON"/>
+        <TextBox x:Name="restartLevelLabel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Restart Game: F5" TextAlignment="Center" FontFamily="TRON"/>
+        <MediaElement x:Name="musicPlayer" AudioCategory="ForegroundOnlyMedia" Source="Music/adagio_for_tron.mp3" />
+         <MediaElement x:Name="soundEffects" AudioCategory="GameEffects" Source="Music/beep_ping2.mp3"/>
     </Grid>
 </Page>
 
