@@ -15,15 +15,15 @@ namespace BrickBreakerPong
     {
         #region MOVEMENT
         public static double Speed; // In constructor
-        private enum Angle
+        public enum Angle
         {
             BOTTOM_RIGHT, BOTTOM_LEFT,
             TOP_LEFT, TOP_RIGHT
         };
-        private Angle currentAngle;
+        public Angle currentAngle;
 
-        private enum Direction { CLOCKWISE, COUNTER_CLOCKWISE };
-        private Direction currentDirection;
+        public enum Direction { CLOCKWISE, COUNTER_CLOCKWISE };
+        public Direction currentDirection;
 
         public enum Collision { TOP, BOTTOM, LEFT, RIGHT, NONE};
         #endregion
@@ -109,28 +109,31 @@ namespace BrickBreakerPong
                                                                     p.X <= s.Margin.Left + s.Width + Speed &&
                                                                     p.Y <= s.Margin.Top + s.Height + Speed &&
                                                                     p.Y >= s.Margin.Top - Speed));
-            Collision[] whereBallCollided = new Collision[2]; 
+
+ 
+
+            Collision[] whereBallWillCollide = new Collision[2]; 
             if (collidedObject.ElementAtOrDefault(0) != null)
             {
                 MainPage.sfx.Play();
                  Rectangle rec = collidedObject.ElementAt(0);
                  if (ballCoordinates.All(p =>
                                          p.Y + Speed >= rec.Margin.Top + rec.Height))
-                     whereBallCollided[0] = Collision.BOTTOM;
+                     whereBallWillCollide[0] = Collision.BOTTOM;
                  else if (ballCoordinates.All(p =>
                                              p.Y - Speed <= rec.Margin.Top))
-                     whereBallCollided[0] = Collision.TOP;
+                     whereBallWillCollide[0] = Collision.TOP;
                  else
-                     whereBallCollided[0] = Collision.NONE;
+                     whereBallWillCollide[0] = Collision.NONE;
 
                  if (ballCoordinates.All(p =>
                                          p.X - Speed <= rec.Margin.Left))
-                     whereBallCollided[1] = Collision.LEFT;
+                     whereBallWillCollide[1] = Collision.LEFT;
                  else if (ballCoordinates.All(p =>
                                          p.X + Speed >= rec.Margin.Left + rec.Width))
-                     whereBallCollided[1] = Collision.RIGHT;
+                     whereBallWillCollide[1] = Collision.RIGHT;
                  else
-                     whereBallCollided[1] = Collision.NONE;
+                     whereBallWillCollide[1] = Collision.NONE;
                  if (deleteObject)
                  {
                      rec.Visibility = Visibility.Collapsed;
@@ -143,9 +146,9 @@ namespace BrickBreakerPong
                  
             }
             else
-                whereBallCollided = null;
+                whereBallWillCollide = null;
 
-            return whereBallCollided;
+            return whereBallWillCollide;
 
             //return (HitsTopWall() ||
             //        HitsBottomWall() ||

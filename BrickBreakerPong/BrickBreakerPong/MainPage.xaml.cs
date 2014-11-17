@@ -99,7 +99,8 @@ namespace BrickBreakerPong
             game.leftPaddle.Width = leftPaddle.Width;
             game.rightPaddle.Height = rightPaddle.Height;
             game.rightPaddle.Width = rightPaddle.Width;
-
+            game.topWall.Height = topWall.Height;
+            game.bottomWall.Height = bottomWall.Height;
             // Call game.Update any time you want the model to reflect the view
             // (USED AFTER YOU MAKE CHANGES TO THE MODEL)
             game.Update();
@@ -147,10 +148,11 @@ namespace BrickBreakerPong
             //for (int i = 0; i < 25; i++)
            //bricksGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
+            double ratio = 25.0;
             Rectangle rect;
-            for (int i = 0; i < distanceBetweenPaddles/25; i += 1)
+            for (int i = 0; i < distanceBetweenPaddles / ratio; i += 1)
             {
-                for (int j = 0; j < distanceBetweenWalls/25; j += 5)
+                for (int j = 0; j < distanceBetweenWalls / ratio; j += 5)
                 {
                     rect = new Rectangle();
                     rect.Fill = new SolidColorBrush(Colors.Gray);
@@ -158,19 +160,19 @@ namespace BrickBreakerPong
                     //rect.Fill = new SolidColorBrush(Color.FromArgb(255,41,169,198));
                     rect.Stroke = new SolidColorBrush(Colors.White);
                     rect.StrokeThickness = -1.0;
-                    rect.Width = distanceBetweenPaddles / 25.0;
-                    rect.Height = distanceBetweenWalls / 25.0;
+                    rect.Width = distanceBetweenPaddles / ratio;
+                    rect.Height = distanceBetweenWalls / ratio;
                     rect.HorizontalAlignment = HorizontalAlignment.Left;
                     rect.VerticalAlignment = VerticalAlignment.Top;
-                    rect.Margin = new Thickness(leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / 25.0), 
-                                                topWall.Height + (j * distanceBetweenWalls / 25.0), 0, 0);
+                    rect.Margin = new Thickness(leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / ratio),
+                                                topWall.Height + (j * distanceBetweenWalls / ratio), 0, 0);
 
                     //Grid.SetRow(rect, 0);
                     //Grid.SetColumn(rect, 0);
 
                     // Don't know exactly why it goes out of bounds, but this prevents it :)
-                    if (topWall.Height + (j * distanceBetweenWalls / 25.0)  < distanceBetweenWalls &&
-                        leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / 25.0)< distanceBetweenPaddles)
+                    if (topWall.Height + (j * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
+                        leftPaddle.Margin.Left + leftPaddle.Width + (i * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
                     {
                         mainGrid.Children.Add(rect);
 

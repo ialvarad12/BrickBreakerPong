@@ -22,16 +22,15 @@ namespace BrickBreakerPong
         public Ball ball;
         private List<Rectangle> bricks;
         private List<Rectangle> bricksCache;
-        private Rectangle topWall;
-        private Rectangle bottomWall;
+        public Rectangle topWall;
+        public Rectangle bottomWall;
         private List<Rectangle> walls;
         private List<Rectangle> paddles;
         public HumanPaddle leftPaddle;
         public HumanPaddle rightPaddle;
-        public  IPaddle currentPlayer;
         private bool gameIsInPlay;
         public bool gameOver;
-
+        private bool isLeftPlayersTurn = true;
 
 
         private double LOSE_ZONE = -5.0;
@@ -77,13 +76,13 @@ namespace BrickBreakerPong
             topWall.VerticalAlignment = VerticalAlignment.Top;
             topWall.Margin = new Thickness(0, 0, 0, 0);
             topWall.Width = boardWidth;
-            topWall.Height = 30.0;
+            topWall.Height = 0.0;
 
             bottomWall = new Rectangle();
             bottomWall.HorizontalAlignment = HorizontalAlignment.Left;
             bottomWall.VerticalAlignment = VerticalAlignment.Top;
             bottomWall.Width = boardWidth;
-            bottomWall.Height = 30.0;
+            bottomWall.Height = 0.0;
             bottomWall.Margin = new Thickness(0, boardHeight - bottomWall.Height, 0, 0);
 
             walls.Add(topWall);
@@ -93,7 +92,21 @@ namespace BrickBreakerPong
         {
             leftPaddle.Position = new Point(LOSE_ZONE, boardHeight / 2.0 - leftPaddle.Height / 2.0);
             rightPaddle.Position = new Point(boardWidth + (LOSE_ZONE * -1.0) - rightPaddle.Width, boardHeight / 2.0 - rightPaddle.Height / 2.0);
-            ball.Position = new Point(boardWidth / 2.0 + 30.0, boardHeight / 2.0 + 30.0);
+            //ball.Position = new Point(boardWidth / 2.0 + 30.0, boardHeight / 2.0 + 30.0);
+
+            if (isLeftPlayersTurn)
+            {
+                ball.Position = new Point(leftPaddle.Position.X + leftPaddle.Width + Ball.Speed, leftPaddle.Position.Y + leftPaddle.Height / 2.0 - ball.Height / 2.0);
+                ball.currentAngle = Ball.Angle.BOTTOM_RIGHT;
+                ball.currentDirection = Ball.Direction.COUNTER_CLOCKWISE;
+            }
+            else
+            {
+                ball.Position = new Point(rightPaddle.Position.X - ball.Width - Ball.Speed, rightPaddle.Position.Y + rightPaddle.Height / 2.0 - ball.Height / 2.0);
+                ball.currentAngle = Ball.Angle.BOTTOM_LEFT;
+                ball.currentDirection = Ball.Direction.CLOCKWISE;
+            }
+            //ball.Position = new Point(boardWidth / 2.0, boardHeight / 2.0);
         }
         private void Reset()
         {
@@ -175,7 +188,7 @@ namespace BrickBreakerPong
             }
 
             if (keys[(int)VirtualKey.W] == 128 || keys[(int)VirtualKey.W] == 129)
-            //if (leftPaddle.Margin.Top + leftPaddle.Height / 2.0  > ball.Margin.Top + ball.Height / 2.0)
+            //if (leftPaddle.Position.Y + leftPaddle.Height / 2.0  > ball.Position.Y + ball.Height / 2.0)
             {
                 if (leftPaddle.Position.Y - HumanPaddle.Speed - topWall.Height > 0.0)
                     leftPaddle.MovePaddleUp();
@@ -183,7 +196,7 @@ namespace BrickBreakerPong
                     leftPaddle.Position.Y = topWall.Height;
             }
             if (keys[(int)VirtualKey.S] == 128 || keys[(int)VirtualKey.S] == 129)
-            //else if(leftPaddle.Margin.Top + leftPaddle.Height / 2.0  < ball.Margin.Top + ball.Height / 2.0)
+            //else if(leftPaddle.Position.Y + leftPaddle.Height / 2.0  < ball.Position.Y + ball.Height / 2.0)
             {
                 if (leftPaddle.Position.Y + rightPaddle.Height + HumanPaddle.Speed  + bottomWall.Height < boardHeight)
                     leftPaddle.MovePaddleDown();
@@ -204,6 +217,11 @@ namespace BrickBreakerPong
 
         private bool BallIsOutOfBounds()
         {
+            if (ball.Position.X + ball.Width < 0.0)
+                isLeftPlayersTurn = false;
+            if (ball.Position.X > boardWidth)
+                isLeftPlayersTurn = true;
+
             return (ball.Position.X + ball.Width < 0.0 ||
                     ball.Position.X > boardWidth);
         }
