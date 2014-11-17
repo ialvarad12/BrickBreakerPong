@@ -32,9 +32,14 @@ namespace BrickBreakerPong
         private bool gameIsInPlay;
         public bool gameOver;
 
+
+
+        private double LOSE_ZONE = -5.0;
+
+
         public double boardHeight;
         public double boardWidth;
-        private const double LOSE_ZONE = -5.0;
+        
         public Game(double boardWidth = 0.0,
                     double boardHeight = 0.0)
         {
@@ -47,26 +52,26 @@ namespace BrickBreakerPong
                 this.boardHeight = Window.Current.Bounds.Height;
             else
                 this.boardHeight = boardHeight;
+
+
+            ball = new Ball();
+
+            leftPaddle = new HumanPaddle();
+            rightPaddle = new HumanPaddle();
+            paddles = new List<Rectangle>();
+
             bricks = new List<Rectangle>();
             bricksCache = new List<Rectangle>();
+            
+            
+            walls = new List<Rectangle>();
+
+            CreateWalls();
             Reset();
         }
 
-        private void Reset()
+        private void CreateWalls()
         {
-            // Reset Paddles
-            Point leftPaddlePosition = new Point(LOSE_ZONE, (boardHeight / 2.0) - (200.0 / 2.0));
-            Point rightPaddlePosition = new Point (boardWidth + (LOSE_ZONE * -1.0) - 50.0, (boardHeight / 2.0) - (200.0 / 2.0));
-            leftPaddle = new HumanPaddle(leftPaddlePosition, 50.0, 200.0);
-            rightPaddle = new HumanPaddle(rightPaddlePosition, 50.0, 200.0);
-
-            paddles = new List<Rectangle>();
-            
-            // Reset ball
-            Point ballPosition = new Point(boardWidth / 2.0 + 30.0, boardHeight / 2.0 + 30.0);
-            ball = new Ball(ballPosition, 50.0, 50.0);
-
-            // Create walls
             topWall = new Rectangle();
             topWall.HorizontalAlignment = HorizontalAlignment.Left;
             topWall.VerticalAlignment = VerticalAlignment.Top;
@@ -80,24 +85,31 @@ namespace BrickBreakerPong
             bottomWall.Width = boardWidth;
             bottomWall.Height = 30.0;
             bottomWall.Margin = new Thickness(0, boardHeight - bottomWall.Height, 0, 0);
-            
 
-            walls = new List<Rectangle>();
             walls.Add(topWall);
             walls.Add(bottomWall);
-
-            
-            gameIsInPlay = false;
+        }
+        public void Update()
+        {
+            leftPaddle.Position = new Point(LOSE_ZONE, boardHeight / 2.0 - leftPaddle.Height / 2.0);
+            rightPaddle.Position = new Point(boardWidth + (LOSE_ZONE * -1.0) - rightPaddle.Width, boardHeight / 2.0 - rightPaddle.Height / 2.0);
+            ball.Position = new Point(boardWidth / 2.0 + 30.0, boardHeight / 2.0 + 30.0);
+        }
+        private void Reset()
+        {
+            Pause();
+            Update();
             gameOver = false;
         }
+
+        // Completely restarts the initial state of the game
         public void Restart()
         {
-            Reset();
             ResetBricks();
+            Reset();
         }
         private void ResetBricks()
         {
-            Stop();
             bricks.Clear();
             bricks.AddRange(bricksCache.ToArray());
 
@@ -106,9 +118,10 @@ namespace BrickBreakerPong
                 brick.Visibility = Visibility.Visible;
             }
         }
-        public void Stop()
+        public void Pause()
         {
-            gameIsInPlay = false;
+            if(gameIsInPlay)
+                gameIsInPlay = false;
         }
         public bool IsInPlay()
         {
@@ -116,7 +129,8 @@ namespace BrickBreakerPong
         }
         public void Continue()
         {
-            gameIsInPlay = true;
+            if(!gameIsInPlay)
+                gameIsInPlay = true;
         }
         public void Run()
         {

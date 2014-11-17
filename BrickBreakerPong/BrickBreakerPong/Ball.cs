@@ -91,11 +91,11 @@ namespace BrickBreakerPong
         }
         #endregion
         TimeSpan bounce;
-        public Ball(Point ballPosition, double ballWidth, double ballHeight, double ballSpeed = 10.0)
+        public Ball(double ballWidth = 50.0, double ballHeight = 50.0, double ballSpeed = 10.0)
         {
             this.Width = ballWidth;
             this.Height = ballHeight;
-            this.Position = ballPosition;
+            this.Position = new Point(0, 0);
             Ball.Speed = ballSpeed;
             bounce = new TimeSpan(DateTime.Now.Ticks);
             currentAngle = Angle.BOTTOM_RIGHT;

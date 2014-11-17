@@ -66,33 +66,63 @@ namespace BrickBreakerPong
         //    }
         ///}
         //#endregion
+
+        // Made static in order for the Game class to have access
+        // to the sound effects
         public static MediaElement sfx;
+
         Game game;
         private DispatcherTimer timer;
         public MainPage()
         {
             this.InitializeComponent();
-            game = new Game();
 
-            mainGrid.Height = game.boardHeight;
-            mainGrid.Width = game.boardWidth;
-
-            topWall.Width = game.boardWidth;
-            bottomWall.Width = game.boardWidth;
-
-            bottomWall.Margin = new Thickness(0, game.boardHeight - bottomWall.Height, 0, 0);
-            sfx = soundEffects;
             
+
+            // Get the size of the screen
+            mainGrid.Height = Window.Current.Bounds.Height;
+            mainGrid.Width = Window.Current.Bounds.Width;
+
+            // Draw the top and bottom wall
+            topWall.Width = mainGrid.Width;
+            bottomWall.Width = mainGrid.Width;
+
+            // Move the bottom wall to the bottom of the screen
+            bottomWall.Margin = new Thickness(0, mainGrid.Height - bottomWall.Height, 0, 0);
+
+
+            // Connect the view with the model
+            game = new Game();
+            game.ball.Width = ball.Width;
+            game.ball.Height = ball.Height;
+            game.leftPaddle.Height = leftPaddle.Height;
+            game.leftPaddle.Width = leftPaddle.Width;
+            game.rightPaddle.Height = rightPaddle.Height;
+            game.rightPaddle.Width = rightPaddle.Width;
+
+            // Call game.Update any time you want the model to reflect the view
+            // (USED AFTER YOU MAKE CHANGES TO THE MODEL)
+            game.Update();
+
+            // Call UpdateGrid any time you want the view to reflect the model
             UpdateGrid();
+
+            // Reads a file to create the bricks
             CreateBricks();
 
+            // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
 
-            sfx.DefaultPlaybackRate = 6.0;
+            // Create a reference to the media element in the xaml
+            sfx = soundEffects;
+            sfx.DefaultPlaybackRate = 6.0; // Plays sound effects faster
+
+
             timer = new DispatcherTimer();
             timer.Start();
             timer.Tick += timer_Tick;
 
+            // Play music!
             musicPlayer.Play();
         }
         private void CreateBricks()
@@ -165,7 +195,7 @@ namespace BrickBreakerPong
                 if (game.IsInPlay())
                 {
                     musicPlayer.Pause();
-                    game.Stop();
+                    game.Pause();
                     TurnOnInstructions();
                     timer.Stop();
                 }
@@ -198,6 +228,7 @@ namespace BrickBreakerPong
             startGameLabel.Visibility = Visibility.Visible;
             restartLevelLabel.Visibility = Visibility.Visible;
         }
+        // Have the view reflect the model
         void UpdateGrid()
         {
             rightPaddle.Margin = new Thickness(game.rightPaddle.Position.X,

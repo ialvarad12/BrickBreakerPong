@@ -23,7 +23,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-11-17T19:10:32.651</Modified>
+      <Modified>2014-11-17T20:15:00.159</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
       <PackagePath>Fonts\TRON.TTF</PackagePath>
@@ -75,7 +75,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2014-11-17T19:09:20.485</Modified>
+      <Modified>2014-11-17T19:55:05.001</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
