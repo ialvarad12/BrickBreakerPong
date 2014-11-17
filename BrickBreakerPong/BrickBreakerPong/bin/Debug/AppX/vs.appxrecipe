@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>SI-20104</Machine>
+    <Machine>SI-20112</Machine>
     <WindowsUser>ialvarad</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
@@ -17,65 +17,69 @@
     <AppXManifest Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-15T00:58:30.548</Modified>
+      <Modified>2014-11-17T19:01:13.510</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-11-15T01:03:26.737</Modified>
+      <Modified>2014-11-17T19:10:32.651</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
+      <PackagePath>Fonts\TRON.TTF</PackagePath>
+      <Modified>2014-11-17T18:59:42.918</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-11T20:56:11.368</Modified>
+      <Modified>2013-07-23T11:01:02.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-11T20:56:11.369</Modified>
+      <Modified>2013-07-23T11:01:02.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-11T20:56:11.370</Modified>
+      <Modified>2013-07-23T11:01:02.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-11T20:56:11.370</Modified>
+      <Modified>2013-07-23T11:01:02.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\adagio_for_tron.mp3">
       <PackagePath>Music\adagio_for_tron.mp3</PackagePath>
-      <Modified>2014-11-14T23:07:29.498</Modified>
+      <Modified>2014-11-17T18:14:30.373</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping.mp3">
       <PackagePath>Music\beep_ping.mp3</PackagePath>
-      <Modified>2014-11-15T00:23:54.116</Modified>
+      <Modified>2014-11-17T18:14:30.375</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping2.mp3">
       <PackagePath>Music\beep_ping2.mp3</PackagePath>
-      <Modified>2014-11-15T00:09:31.999</Modified>
+      <Modified>2014-11-17T18:14:30.375</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\robo_blip.mp3">
       <PackagePath>Music\robo_blip.mp3</PackagePath>
-      <Modified>2014-11-14T23:52:33.467</Modified>
+      <Modified>2014-11-17T18:14:30.387</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\the_son_of_flynn.mp3">
       <PackagePath>Music\the_son_of_flynn.mp3</PackagePath>
-      <Modified>2014-11-14T23:10:35.310</Modified>
+      <Modified>2014-11-17T18:14:30.453</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2014-11-15T00:58:30.237</Modified>
+      <Modified>2014-11-06T00:19:30.993</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2014-11-15T00:59:53.079</Modified>
+      <Modified>2014-11-17T19:09:20.485</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-11-15T00:58:30.458</Modified>
+      <Modified>2014-11-17T19:01:13.407</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

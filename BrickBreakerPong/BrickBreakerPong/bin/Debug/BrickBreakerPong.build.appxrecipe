@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>SI-20104</Machine>
+    <Machine>SI-20112</Machine>
     <WindowsUser>ialvarad</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
@@ -16,6 +16,9 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
+      <PackagePath>Fonts\TRON.TTF</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>

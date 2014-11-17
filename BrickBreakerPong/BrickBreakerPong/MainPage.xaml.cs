@@ -72,7 +72,7 @@ namespace BrickBreakerPong
         public MainPage()
         {
             this.InitializeComponent();
-            game = new Game(Window.Current.Bounds.Width, Window.Current.Bounds.Height);
+            game = new Game();
 
             mainGrid.Height = game.boardHeight;
             mainGrid.Width = game.boardWidth;
@@ -124,6 +124,7 @@ namespace BrickBreakerPong
                 {
                     rect = new Rectangle();
                     rect.Fill = new SolidColorBrush(Colors.Gray);
+                    
                     //rect.Fill = new SolidColorBrush(Color.FromArgb(255,41,169,198));
                     rect.Stroke = new SolidColorBrush(Colors.White);
                     rect.StrokeThickness = -1.0;
