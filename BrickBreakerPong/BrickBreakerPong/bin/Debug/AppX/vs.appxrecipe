@@ -1,85 +1,104 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>SI-20111</Machine>
-    <WindowsUser>ialvarad</WindowsUser>
+    <Machine>TACHIKOMA</Machine>
+    <WindowsUser>Austin</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>f818ea8e-b28a-431c-842a-1da060037e3d</PackageIdentityName>
-    <RegisteredManifestChecksum>F43CC559B308F13ABBC891BA106191A4E35664D64BA8214E1B81C0B3B5BDB1D5</RegisteredManifestChecksum>
+    <IntermediateOutputPath>C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>CE9A7227F29445333D565B6D0ADAEC25119A9F83BE6CFBD9B5F3AF75DD339939</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>f818ea8e-b28a-431c-842a-1da060037e3d_1.0.0.0_neutral__11ccc81v8dg5t</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>f818ea8e-b28a-431c-842a-1da060037e3d_11ccc81v8dg5t!App</RegisteredUserModeAppID>
     <RegisteredPackageID>f818ea8e-b28a-431c-842a-1da060037e3d</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=ialvarad</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T22:12:52.350</Modified>
+      <Modified>2014-11-19T04:11:28.200</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-11-17T23:38:48.489</Modified>
+      <Modified>2014-11-19T04:11:27.325</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
       <PackagePath>Fonts\TRON.TTF</PackagePath>
-      <Modified>2014-11-17T22:10:15.264</Modified>
+      <Modified>2014-11-18T16:07:10.923</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T22:10:15.260</Modified>
+      <Modified>2014-11-17T01:04:56.246</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SmallLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T22:10:15.261</Modified>
+      <Modified>2014-11-17T01:04:56.246</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T22:10:15.261</Modified>
+      <Modified>2014-11-17T01:04:56.247</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T22:10:15.262</Modified>
+      <Modified>2014-11-17T01:04:56.248</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\adagio_for_tron.mp3">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1.txt">
+      <PackagePath>Levels\lvl_1.txt</PackagePath>
+      <Modified>2014-11-19T04:00:01.564</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_2.txt">
+      <PackagePath>Levels\lvl_2.txt</PackagePath>
+      <Modified>2014-11-19T04:10:53.511</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\testFile.txt">
+      <PackagePath>Levels\testFile.txt</PackagePath>
+      <Modified>2014-11-19T01:02:43.975</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\adagio_for_tron.mp3">
       <PackagePath>Music\adagio_for_tron.mp3</PackagePath>
-      <Modified>2014-11-17T22:10:15.310</Modified>
+      <Modified>2014-11-17T01:04:56.361</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping.mp3">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping.mp3">
       <PackagePath>Music\beep_ping.mp3</PackagePath>
-      <Modified>2014-11-17T22:10:15.311</Modified>
+      <Modified>2014-11-17T01:04:56.368</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping2.mp3">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping2.mp3">
       <PackagePath>Music\beep_ping2.mp3</PackagePath>
-      <Modified>2014-11-17T22:10:15.312</Modified>
+      <Modified>2014-11-17T01:04:56.369</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\robo_blip.mp3">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\robo_blip.mp3">
       <PackagePath>Music\robo_blip.mp3</PackagePath>
-      <Modified>2014-11-17T22:10:15.313</Modified>
+      <Modified>2014-11-17T01:04:56.449</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\the_son_of_flynn.mp3">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\the_son_of_flynn.mp3">
       <PackagePath>Music\the_son_of_flynn.mp3</PackagePath>
-      <Modified>2014-11-17T22:10:15.364</Modified>
+      <Modified>2014-11-17T01:04:56.668</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2014-11-17T22:10:15.513</Modified>
+      <Modified>2014-11-19T03:42:09.011</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2014-11-17T23:10:08.417</Modified>
+      <Modified>2014-11-19T03:42:09.027</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.xr.xml">
+      <PackagePath>BrickBreakerPong.xr.xml</PackagePath>
+      <Modified>2014-11-18T16:33:32.921</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-11-17T22:12:52.094</Modified>
+      <Modified>2014-11-19T04:11:27.653</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -3,8 +3,12 @@ Assets\SmallLogo.scale-100.png
 Assets\SplashScreen.scale-100.png
 Assets\StoreLogo.scale-100.png
 App.xbf
+BrickBreakerPong.xr.xml
 MainPage.xbf
 Fonts\TRON.TTF
+Levels\lvl_1.txt
+Levels\lvl_2.txt
+Levels\testFile.txt
 Music\adagio_for_tron.mp3
 Music\beep_ping.mp3
 Music\beep_ping2.mp3

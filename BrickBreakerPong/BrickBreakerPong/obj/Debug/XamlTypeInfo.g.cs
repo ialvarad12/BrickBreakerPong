@@ -182,6 +182,7 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
             case 0:   //  BrickBreakerPong.MainPage
                 userType = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_MainPage;
+                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
@@ -240,6 +241,7 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
         virtual public bool IsMarkupExtension { get { throw new global::System.NotImplementedException(); } }
         virtual public bool IsBindable { get { throw new global::System.NotImplementedException(); } }
         virtual public bool IsReturnTypeStub { get { throw new global::System.NotImplementedException(); } }
+        virtual public bool IsLocalType { get { throw new global::System.NotImplementedException(); } }
         virtual public global::Windows.UI.Xaml.Markup.IXamlType ItemType { get { throw new global::System.NotImplementedException(); } }
         virtual public global::Windows.UI.Xaml.Markup.IXamlType KeyType { get { throw new global::System.NotImplementedException(); } }
         virtual public object ActivateInstance() { throw new global::System.NotImplementedException(); }
@@ -264,6 +266,7 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
         bool _isMarkupExtension;
         bool _isBindable;
         bool _isReturnTypeStub;
+        bool _isLocalType;
 
         string _contentPropertyName;
         string _itemTypeName;
@@ -288,6 +291,7 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
         override public bool IsMarkupExtension { get { return _isMarkupExtension; } }
         override public bool IsBindable { get { return _isBindable; } }
         override public bool IsReturnTypeStub { get { return _isReturnTypeStub; } }
+        override public bool IsLocalType { get { return _isLocalType; } }
 
         override public global::Windows.UI.Xaml.Markup.IXamlMember ContentProperty
         {
@@ -421,6 +425,11 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
             _isReturnTypeStub = true;
         }
 
+        public void SetIsLocalType()
+        {
+            _isLocalType = true;
+        }
+
         public void SetItemTypeName(string itemTypeName)
         {
             _itemTypeName = itemTypeName;
@@ -518,5 +527,6 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
         }
     }
 }
+
 
 

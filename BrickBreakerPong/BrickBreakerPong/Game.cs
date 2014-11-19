@@ -126,10 +126,10 @@ namespace BrickBreakerPong
             bricks.Clear();
             bricks.AddRange(bricksCache.ToArray());
 
-            foreach(Rectangle brick in bricks)
-            {
-                brick.Visibility = Visibility.Visible;
-            }
+            //foreach(Rectangle brick in bricks)
+            //{
+            //    brick.Visibility = Visibility.Visible;
+            //}
         }
         public void Pause()
         {
@@ -213,6 +213,12 @@ namespace BrickBreakerPong
         {
             bricks.Add(brick);
             bricksCache.Add(brick);
+        }
+
+        public void RemoveBrickUtility(int index)
+        {
+            bricks.RemoveAt(index);
+            bricksCache.RemoveAt(index);
         }
 
         private bool BallIsOutOfBounds()
