@@ -10,11 +10,11 @@
         <FontFamily x:Key="TronFont">/Fonts/TRON.TTF#TRON</FontFamily>
     </Page.Resources>
 
-    <Grid x:Name="mainGrid" Background="Black" Height="auto" Width="auto"  >
-        <Rectangle x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
-        <Rectangle x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
-        <Rectangle x:Name="leftPaddle"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Blue"/>
-        <Rectangle x:Name="rightPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Red"/>
+    <Grid x:FieldModifier="public" x:Name="mainGrid" Background="Black" Height="auto" Width="auto"  >
+        <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
+        <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
+        <Rectangle x:FieldModifier="public" x:Name="leftPaddle"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Blue"/>
+        <Rectangle x:FieldModifier="public" x:Name="rightPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Red"/>
         <!--<Grid x:Name="bricksGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"></Grid>
         -->
         <Ellipse x:Name="ball"  Fill="#29A9C6" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Stroke="Black"  Width="50"/>

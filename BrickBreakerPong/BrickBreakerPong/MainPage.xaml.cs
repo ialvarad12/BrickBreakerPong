@@ -40,12 +40,11 @@ namespace BrickBreakerPong
         public static MediaElement sfx;
 
         Game game;
+        Level level;
         private DispatcherTimer timer;
         public MainPage()
         {
             this.InitializeComponent();
-
-            
 
             // Get the size of the screen
             mainGrid.Height = Window.Current.Bounds.Height;
@@ -78,7 +77,8 @@ namespace BrickBreakerPong
 
             // Reads a file to create the bricks
             //CreateBricks();
-            GetLevelString();
+            level = new Level();
+            LoadLevel();
 
             // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
@@ -86,7 +86,6 @@ namespace BrickBreakerPong
             // Create a reference to the media element in the xaml
             sfx = soundEffects;
             sfx.DefaultPlaybackRate = 6.0; // Plays sound effects faster
-
 
             timer = new DispatcherTimer();
             timer.Start();
@@ -96,89 +95,13 @@ namespace BrickBreakerPong
             musicPlayer.Play();
         }
 
-        private async void GetLevelString()
+        private async void LoadLevel()
         {
-            string text = await LoadFileAsync();
+            string text = await level.LoadFileAsync("lvl_1.txt");
             if (text != null)
             {
-                Rectangle rect;
-
-                double distanceBetweenPaddles = (uint)(rightPaddle.Margin.Left - (leftPaddle.Margin.Left + leftPaddle.Width));
-                double distanceBetweenWalls = game.boardHeight - topWall.Height - bottomWall.Height;
-                double ratio = 25.0;
-
-                int row = 0, col = 0;
-                foreach (var line in text)
-                {
-                    if (col == 27) // takes into account the '\n' in the text file
-                    {
-                        row++;
-                        col = 0;
-                    }
-
-                    rect = new Rectangle();
-                    rect.Fill = new SolidColorBrush(Colors.Gray);
-                    rect.Stroke = new SolidColorBrush(Colors.White);
-                    rect.Width = distanceBetweenPaddles / ratio;
-                    rect.Height = distanceBetweenWalls / ratio;
-                    rect.HorizontalAlignment = HorizontalAlignment.Left;
-                    rect.VerticalAlignment = VerticalAlignment.Top;
-                    rect.Margin = new Thickness(leftPaddle.Margin.Left + leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
-                                                topWall.Height + (row * distanceBetweenWalls / ratio), 0, 0);
-
-                    // Don't know exactly why it goes out of bounds, but this prevents it :)
-                    if (topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
-                        leftPaddle.Margin.Left + leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
-                    {
-                        if(line == '1')
-                        {
-                            mainGrid.Children.Add(rect);
-
-                            game.AddBrick(rect);
-                        }
-                    }
-
-                    col++;
-                }
+                level.CreateLevel(this, text, game);
             }
-        }
-
-        private async Task<string> LoadFileAsync()
-        {
-            Exception exception = null;
-
-            string root = Windows.ApplicationModel.Package.Current.InstalledLocation.Path;
-            string path = root + @"\Levels";
-            StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(path);
-            StorageFile storageFile = await folder.GetFileAsync("lvl_2.txt");
-
-            if (storageFile == null)
-                return null;
-
-            try
-            {
-                using (IRandomAccessStream stream = await storageFile.OpenReadAsync())
-                {
-                    using (DataReader dataReader = new DataReader(stream))
-                    {
-                        uint length = (uint)stream.Size;
-                        await dataReader.LoadAsync(length);
-                        return dataReader.ReadString(length);
-                    }
-                }
-            }
-            catch (FileNotFoundException ex)
-            {
-                exception = ex;
-            }
-
-            if(exception != null)
-            {
-                MessageDialog msg = new MessageDialog("Sorry, but the levels file wasn't found.", "File not found");
-                await msg.ShowAsync();
-            }
-
-            return null;
         }
 
         void timer_Tick(object sender, object e)
