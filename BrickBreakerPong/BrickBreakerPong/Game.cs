@@ -114,7 +114,7 @@ namespace BrickBreakerPong
             }
             //ball.Position = new Point(boardWidth / 2.0, boardHeight / 2.0);
         }
-        private void Reset()
+        public void Reset()
         {
             Pause();
             Update();
@@ -126,8 +126,17 @@ namespace BrickBreakerPong
         {
             scoreLeft = 0;
             scoreRight = 0;
+            gamePoint = 10000;
 
             ResetBricks();
+            Reset();
+        }
+        public void NewGame()
+        {
+            scoreLeft = 0;
+            scoreRight = 0;
+            gamePoint = 10000;
+            bricksCache.Clear();
             Reset();
         }
         private void ResetBricks()
@@ -183,13 +192,9 @@ namespace BrickBreakerPong
 
             if (BallIsOutOfBounds())
             {
-                if(scoreLeft == gamePoint)
+                if(IsGameOver())
                 {
-                    // left won
-                }
-                else if (scoreRight == gamePoint)
-                {
-                    // right won
+                    Pause();
                 }
                 else
                 {
@@ -260,6 +265,15 @@ namespace BrickBreakerPong
 
             return (ball.Position.X + ball.Width < 0.0 ||
                     ball.Position.X > boardWidth);
+        }
+
+        public bool IsGameOver()
+        {
+            bool result = false;
+            if (scoreLeft == gamePoint || scoreRight == gamePoint)
+                result = true;
+
+            return result;
         }
     }
 }

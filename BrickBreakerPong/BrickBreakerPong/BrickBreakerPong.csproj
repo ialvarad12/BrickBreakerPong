@@ -110,11 +110,11 @@
     </Compile>
     <Compile Include="Ball.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HumanPaddle.cs" />
     <Compile Include="Level.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="IPaddle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -129,6 +129,7 @@
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Levels\lvl_1.txt" />
     <Content Include="Levels\lvl_2.txt" />
+    <Content Include="Levels\lvl_3.txt" />
     <Content Include="Levels\testFile.txt" />
     <Content Include="Music\adagio_for_tron.mp3" />
     <Content Include="Music\beep_ping.mp3" />
@@ -144,7 +145,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="GamePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

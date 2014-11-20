@@ -20,13 +20,13 @@
     <AppXManifest Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-19T17:58:08.248</Modified>
+      <Modified>2014-11-20T17:21:07.095</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-11-20T00:32:44.279</Modified>
+      <Modified>2014-11-20T23:21:56.879</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
       <PackagePath>Fonts\TRON.TTF</PackagePath>
@@ -60,6 +60,10 @@
       <PackagePath>Levels\lvl_2.txt</PackagePath>
       <Modified>2014-11-19T04:10:53.511</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_3.txt">
+      <PackagePath>Levels\lvl_3.txt</PackagePath>
+      <Modified>2014-11-20T17:21:00.854</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\testFile.txt">
       <PackagePath>Levels\testFile.txt</PackagePath>
       <Modified>2014-11-19T01:02:43.975</Modified>
@@ -88,17 +92,17 @@
       <PackagePath>App.xbf</PackagePath>
       <Modified>2014-11-19T03:42:09.011</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MainPage.xbf">
-      <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2014-11-20T00:14:03.021</Modified>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf">
+      <PackagePath>GamePage.xbf</PackagePath>
+      <Modified>2014-11-20T18:40:51.125</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.xr.xml">
       <PackagePath>BrickBreakerPong.xr.xml</PackagePath>
-      <Modified>2014-11-18T16:33:32.921</Modified>
+      <Modified>2014-11-20T18:40:50.959</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-11-19T17:58:07.997</Modified>
+      <Modified>2014-11-20T17:21:06.893</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -42,12 +42,13 @@
       <RootProperty Name="Height" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.MediaElement">
       <RootProperty Name="AudioCategory" />
       <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
-    <RootType FullName="BrickBreakerPong.MainPage" />
+    <RootType FullName="BrickBreakerPong.GamePage" />
   </Roots.RootTypes>
 </Roots>

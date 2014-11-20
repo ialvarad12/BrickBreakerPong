@@ -41,6 +41,7 @@ namespace BrickBreakerPong
 
         Game game;
         Level level;
+        private int levelNumber;
         private DispatcherTimer timer;
         public GamePage()
         {
@@ -56,7 +57,6 @@ namespace BrickBreakerPong
 
             // Move the bottom wall to the bottom of the screen
             bottomWall.Margin = new Thickness(0, mainGrid.Height - bottomWall.Height, 0, 0);
-
 
             // Connect the view with the model
             game = new Game();
@@ -76,9 +76,12 @@ namespace BrickBreakerPong
             UpdateGrid();
 
             // Reads a file to create the bricks
-            //CreateBricks();
             level = new Level();
+            levelNumber = 3;
             LoadLevel();
+
+            newGameLevel.Visibility = Visibility.Collapsed;
+            replayLevel.Visibility = Visibility.Collapsed;
 
             // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
@@ -91,13 +94,17 @@ namespace BrickBreakerPong
             timer.Start();
             timer.Tick += timer_Tick;
 
+            // Game Over Labels
+            gameOverLabel.Visibility = Visibility.Collapsed;
+            winningPlayer.Visibility = Visibility.Collapsed;
+
             // Play music!
             musicPlayer.Play();
         }
 
         private async void LoadLevel()
         {
-            string text = await level.LoadFileAsync("lvl_2.txt");
+            string text = await level.LoadFileAsync("lvl_" + levelNumber + ".txt");
             if (text != null)
             {
                 level.CreateLevel(this, text, game);
@@ -115,31 +122,53 @@ namespace BrickBreakerPong
 
         void MainPage_KeyDown(CoreWindow sender, KeyEventArgs args)
         {
-            if (args.VirtualKey.ToString() == "Space")
+            if (!game.IsGameOver())
             {
-                if (game.IsInPlay())
+                if (args.VirtualKey.ToString() == "Space")
                 {
-                    musicPlayer.Pause();
-                    game.Pause();
+                    if (game.IsInPlay())
+                    {
+                        musicPlayer.Pause();
+                        game.Pause();
+                        TurnOnInstructions();
+                        timer.Stop();
+                    }
+                    else
+                    {
+                        musicPlayer.Play();
+                        game.Continue();
+                        TurnOffInstructions();
+                        timer.Start();
+                    }
+
+                }
+
+                if (args.VirtualKey.ToString() == "F5")
+                {
                     TurnOnInstructions();
+                    game.Restart();
+                    UpdateGrid();
                     timer.Stop();
                 }
-                else
-                {
-                    musicPlayer.Play();
-                    game.Continue();
-                    TurnOffInstructions();
-                    timer.Start();
-                }
-
             }
-
-            if(args.VirtualKey.ToString() == "F5")
+            else
             {
-                TurnOnInstructions();
-                game.Restart();
-                UpdateGrid();
-                timer.Stop();
+                // game over screen 
+                if (args.VirtualKey.ToString() == "F4")
+                {
+                    newGameLevel.Visibility = Visibility.Collapsed;
+                    replayLevel.Visibility = Visibility.Collapsed;
+                    gameOverLabel.Visibility = Visibility.Collapsed;
+                    winningPlayer.Visibility = Visibility.Collapsed;
+
+                    if (++levelNumber > 3)
+                        levelNumber = 1;
+
+                    LoadLevel();
+                    game.NewGame();
+                    UpdateGrid();
+                    timer.Stop();
+                }
             }
         }
        
@@ -155,19 +184,31 @@ namespace BrickBreakerPong
             startGameLabel.Visibility = Visibility.Visible;
             restartLevelLabel.Visibility = Visibility.Visible;
         }
-       
+
         // Have the view reflect the model
         void UpdateGrid()
         {
-            rightPaddle.Margin = new Thickness(game.rightPaddle.Position.X,
-                                               game.rightPaddle.Position.Y, 0, 0);
-            leftPaddle.Margin  = new Thickness(game.leftPaddle.Position.X,
-                                               game.leftPaddle.Position.Y, 0, 0);
-            ball.Margin = new Thickness(game.ball.Position.X,
-                                        game.ball.Position.Y, 0, 0);
+            rightPaddle.Margin = new Thickness(game.rightPaddle.Position.X, game.rightPaddle.Position.Y, 0, 0);
+            leftPaddle.Margin  = new Thickness(game.leftPaddle.Position.X, game.leftPaddle.Position.Y, 0, 0);
+            ball.Margin = new Thickness(game.ball.Position.X, game.ball.Position.Y, 0, 0);
 
             scoreLeft.Text = game.scoreLeft.ToString();
             scoreRight.Text = game.scoreRight.ToString();
+
+            if(game.IsGameOver())
+            {
+                gameOverLabel.Visibility = Visibility.Visible;
+
+                if (game.scoreLeft > game.scoreRight)
+                    winningPlayer.Text = "Player 1 Wins!";
+                else
+                    winningPlayer.Text = "Player 2 Wins!";
+
+                winningPlayer.Visibility = Visibility.Visible;
+
+                newGameLevel.Visibility = Visibility.Visible;
+                replayLevel.Visibility = Visibility.Visible;
+            }
         }
     }
 }

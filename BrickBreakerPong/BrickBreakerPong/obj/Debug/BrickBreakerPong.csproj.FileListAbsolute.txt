@@ -92,7 +92,6 @@ C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\o
 C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\ialvarad\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\ProjectArchitectures.txt
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\App.xbf
-C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MainPage.xbf
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.xr.xml
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.pdb
@@ -101,13 +100,9 @@ C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.build.appxrecipe
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\App.g.i.cs
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\App.g.cs
-C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\MainPage.g.i.cs
-C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\MainPage.g.cs
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\XamlTypeInfo.g.cs
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\App.xaml
-C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\MainPage.xaml
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\App.xbf
-C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\MainPage.xbf
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\XamlSaveStateFile.xml
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\BrickBreakerPong.exe
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\BrickBreakerPong.pdb
@@ -123,3 +118,8 @@ C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\qualifiers.txt.intermediate
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\ProjectArchitectures.txt
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\GamePage.g.i.cs
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\GamePage.g.cs
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\GamePage.xaml
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\GamePage.xbf
