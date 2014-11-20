@@ -33,7 +33,7 @@ namespace BrickBreakerPong
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class GamePage : Page
     {
         // Made static in order for the Game class to have access
         // to the sound effects
@@ -42,7 +42,7 @@ namespace BrickBreakerPong
         Game game;
         Level level;
         private DispatcherTimer timer;
-        public MainPage()
+        public GamePage()
         {
             this.InitializeComponent();
 

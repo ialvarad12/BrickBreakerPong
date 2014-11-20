@@ -20,7 +20,7 @@ namespace BrickBreakerPong
         {
         }
 
-        public void CreateLevel(MainPage mainPage, string text, Game game)
+        public void CreateLevel(GamePage mainPage, string text, Game game)
         {
             Rectangle rect;
 

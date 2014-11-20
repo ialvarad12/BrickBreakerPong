@@ -115,7 +115,7 @@ namespace BrickBreakerPong
             Collision[] whereBallWillCollide = new Collision[2]; 
             if (collidedObject.ElementAtOrDefault(0) != null)
             {
-                MainPage.sfx.Play();
+                GamePage.sfx.Play();
                  Rectangle rec = collidedObject.ElementAt(0);
                  if (ballCoordinates.All(p =>
                                          p.Y + Speed >= rec.Margin.Top + rec.Height))
