@@ -18,7 +18,6 @@ namespace BrickBreakerPong
 
         public Level()
         {
-
         }
 
         public void CreateLevel(MainPage mainPage, string text, Game game)

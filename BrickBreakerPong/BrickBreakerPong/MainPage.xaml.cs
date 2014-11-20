@@ -97,7 +97,7 @@ namespace BrickBreakerPong
 
         private async void LoadLevel()
         {
-            string text = await level.LoadFileAsync("lvl_1.txt");
+            string text = await level.LoadFileAsync("lvl_2.txt");
             if (text != null)
             {
                 level.CreateLevel(this, text, game);
@@ -165,6 +165,9 @@ namespace BrickBreakerPong
                                                game.leftPaddle.Position.Y, 0, 0);
             ball.Margin = new Thickness(game.ball.Position.X,
                                         game.ball.Position.Y, 0, 0);
+
+            scoreLeft.Text = game.scoreLeft.ToString();
+            scoreRight.Text = game.scoreRight.ToString();
         }
     }
 }

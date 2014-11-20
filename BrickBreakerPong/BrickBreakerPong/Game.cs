@@ -31,7 +31,9 @@ namespace BrickBreakerPong
         private bool gameIsInPlay;
         public bool gameOver;
         private bool isLeftPlayersTurn = true;
-
+        public int scoreLeft;
+        public int scoreRight;
+        private int gamePoint;
 
         private double LOSE_ZONE = -5.0;
 
@@ -64,6 +66,10 @@ namespace BrickBreakerPong
             
             
             walls = new List<Rectangle>();
+
+            scoreLeft = 0;
+            scoreRight = 0;
+            gamePoint = 10000;
 
             CreateWalls();
             Reset();
@@ -118,6 +124,9 @@ namespace BrickBreakerPong
         // Completely restarts the initial state of the game
         public void Restart()
         {
+            scoreLeft = 0;
+            scoreRight = 0;
+
             ResetBricks();
             Reset();
         }
@@ -126,10 +135,10 @@ namespace BrickBreakerPong
             bricks.Clear();
             bricks.AddRange(bricksCache.ToArray());
 
-            //foreach(Rectangle brick in bricks)
-            //{
-            //    brick.Visibility = Visibility.Visible;
-            //}
+            foreach (Rectangle brick in bricks)
+            {
+                brick.Visibility = Visibility.Visible;
+            }
         }
         public void Pause()
         {
@@ -163,9 +172,30 @@ namespace BrickBreakerPong
                // ball.SwitchDirection();
             paddles.Clear();
             ball.Move();
-            if (BallIsOutOfBounds())
-                Reset();
 
+            if(bricks.Count == 0)
+            {
+                if (scoreLeft > scoreRight)
+                    gamePoint = scoreLeft + 1;
+                else
+                    gamePoint = scoreRight + 1;
+            }
+
+            if (BallIsOutOfBounds())
+            {
+                if(scoreLeft == gamePoint)
+                {
+                    // left won
+                }
+                else if (scoreRight == gamePoint)
+                {
+                    // right won
+                }
+                else
+                {
+                    Reset();
+                }
+            }
         }
         private void CheckKeyboardPress()
         {
@@ -215,18 +245,18 @@ namespace BrickBreakerPong
             bricksCache.Add(brick);
         }
 
-        public void RemoveBrickUtility(int index)
-        {
-            bricks.RemoveAt(index);
-            bricksCache.RemoveAt(index);
-        }
-
         private bool BallIsOutOfBounds()
         {
             if (ball.Position.X + ball.Width < 0.0)
+            {
                 isLeftPlayersTurn = false;
+                scoreRight++;
+            }
             if (ball.Position.X > boardWidth)
+            {
                 isLeftPlayersTurn = true;
+                scoreLeft++;
+            }
 
             return (ball.Position.X + ball.Width < 0.0 ||
                     ball.Position.X > boardWidth);
