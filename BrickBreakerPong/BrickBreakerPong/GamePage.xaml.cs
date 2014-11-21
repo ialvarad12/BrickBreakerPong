@@ -169,6 +169,19 @@ namespace BrickBreakerPong
                     UpdateGrid();
                     timer.Stop();
                 }
+
+                if(args.VirtualKey.ToString() == "F6")
+                {
+                    newGameLevel.Visibility = Visibility.Collapsed;
+                    replayLevel.Visibility = Visibility.Collapsed;
+                    gameOverLabel.Visibility = Visibility.Collapsed;
+                    winningPlayer.Visibility = Visibility.Collapsed;
+
+                    //LoadLevel();
+                    game.Restart();
+                    UpdateGrid();
+                    timer.Stop();
+                }
             }
         }
        
