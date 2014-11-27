@@ -12,7 +12,6 @@ namespace BrickBreakerPong
         void MovePaddleUp();
         void MovePaddleDown();
 
-        
         Point Position
         {
             get;

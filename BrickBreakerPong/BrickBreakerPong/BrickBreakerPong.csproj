@@ -109,6 +109,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ball.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
@@ -116,6 +120,9 @@
     <Compile Include="HumanPaddle.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="IPaddle.cs" />
+    <Compile Include="MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +130,10 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="BrickBreakerPong_TemporaryKey.pfx" />
+    <Content Include="Assets\textures\brick_texture_1.png" />
+    <Content Include="Assets\textures\brick_texture_2.png" />
+    <Content Include="Assets\textures\brick_texture_3.png" />
+    <Content Include="Assets\textures\brick_texture_4.png" />
     <Content Include="Fonts\TRON.TTF" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +159,10 @@
     <Page Include="GamePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

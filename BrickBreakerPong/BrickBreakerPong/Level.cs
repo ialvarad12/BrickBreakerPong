@@ -9,6 +9,7 @@ using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 
 namespace BrickBreakerPong
@@ -23,6 +24,7 @@ namespace BrickBreakerPong
         public void CreateLevel(GamePage mainPage, string text, Game game)
         {
             Rectangle rect;
+            Random rand = new Random();
 
             double distanceBetweenPaddles = (uint)(mainPage.rightPaddle.Margin.Left - (mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width));
             double distanceBetweenWalls = game.boardHeight - mainPage.topWall.Height - mainPage.bottomWall.Height;
@@ -38,8 +40,9 @@ namespace BrickBreakerPong
                 }
 
                 rect = new Rectangle();
-                rect.Fill = new SolidColorBrush(Colors.Gray);
-                rect.Stroke = new SolidColorBrush(Colors.White);
+                //rect.Fill = new SolidColorBrush(Colors.Gray);
+                //rect.Stroke = new SolidColorBrush(Colors.White);
+                SetBrickTextures(rect, rand);
                 rect.Width = distanceBetweenPaddles / ratio;
                 rect.Height = distanceBetweenWalls / ratio;
                 rect.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
@@ -62,6 +65,19 @@ namespace BrickBreakerPong
 
                 col++;
             }
+        }
+
+        private void SetBrickTextures(Rectangle rect, Random rand)
+        {
+            ImageBrush brickTexture = new ImageBrush();
+            int s = rand.Next(4);
+            s += 1;
+
+            brickTexture.ImageSource = new BitmapImage(
+                    new Uri(Windows.ApplicationModel.Package.Current.InstalledLocation.Path +
+                    @"\Assets\textures\brick_texture_" + s + ".png", UriKind.RelativeOrAbsolute));
+
+            rect.Fill = brickTexture;
         }
 
         // Loads a Level from a text file

@@ -20,17 +20,29 @@
     <AppXManifest Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-20T17:21:07.095</Modified>
+      <Modified>2014-11-27T00:45:37.929</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-11-21T01:46:18.875</Modified>
+      <Modified>2014-11-27T01:53:11.115</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
-      <PackagePath>Fonts\TRON.TTF</PackagePath>
-      <Modified>2014-11-18T16:07:10.923</Modified>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_1.png">
+      <PackagePath>Assets\textures\brick_texture_1.png</PackagePath>
+      <Modified>2014-11-26T22:26:47.906</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_2.png">
+      <PackagePath>Assets\textures\brick_texture_2.png</PackagePath>
+      <Modified>2014-11-26T23:10:53.742</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_3.png">
+      <PackagePath>Assets\textures\brick_texture_3.png</PackagePath>
+      <Modified>2014-11-26T23:11:38.286</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_4.png">
+      <PackagePath>Assets\textures\brick_texture_4.png</PackagePath>
+      <Modified>2014-11-26T23:12:12.952</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
@@ -51,6 +63,10 @@
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2014-11-17T01:04:56.248</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
+      <PackagePath>Fonts\TRON.TTF</PackagePath>
+      <Modified>2014-11-18T16:07:10.923</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1.txt">
       <PackagePath>Levels\lvl_1.txt</PackagePath>
@@ -96,13 +112,17 @@
       <PackagePath>GamePage.xbf</PackagePath>
       <Modified>2014-11-20T18:40:51.125</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MenuPage.xbf">
+      <PackagePath>MenuPage.xbf</PackagePath>
+      <Modified>2014-11-26T19:06:32.426</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.xr.xml">
       <PackagePath>BrickBreakerPong.xr.xml</PackagePath>
-      <Modified>2014-11-20T18:40:50.959</Modified>
+      <Modified>2014-11-25T22:55:15.535</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-11-20T17:21:06.893</Modified>
+      <Modified>2014-11-27T00:45:37.024</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

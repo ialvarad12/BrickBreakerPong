@@ -15,7 +15,6 @@ namespace BrickBreakerPong
 {
     public class Game
     {
-
         [DllImport("user32.dll")]
         public static extern int GetKeyboardState(byte[] keystate);
 
@@ -28,6 +27,7 @@ namespace BrickBreakerPong
         private List<Rectangle> paddles;
         public HumanPaddle leftPaddle;
         public HumanPaddle rightPaddle;
+        public IPaddle iPaddle;
         private bool gameIsInPlay;
         public bool gameOver;
         private bool isLeftPlayersTurn = true;
@@ -37,12 +37,10 @@ namespace BrickBreakerPong
 
         private double LOSE_ZONE = -5.0;
 
-
         public double boardHeight;
         public double boardWidth;
-        
-        public Game(double boardWidth = 0.0,
-                    double boardHeight = 0.0)
+
+        public Game(double boardWidth = 0.0, double boardHeight = 0.0)
         {
             if (boardWidth <= 0.0)
                 this.boardWidth = Window.Current.Bounds.Width;
@@ -59,6 +57,7 @@ namespace BrickBreakerPong
 
             leftPaddle = new HumanPaddle();
             rightPaddle = new HumanPaddle();
+
             paddles = new List<Rectangle>();
 
             bricks = new List<Rectangle>();
@@ -167,7 +166,6 @@ namespace BrickBreakerPong
         {
             CheckKeyboardPress();
 
-
             paddles.Add(leftPaddle.GetRectangle);
             paddles.Add(rightPaddle.GetRectangle);
 
@@ -233,7 +231,7 @@ namespace BrickBreakerPong
             if (keys[(int)VirtualKey.S] == 128 || keys[(int)VirtualKey.S] == 129)
             //else if(leftPaddle.Position.Y + leftPaddle.Height / 2.0  < ball.Position.Y + ball.Height / 2.0)
             {
-                if (leftPaddle.Position.Y + rightPaddle.Height + HumanPaddle.Speed  + bottomWall.Height < boardHeight)
+                if (leftPaddle.Position.Y + leftPaddle.Height + HumanPaddle.Speed  + bottomWall.Height < boardHeight)
                     leftPaddle.MovePaddleDown();
                 else
                     leftPaddle.Position.Y = boardHeight - leftPaddle.Height - bottomWall.Height;

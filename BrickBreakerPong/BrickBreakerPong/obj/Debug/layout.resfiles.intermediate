@@ -2,9 +2,14 @@ Assets\Logo.scale-100.png
 Assets\SmallLogo.scale-100.png
 Assets\SplashScreen.scale-100.png
 Assets\StoreLogo.scale-100.png
+Assets\textures\brick_texture_1.png
+Assets\textures\brick_texture_2.png
+Assets\textures\brick_texture_3.png
+Assets\textures\brick_texture_4.png
 App.xbf
 BrickBreakerPong.xr.xml
 GamePage.xbf
+MenuPage.xbf
 Fonts\TRON.TTF
 Levels\lvl_1.txt
 Levels\lvl_2.txt

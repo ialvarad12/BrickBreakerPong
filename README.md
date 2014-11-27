@@ -2,9 +2,6 @@ BrickBreakerPong
 ================
 
 TODO:
-1 game over notification
-	- winner
-	- option to play again
 2 home screen
 	- an option in the pause menu to go back to the home screen
 	- choose 2 players or against ai
