@@ -13,6 +13,7 @@
     <Page.Resources>
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
         <x:String x:Key="AppName">My Application</x:String>
+        <FontFamily x:Key="PixelFont">/Fonts/04B_19.TTF#04B_19</FontFamily>
     </Page.Resources>
 
     <!--
@@ -29,11 +30,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:ConnectionId='1' Content="Player vs. Player" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" 
-                    Margin="406,460,0,0" Height="70" Width="310"                             />
+                    Margin="406,460,0,0" Height="70" Width="310"                              FontFamily="{StaticResource PixelFont}" FontSize="20" />
             <Button Content="Player vs. Computer" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" 
-                    Margin="406,543,0,0" Height="70" Width="310"/>
+                    Margin="406,543,0,0" Height="70" Width="310" FontFamily="{StaticResource PixelFont}" FontSize="20" />
             <Button x:ConnectionId='2' Content="How to Play" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" 
-                    Margin="406,627,0,0" Height="70" Width="310"                             />
+                    Margin="406,627,0,0" Height="70" Width="310"                              FontFamily="{StaticResource PixelFont}" FontSize="20" />
             
 
             <!--Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"

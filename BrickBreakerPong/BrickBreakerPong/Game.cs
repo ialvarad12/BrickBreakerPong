@@ -55,8 +55,8 @@ namespace BrickBreakerPong
 
             ball = new Ball();
 
-            leftPaddle = new HumanPaddle();
-            rightPaddle = new HumanPaddle();
+            leftPaddle = new HumanPaddle("left");
+            rightPaddle = new HumanPaddle("right");
 
             paddles = new List<Rectangle>();
 

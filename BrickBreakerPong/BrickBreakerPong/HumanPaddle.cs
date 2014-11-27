@@ -10,12 +10,15 @@ namespace BrickBreakerPong
 {
     public class HumanPaddle
     {
-        public HumanPaddle(double paddleWidth = 50.0, double paddleHeight = 200.0, double paddleSpeed = 20.0)
+        string playerSide;
+
+        public HumanPaddle(string playerSide, double paddleWidth = 50.0, double paddleHeight = 200.0, double paddleSpeed = 20.0)
         {
             this.Position = new Point(0, 0);
             this.Width = paddleWidth;
             this.Height = paddleHeight;
             HumanPaddle.Speed = paddleSpeed;
+            this.playerSide = playerSide;
         }
         public void MovePaddleUp()
         {

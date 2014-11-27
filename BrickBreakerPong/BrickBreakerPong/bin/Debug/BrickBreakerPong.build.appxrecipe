@@ -31,6 +31,12 @@
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_4.png">
       <PackagePath>Assets\textures\brick_texture_4.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\left_paddle.png">
+      <PackagePath>Assets\textures\left_paddle.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\right_paddle.png">
+      <PackagePath>Assets\textures\right_paddle.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -49,6 +55,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
       <PackagePath>Fonts\TRON.TTF</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\04B_19.TTF">
+      <PackagePath>Fonts\04B_19.TTF</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1.txt">
       <PackagePath>Levels\lvl_1.txt</PackagePath>

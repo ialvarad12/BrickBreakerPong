@@ -7,32 +7,41 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="mainPage" >
     <Page.Resources>
-        <FontFamily x:Key="TronFont">/Fonts/TRON.TTF#TRON</FontFamily>
+        <FontFamily x:Key="PixelFont">/Fonts/04B_19.TTF#04B_19</FontFamily>
     </Page.Resources>
+    
 
     <Grid x:FieldModifier="public" x:Name="mainGrid" Background="Black" Height="auto" Width="auto"  >
         <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
         <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
-        <Rectangle x:FieldModifier="public" x:Name="leftPaddle"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Blue"/>
-        <Rectangle x:FieldModifier="public" x:Name="rightPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" Fill="Red"/>
+        <Rectangle x:FieldModifier="public" x:Name="leftPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Assets/textures/left_paddle.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:FieldModifier="public" x:Name="rightPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Assets/textures/right_paddle.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Ellipse x:Name="ball"  Fill="#29A9C6" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Stroke="Black"  Width="50"/>
-        <TextBox x:Name="startGameLabel" Text="Start/Pause Game: Space"  IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50"  Width="auto" Height="auto" TextAlignment="Center" FontFamily="{StaticResource TronFont}"/>
-        <TextBox x:Name="newGameLevel" Text="Start New Game: F4"  IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50"  Width="auto" Height="auto" TextAlignment="Center" FontFamily="{StaticResource TronFont}"/>
-        <TextBox x:Name="replayLevel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Replay Current Level: F6" TextAlignment="Center" FontFamily="{StaticResource TronFont}"/>
+        <TextBox x:Name="startGameLabel" Text="Start/Pause Game: Space"  IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50"  Width="auto" Height="auto" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
+        <TextBox x:Name="newGameLevel" Text="Start New Game: F4"  IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50"  Width="auto" Height="auto" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
+        <TextBox x:Name="replayLevel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Replay Current Level: F6" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
 
-        <TextBox x:Name="restartLevelLabel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Restart Game: F5" TextAlignment="Center" FontFamily="{StaticResource TronFont}"/>
+        <TextBox x:Name="restartLevelLabel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Restart Game: F5" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
         <TextBox x:FieldModifier="public" x:Name="scoreLeft" IsReadOnly="True" BorderBrush="Transparent" 
                  Foreground="White" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" 
-                 Margin="58,0,1244,10" Width="auto" Height="auto" Text="0" TextAlignment="Center" FontFamily="{StaticResource TronFont}"/>
+                 Margin="58,0,1244,10" Width="auto" Height="auto" Text="0" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="18"/>
         <TextBox x:FieldModifier="public" x:Name="scoreRight" IsReadOnly="True" BorderBrush="Transparent" 
                  Foreground="White" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" 
-                 Margin="1244,0,58,10" Width="auto" Height="auto" Text="0" TextAlignment="Center" FontFamily="{StaticResource TronFont}"/>
+                 Margin="1244,0,58,10" Width="auto" Height="auto" Text="0" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="18"/>
         <TextBox x:FieldModifier="public" x:Name="gameOverLabel" IsReadOnly="True" BorderBrush="Transparent"
                  Foreground="White" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"
-                 Margin="336,242,336,382" Width="auto" Height="auto" Text="Game Over" TextAlignment="Center" FontFamily="{StaticResource TronFont}" FontSize="72"/>
+                 Margin="336,242,336,382" Width="auto" Height="auto" Text="Game Over" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="72"/>
         <TextBox x:FieldModifier="public" x:Name="winningPlayer" IsReadOnly="True" BorderBrush="Transparent"
                  Foreground="White" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"
-                 Margin="567,385,566,344" Width="auto" Height="auto" Text="Player 'x' Wins!" TextAlignment="Center" FontFamily="{StaticResource TronFont}"/>
+                 Margin="567,385,566,344" Width="auto" Height="auto" Text="Player 'x' Wins!" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
         <MediaElement x:Name="musicPlayer" AudioCategory="ForegroundOnlyMedia" Source="Music/adagio_for_tron.mp3" />
         <MediaElement x:Name="soundEffects" AudioCategory="GameEffects" Source="Music/beep_ping2.mp3"/>
     </Grid>
