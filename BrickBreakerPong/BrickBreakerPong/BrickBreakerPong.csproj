@@ -130,6 +130,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="BrickBreakerPong_TemporaryKey.pfx" />
+    <Content Include="Assets\textures\background_texture.png" />
     <Content Include="Assets\textures\brick_texture_1.png" />
     <Content Include="Assets\textures\brick_texture_2.png" />
     <Content Include="Assets\textures\brick_texture_3.png" />
@@ -143,8 +144,8 @@
     <Content Include="Assets\Logo.scale-100.png" />
     <Content Include="Levels\lvl_1.txt" />
     <Content Include="Levels\lvl_2.txt" />
+    <Content Include="Levels\bananas.txt" />
     <Content Include="Levels\lvl_3.txt" />
-    <Content Include="Levels\testFile.txt" />
     <Content Include="Music\adagio_for_tron.mp3" />
     <Content Include="Music\beep_ping.mp3" />
     <Content Include="Music\beep_ping2.mp3" />

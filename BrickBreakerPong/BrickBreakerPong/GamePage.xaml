@@ -6,12 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" x:Name="mainPage" >
+
     <Page.Resources>
         <FontFamily x:Key="PixelFont">/Fonts/04B_19.TTF#04B_19</FontFamily>
     </Page.Resources>
     
 
-    <Grid x:FieldModifier="public" x:Name="mainGrid" Background="Black" Height="auto" Width="auto"  >
+    <Grid x:FieldModifier="public" x:Name="mainGrid" Height="auto" Width="auto">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="None"/>
+        </Grid.Background>
         <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
         <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
         <Rectangle x:FieldModifier="public" x:Name="leftPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" >

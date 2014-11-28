@@ -2,11 +2,16 @@ BrickBreakerPong
 ================
 
 TODO:
-2 home screen
-	- an option in the pause menu to go back to the home screen
-	- choose 2 players or against ai
-3 designs
-	- bricks, paddles, backgrounds, fonts
-4 level designs
-5 saving state of board and level we are on
-6 fixing collision (low priority)
+::Designs
+	- Make sure textures work on different size screens
+	- Logo and Icons
+	- Menu screen
+	- Options screen
+::Ai
+	- Set the computer player when single player chosen
+::Home Screen
+	- Option to go back to this screen 
+	- Options window
+::Saving State
+::Level Designs
+::Collision

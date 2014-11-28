@@ -25,6 +25,7 @@ using System.Diagnostics;
 using Windows.Storage.Streams;
 using Windows.Storage.Pickers;
 using Windows.UI.Popups;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -68,6 +69,7 @@ namespace BrickBreakerPong
             game.rightPaddle.Width = rightPaddle.Width;
             game.topWall.Height = topWall.Height;
             game.bottomWall.Height = bottomWall.Height;
+
             // Call game.Update any time you want the model to reflect the view
             // (USED AFTER YOU MAKE CHANGES TO THE MODEL)
             game.Update();
@@ -77,11 +79,9 @@ namespace BrickBreakerPong
 
             // Reads a file to create the bricks
             level = new Level();
-            levelNumber = 3;
+            levelNumber = 1;
             LoadLevel();
 
-            newGameLevel.Visibility = Visibility.Collapsed;
-            replayLevel.Visibility = Visibility.Collapsed;
 
             // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
@@ -97,6 +97,8 @@ namespace BrickBreakerPong
             // Game Over Labels
             gameOverLabel.Visibility = Visibility.Collapsed;
             winningPlayer.Visibility = Visibility.Collapsed;
+            newGameLevel.Visibility = Visibility.Collapsed;
+            replayLevel.Visibility = Visibility.Collapsed;
 
             // Play music!
             musicPlayer.Play();
@@ -207,6 +209,11 @@ namespace BrickBreakerPong
 
             scoreLeft.Text = game.scoreLeft.ToString();
             scoreRight.Text = game.scoreRight.ToString();
+
+            if(game.bricks.Count == 0)
+            {
+                game.ball.Speed += .01;
+            }
 
             if(game.IsGameOver())
             {

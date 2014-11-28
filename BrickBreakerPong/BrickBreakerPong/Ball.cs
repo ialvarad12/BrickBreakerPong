@@ -14,7 +14,7 @@ namespace BrickBreakerPong
     public class Ball
     {
         #region MOVEMENT
-        public static double Speed; // In constructor
+        public  double Speed; // In constructor
         public enum Angle
         {
             BOTTOM_RIGHT, BOTTOM_LEFT,
@@ -96,7 +96,7 @@ namespace BrickBreakerPong
             this.Width = ballWidth;
             this.Height = ballHeight;
             this.Position = new Point(0, 0);
-            Ball.Speed = ballSpeed;
+            this.Speed = ballSpeed;
             bounce = new TimeSpan(DateTime.Now.Ticks);
             currentAngle = Angle.BOTTOM_RIGHT;
             currentDirection = Direction.COUNTER_CLOCKWISE;

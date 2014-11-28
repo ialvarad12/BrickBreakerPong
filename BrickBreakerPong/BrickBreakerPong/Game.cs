@@ -19,7 +19,7 @@ namespace BrickBreakerPong
         public static extern int GetKeyboardState(byte[] keystate);
 
         public Ball ball;
-        private List<Rectangle> bricks;
+        public List<Rectangle> bricks;
         private List<Rectangle> bricksCache;
         public Rectangle topWall;
         public Rectangle bottomWall;
@@ -101,13 +101,13 @@ namespace BrickBreakerPong
 
             if (isLeftPlayersTurn)
             {
-                ball.Position = new Point(leftPaddle.Position.X + leftPaddle.Width + Ball.Speed, leftPaddle.Position.Y + leftPaddle.Height / 2.0 - ball.Height / 2.0);
+                ball.Position = new Point(leftPaddle.Position.X + leftPaddle.Width + ball.Speed, leftPaddle.Position.Y + leftPaddle.Height / 2.0 - ball.Height / 2.0);
                 ball.currentAngle = Ball.Angle.BOTTOM_RIGHT;
                 ball.currentDirection = Ball.Direction.COUNTER_CLOCKWISE;
             }
             else
             {
-                ball.Position = new Point(rightPaddle.Position.X - ball.Width - Ball.Speed, rightPaddle.Position.Y + rightPaddle.Height / 2.0 - ball.Height / 2.0);
+                ball.Position = new Point(rightPaddle.Position.X - ball.Width - ball.Speed, rightPaddle.Position.Y + rightPaddle.Height / 2.0 - ball.Height / 2.0);
                 ball.currentAngle = Ball.Angle.BOTTOM_LEFT;
                 ball.currentDirection = Ball.Direction.CLOCKWISE;
             }
@@ -118,6 +118,7 @@ namespace BrickBreakerPong
             Pause();
             Update();
             gameOver = false;
+            ball.Speed = 10.0;
         }
 
         // Completely restarts the initial state of the game
@@ -129,6 +130,7 @@ namespace BrickBreakerPong
 
             ResetBricks();
             Reset();
+            ball.Speed = 10.0;
         }
         public void NewGame()
         {
@@ -137,6 +139,7 @@ namespace BrickBreakerPong
             gamePoint = 10000;
             bricksCache.Clear();
             Reset();
+            ball.Speed = 10.0;
         }
         private void ResetBricks()
         {
@@ -205,14 +208,16 @@ namespace BrickBreakerPong
             byte[] keys = new byte[256];
             GetKeyboardState(keys);
 
-            if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
+            //if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
+            if(rightPaddle.Position.Y + rightPaddle.Height / 2> ball.Position.Y + ball.Height / 2)
             {
                 if (rightPaddle.Position.Y - topWall.Height - HumanPaddle.Speed > 0.0)
                     rightPaddle.MovePaddleUp();
                 else
                     rightPaddle.Position.Y = topWall.Height;
             }
-            if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
+            //if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
+            else if(rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
             {
                 if (rightPaddle.Position.Y + rightPaddle.Height + HumanPaddle.Speed + bottomWall.Height < boardHeight)
                     rightPaddle.MovePaddleDown();
@@ -221,7 +226,7 @@ namespace BrickBreakerPong
             }
 
             if (keys[(int)VirtualKey.W] == 128 || keys[(int)VirtualKey.W] == 129)
-            //if (leftPaddle.Position.Y + leftPaddle.Height / 2.0  > ball.Position.Y + ball.Height / 2.0)
+            //if (leftPaddle.Position.Y + leftPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
             {
                 if (leftPaddle.Position.Y - HumanPaddle.Speed - topWall.Height > 0.0)
                     leftPaddle.MovePaddleUp();
@@ -229,7 +234,7 @@ namespace BrickBreakerPong
                     leftPaddle.Position.Y = topWall.Height;
             }
             if (keys[(int)VirtualKey.S] == 128 || keys[(int)VirtualKey.S] == 129)
-            //else if(leftPaddle.Position.Y + leftPaddle.Height / 2.0  < ball.Position.Y + ball.Height / 2.0)
+            //else if(leftPaddle.Position.Y + leftPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
             {
                 if (leftPaddle.Position.Y + leftPaddle.Height + HumanPaddle.Speed  + bottomWall.Height < boardHeight)
                     leftPaddle.MovePaddleDown();
