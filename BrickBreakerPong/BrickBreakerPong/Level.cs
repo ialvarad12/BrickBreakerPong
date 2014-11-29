@@ -16,58 +16,88 @@ namespace BrickBreakerPong
 {
     class Level
     {
+        public int[,] levelArray;
 
         public Level()
         {
+            levelArray = new int[25, 27];
         }
 
+        // Loads the file into a 2d array
         public void CreateLevel(GamePage mainPage, string text, Game game)
         {
-            Rectangle rect;
-            Random rand = new Random();
-
-            double distanceBetweenPaddles = (uint)(mainPage.rightPaddle.Margin.Left - (mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width));
-            double distanceBetweenWalls = game.boardHeight - mainPage.topWall.Height - mainPage.bottomWall.Height;
-            double ratio = 25.0;
-
             int row = 0, col = 0;
             foreach (var line in text)
             {
-                if(col == 27) // takes into account the '\n' in the text file
+                
+                if (col == 27) // takes into account the '\n' in the text file
                 {
                     row++;
                     col = 0;
                 }
 
-                rect = new Rectangle();
-                //rect.Fill = new SolidColorBrush(Colors.Gray);
-                //rect.Stroke = new SolidColorBrush(Colors.White);
-                SetBrickTextures(rect, rand);
-                rect.Width = distanceBetweenPaddles / ratio;
-                rect.Height = distanceBetweenWalls / ratio;
-                rect.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
-                rect.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
-                rect.Margin = new Windows.UI.Xaml.Thickness(mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
-                                                            mainPage.topWall.Height + (row * distanceBetweenWalls / ratio), 0, 0);
-
-                // Don't know exactly why it goes out of bounds, but this prevents it :)
-                if (mainPage.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
-                    mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
+                if (row < 25)
                 {
                     if (line == '1')
                     {
-                        // adds the brick to the page
-                        mainPage.mainGrid.Children.Add(rect);
-                        // adds to the bricks list
-                        game.AddBrick(rect);
+                        levelArray[row, col] = 1;
+                    }
+                    else
+                    {
+                        levelArray[row, col] = 0;
                     }
                 }
-
                 col++;
+            }
+
+            double distanceBetweenPaddles = (uint)(mainPage.rightPaddle.Margin.Left - (mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width));
+            double distanceBetweenWalls = game.boardHeight - mainPage.topWall.Height - mainPage.bottomWall.Height;
+
+            CreateBricksForLevel(mainPage, game, levelArray, distanceBetweenPaddles, distanceBetweenWalls);
+
+            int x = 9;
+        }
+
+        // uses the levelArray to create the gameboard
+        private void CreateBricksForLevel(GamePage mainPage, Game game, int[,] levelArray, double distanceBetweenPaddles, double distanceBetweenWalls)
+        {
+            Rectangle rect;
+            Random rand = new Random();
+            double ratio = 25.0;
+
+            for (int row = 0; row < 25; row++)
+            {
+                for (int col = 0; col <= 27; col++)
+                {
+                    rect = new Rectangle();
+                    SetBrickTextures(rect, rand);
+                    rect.Width = distanceBetweenPaddles / ratio;
+                    rect.Height = distanceBetweenWalls / ratio;
+                    rect.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
+                    rect.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
+                    rect.Margin = new Windows.UI.Xaml.Thickness(mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
+                                                                mainPage.topWall.Height + (row * distanceBetweenWalls / ratio), 0, 0);
+
+                    // Don't know exactly why it goes out of bounds, but this prevents it :)
+                    if (mainPage.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
+                        mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
+                    {
+                        if (col < 25)
+                        {
+                            if (levelArray[row, col] == 1)
+                            {
+                                // adds the brick to the page
+                                mainPage.mainGrid.Children.Add(rect);
+                                // adds to the bricks list
+                                game.AddBrick(rect);
+                            }
+                        }
+                    }
+                }
             }
         }
 
-        private void SetBrickTextures(Rectangle rect, Random rand)
+        public void SetBrickTextures(Rectangle rect, Random rand)
         {
             ImageBrush brickTexture = new ImageBrush();
             int s = rand.Next(4);

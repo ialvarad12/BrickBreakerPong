@@ -26,7 +26,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-11-28T03:02:23.742</Modified>
+      <Modified>2014-11-29T04:22:40.847</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
@@ -59,22 +59,22 @@
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T01:04:56.246</Modified>
+      <Modified>2014-11-29T05:11:06.575</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T01:04:56.246</Modified>
+      <Modified>2014-11-29T05:17:13.547</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T01:04:56.247</Modified>
+      <Modified>2014-11-29T04:46:07.028</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-11-17T01:04:56.248</Modified>
+      <Modified>2014-11-29T05:22:20.909</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
       <PackagePath>Fonts\TRON.TTF</PackagePath>
@@ -126,7 +126,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf">
       <PackagePath>GamePage.xbf</PackagePath>
-      <Modified>2014-11-28T02:23:50.747</Modified>
+      <Modified>2014-11-28T20:57:19.831</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MenuPage.xbf">
       <PackagePath>MenuPage.xbf</PackagePath>
@@ -134,7 +134,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.xr.xml">
       <PackagePath>BrickBreakerPong.xr.xml</PackagePath>
-      <Modified>2014-11-28T02:17:29.109</Modified>
+      <Modified>2014-11-28T20:38:07.184</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>

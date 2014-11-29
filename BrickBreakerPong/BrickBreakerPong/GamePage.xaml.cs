@@ -26,6 +26,7 @@ using Windows.Storage.Streams;
 using Windows.Storage.Pickers;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Media.Imaging;
+using BrickBreakerPong.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,17 +37,32 @@ namespace BrickBreakerPong
     /// </summary>
     public sealed partial class GamePage : Page
     {
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
+        }
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
         // Made static in order for the Game class to have access
         // to the sound effects
         public static MediaElement sfx;
 
-        Game game;
+        Game game = new Game();
         Level level;
         private int levelNumber;
         private DispatcherTimer timer;
         public GamePage()
         {
             this.InitializeComponent();
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += navigationHelper_LoadState;
+            this.navigationHelper.SaveState += navigationHelper_SaveState;
 
             // Get the size of the screen
             mainGrid.Height = Window.Current.Bounds.Height;
@@ -60,7 +76,7 @@ namespace BrickBreakerPong
             bottomWall.Margin = new Thickness(0, mainGrid.Height - bottomWall.Height, 0, 0);
 
             // Connect the view with the model
-            game = new Game();
+            //game = new Game();
             game.ball.Width = ball.Width;
             game.ball.Height = ball.Height;
             game.leftPaddle.Height = leftPaddle.Height;
@@ -88,7 +104,7 @@ namespace BrickBreakerPong
 
             // Create a reference to the media element in the xaml
             sfx = soundEffects;
-            sfx.DefaultPlaybackRate = 6.0; // Plays sound effects faster
+            soundEffects.DefaultPlaybackRate = 6.0; // Plays sound effects faster
 
             timer = new DispatcherTimer();
             timer.Start();
@@ -97,11 +113,51 @@ namespace BrickBreakerPong
             // Game Over Labels
             gameOverLabel.Visibility = Visibility.Collapsed;
             winningPlayer.Visibility = Visibility.Collapsed;
-            newGameLevel.Visibility = Visibility.Collapsed;
-            replayLevel.Visibility = Visibility.Collapsed;
+            //newGameLevel.Visibility = Visibility.Collapsed;
+            //replayLevel.Visibility = Visibility.Collapsed;
 
             // Play music!
             musicPlayer.Play();
+        }
+
+        void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+            // Save session data
+
+            // Save app data
+
+        }
+
+        void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        {
+            // Restore session data
+            
+            // Restore app data
+            
+        }
+
+        #region NavigationHelper registration
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedFrom(e);
+        }
+
+        #endregion
+
+        private string BricksToString()
+        {
+            return "";
+        }
+
+        private void StringToBricks(string Key)
+        {
+
         }
 
         private async void LoadLevel()
@@ -132,6 +188,7 @@ namespace BrickBreakerPong
                     {
                         musicPlayer.Pause();
                         game.Pause();
+                        this.BottomAppBar.IsOpen = true;
                         TurnOnInstructions();
                         timer.Stop();
                     }
@@ -139,6 +196,7 @@ namespace BrickBreakerPong
                     {
                         musicPlayer.Play();
                         game.Continue();
+                        this.BottomAppBar.IsOpen = false;
                         TurnOffInstructions();
                         timer.Start();
                     }
@@ -158,8 +216,8 @@ namespace BrickBreakerPong
                 // game over screen 
                 if (args.VirtualKey.ToString() == "F4")
                 {
-                    newGameLevel.Visibility = Visibility.Collapsed;
-                    replayLevel.Visibility = Visibility.Collapsed;
+                    //newGameLevel.Visibility = Visibility.Collapsed;
+                    //replayLevel.Visibility = Visibility.Collapsed;
                     gameOverLabel.Visibility = Visibility.Collapsed;
                     winningPlayer.Visibility = Visibility.Collapsed;
 
@@ -174,8 +232,8 @@ namespace BrickBreakerPong
 
                 if(args.VirtualKey.ToString() == "F6")
                 {
-                    newGameLevel.Visibility = Visibility.Collapsed;
-                    replayLevel.Visibility = Visibility.Collapsed;
+                    //newGameLevel.Visibility = Visibility.Collapsed;
+                    //replayLevel.Visibility = Visibility.Collapsed;
                     gameOverLabel.Visibility = Visibility.Collapsed;
                     winningPlayer.Visibility = Visibility.Collapsed;
 
@@ -189,15 +247,15 @@ namespace BrickBreakerPong
        
         private void TurnOffInstructions()
         {
-            startGameLabel.Visibility = Visibility.Collapsed;
-            restartLevelLabel.Visibility = Visibility.Collapsed;
+            //startGameLabel.Visibility = Visibility.Collapsed;
+            //restartLevelLabel.Visibility = Visibility.Collapsed;
 
         }
         
         private void TurnOnInstructions()
         {
-            startGameLabel.Visibility = Visibility.Visible;
-            restartLevelLabel.Visibility = Visibility.Visible;
+            //startGameLabel.Visibility = Visibility.Visible;
+            //restartLevelLabel.Visibility = Visibility.Visible;
         }
 
         // Have the view reflect the model
@@ -226,9 +284,48 @@ namespace BrickBreakerPong
 
                 winningPlayer.Visibility = Visibility.Visible;
 
-                newGameLevel.Visibility = Visibility.Visible;
-                replayLevel.Visibility = Visibility.Visible;
+                this.BottomAppBar.IsOpen = true;
+                //newGameLevel.Visibility = Visibility.Visible;
+                //replayLevel.Visibility = Visibility.Visible;
             }
+        }
+
+        private void RestartGameButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            game.Restart();
+            UpdateGrid();
+            timer.Stop();
+        }
+
+        private void NextLevelButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            gameOverLabel.Visibility = Visibility.Collapsed;
+            winningPlayer.Visibility = Visibility.Collapsed;
+
+            if (++levelNumber > 3)
+                levelNumber = 1;
+
+            for (int i = 0; i < game.bricks.Count(); i++)
+            {
+                game.bricks[i].Visibility = Visibility.Collapsed;
+            }
+
+            LoadLevel();
+            game.NewGame();
+            UpdateGrid();
+            timer.Stop();
+        }
+
+        private void HomeButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            musicPlayer.Stop();
+            this.Frame.Navigate(typeof(MenuPage));
+        }
+
+        private void HelpButton_Clicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

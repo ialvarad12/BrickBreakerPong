@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>TACHIKOMA</Machine>
+    <WindowsUser>Austin</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>f818ea8e-b28a-431c-842a-1da060037e3d</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Release\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>CE9A7227F29445333D565B6D0ADAEC25119A9F83BE6CFBD9B5F3AF75DD339939</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>f818ea8e-b28a-431c-842a-1da060037e3d_1.0.0.0_neutral__11ccc81v8dg5t</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>f818ea8e-b28a-431c-842a-1da060037e3d_11ccc81v8dg5t!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>f818ea8e-b28a-431c-842a-1da060037e3d</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=ialvarad</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-11-28T21:13:08.905</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Release\BrickBreakerPong.exe">
+      <PackagePath>BrickBreakerPong.exe</PackagePath>
+      <Modified>2014-11-28T22:47:57.781</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
+      <PackagePath>Assets\textures\background_texture.png</PackagePath>
+      <Modified>2014-11-28T02:19:33.979</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_1.png">
+      <PackagePath>Assets\textures\brick_texture_1.png</PackagePath>
+      <Modified>2014-11-26T22:26:47.906</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_2.png">
+      <PackagePath>Assets\textures\brick_texture_2.png</PackagePath>
+      <Modified>2014-11-26T23:10:53.742</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_3.png">
+      <PackagePath>Assets\textures\brick_texture_3.png</PackagePath>
+      <Modified>2014-11-26T23:11:38.286</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_4.png">
+      <PackagePath>Assets\textures\brick_texture_4.png</PackagePath>
+      <Modified>2014-11-26T23:12:12.952</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\left_paddle.png">
+      <PackagePath>Assets\textures\left_paddle.png</PackagePath>
+      <Modified>2014-11-27T03:37:01.668</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\right_paddle.png">
+      <PackagePath>Assets\textures\right_paddle.png</PackagePath>
+      <Modified>2014-11-27T03:40:05.512</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-11-17T01:04:56.246</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-11-17T01:04:56.246</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-11-17T01:04:56.247</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2014-11-17T01:04:56.248</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\TRON.TTF">
+      <PackagePath>Fonts\TRON.TTF</PackagePath>
+      <Modified>2014-11-18T16:07:10.923</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\04B_19.TTF">
+      <PackagePath>Fonts\04B_19.TTF</PackagePath>
+      <Modified>2014-11-27T05:49:00.763</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1.txt">
+      <PackagePath>Levels\lvl_1.txt</PackagePath>
+      <Modified>2014-11-27T17:05:03.167</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_2.txt">
+      <PackagePath>Levels\lvl_2.txt</PackagePath>
+      <Modified>2014-11-19T04:10:53.511</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\bananas.txt">
+      <PackagePath>Levels\bananas.txt</PackagePath>
+      <Modified>2014-11-20T17:21:00.854</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_3.txt">
+      <PackagePath>Levels\lvl_3.txt</PackagePath>
+      <Modified>2014-11-27T17:19:48.847</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\adagio_for_tron.mp3">
+      <PackagePath>Music\adagio_for_tron.mp3</PackagePath>
+      <Modified>2014-11-17T01:04:56.361</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping.mp3">
+      <PackagePath>Music\beep_ping.mp3</PackagePath>
+      <Modified>2014-11-17T01:04:56.368</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\beep_ping2.mp3">
+      <PackagePath>Music\beep_ping2.mp3</PackagePath>
+      <Modified>2014-11-17T01:04:56.369</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\robo_blip.mp3">
+      <PackagePath>Music\robo_blip.mp3</PackagePath>
+      <Modified>2014-11-17T01:04:56.449</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\the_son_of_flynn.mp3">
+      <PackagePath>Music\the_son_of_flynn.mp3</PackagePath>
+      <Modified>2014-11-17T01:04:56.668</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Release\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2014-11-28T21:13:05.828</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Release\GamePage.xbf">
+      <PackagePath>GamePage.xbf</PackagePath>
+      <Modified>2014-11-28T21:13:05.829</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Release\MenuPage.xbf">
+      <PackagePath>MenuPage.xbf</PackagePath>
+      <Modified>2014-11-28T21:13:05.831</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Release\BrickBreakerPong.xr.xml">
+      <PackagePath>BrickBreakerPong.xr.xml</PackagePath>
+      <Modified>2014-11-28T21:13:05.721</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2014-11-28T21:13:08.110</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

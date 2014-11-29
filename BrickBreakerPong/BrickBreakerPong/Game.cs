@@ -20,14 +20,13 @@ namespace BrickBreakerPong
 
         public Ball ball;
         public List<Rectangle> bricks;
-        private List<Rectangle> bricksCache;
+        public List<Rectangle> bricksCache;
         public Rectangle topWall;
         public Rectangle bottomWall;
         private List<Rectangle> walls;
         private List<Rectangle> paddles;
         public HumanPaddle leftPaddle;
         public HumanPaddle rightPaddle;
-        public IPaddle iPaddle;
         private bool gameIsInPlay;
         public bool gameOver;
         private bool isLeftPlayersTurn = true;
@@ -62,7 +61,6 @@ namespace BrickBreakerPong
 
             bricks = new List<Rectangle>();
             bricksCache = new List<Rectangle>();
-            
             
             walls = new List<Rectangle>();
 
@@ -137,6 +135,7 @@ namespace BrickBreakerPong
             scoreLeft = 0;
             scoreRight = 0;
             gamePoint = 10000;
+            bricks.Clear();
             bricksCache.Clear();
             Reset();
             ball.Speed = 10.0;

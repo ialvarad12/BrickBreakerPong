@@ -100,6 +100,7 @@ namespace BrickBreakerPong
             bounce = new TimeSpan(DateTime.Now.Ticks);
             currentAngle = Angle.BOTTOM_RIGHT;
             currentDirection = Direction.COUNTER_CLOCKWISE;
+
         }
         public Collision[] WillCollide(List<Rectangle> objectBallMayCollideWith, bool deleteObject)
         {
@@ -110,39 +111,36 @@ namespace BrickBreakerPong
                                                                     p.Y <= s.Margin.Top + s.Height + Speed &&
                                                                     p.Y >= s.Margin.Top - Speed));
 
- 
-
             Collision[] whereBallWillCollide = new Collision[2]; 
             if (collidedObject.ElementAtOrDefault(0) != null)
             {
                 GamePage.sfx.Play();
-                 Rectangle rec = collidedObject.ElementAt(0);
-                 if (ballCoordinates.All(p =>
-                                         p.Y + Speed >= rec.Margin.Top + rec.Height))
-                     whereBallWillCollide[0] = Collision.BOTTOM;
-                 else if (ballCoordinates.All(p =>
-                                             p.Y - Speed <= rec.Margin.Top))
-                     whereBallWillCollide[0] = Collision.TOP;
-                 else
-                     whereBallWillCollide[0] = Collision.NONE;
+                Rectangle rec = collidedObject.ElementAt(0);
+                if (ballCoordinates.All(p => p.Y + Speed >= rec.Margin.Top + rec.Height))
+                    whereBallWillCollide[0] = Collision.BOTTOM;
+                else if (ballCoordinates.All(p => p.Y - Speed <= rec.Margin.Top))
+                    whereBallWillCollide[0] = Collision.TOP;
+                else
+                    whereBallWillCollide[0] = Collision.NONE;
 
-                 if (ballCoordinates.All(p =>
-                                         p.X - Speed <= rec.Margin.Left))
-                     whereBallWillCollide[1] = Collision.LEFT;
-                 else if (ballCoordinates.All(p =>
-                                         p.X + Speed >= rec.Margin.Left + rec.Width))
-                     whereBallWillCollide[1] = Collision.RIGHT;
-                 else
-                     whereBallWillCollide[1] = Collision.NONE;
-                 if (deleteObject)
-                 {
-                     rec.Visibility = Visibility.Collapsed;
-                     int index = objectBallMayCollideWith.FindIndex(o =>
-                         {
-                             return (rec.Equals(o));
-                         });
-                     objectBallMayCollideWith.RemoveAt(index);
-                 }
+                if (ballCoordinates.All(p => p.X - Speed <= rec.Margin.Left))
+                    whereBallWillCollide[1] = Collision.LEFT;
+                else if (ballCoordinates.All(p => p.X + Speed >= rec.Margin.Left + rec.Width))
+                    whereBallWillCollide[1] = Collision.RIGHT;
+                else
+                    whereBallWillCollide[1] = Collision.NONE;
+
+                // Delete a brick when collides
+                if (deleteObject)
+                {
+                    rec.Visibility = Visibility.Collapsed;
+                    
+                    int index = objectBallMayCollideWith.FindIndex(o =>
+                        {
+                            return (rec.Equals(o));
+                        });
+                    objectBallMayCollideWith.RemoveAt(index);
+                }
                  
             }
             else
