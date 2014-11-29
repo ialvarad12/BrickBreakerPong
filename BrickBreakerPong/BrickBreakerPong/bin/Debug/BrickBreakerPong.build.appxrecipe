@@ -22,6 +22,9 @@
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\ball_texture.png">
+      <PackagePath>Assets\textures\ball_texture.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\brick_texture_1.png">
       <PackagePath>Assets\textures\brick_texture_1.png</PackagePath>
     </AppxPackagedFile>

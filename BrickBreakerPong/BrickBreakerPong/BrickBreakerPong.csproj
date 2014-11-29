@@ -131,6 +131,7 @@
     </AppxManifest>
     <None Include="BrickBreakerPong_TemporaryKey.pfx" />
     <Content Include="Assets\textures\background_texture.png" />
+    <Content Include="Assets\textures\ball_texture.png" />
     <Content Include="Assets\textures\brick_texture_1.png" />
     <Content Include="Assets\textures\brick_texture_2.png" />
     <Content Include="Assets\textures\brick_texture_3.png" />

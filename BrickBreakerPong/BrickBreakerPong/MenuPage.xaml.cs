@@ -104,9 +104,14 @@ namespace BrickBreakerPong
 
         #endregion
 
-        private void NewGameEvent_Clicked(object sender, RoutedEventArgs e)
+        private void PvPEvent_Clicked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GamePage));
+            this.Frame.Navigate(typeof(GamePage), "2");
+        }
+
+        private void PvCEvent_Clicked(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(GamePage), "1");
         }
     }
 }

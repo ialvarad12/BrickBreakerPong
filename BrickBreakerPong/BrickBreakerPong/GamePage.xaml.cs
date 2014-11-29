@@ -51,14 +51,18 @@ namespace BrickBreakerPong
 
         // Made static in order for the Game class to have access
         // to the sound effects
-        public static MediaElement sfx;
+        public MediaElement sfx;
 
-        Game game = new Game();
+        Game game;
         Level level;
         private int levelNumber;
         private DispatcherTimer timer;
+
+        int numOfPlayers;
         public GamePage()
         {
+            //game = new Game(this, numOfPlayers);
+
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
@@ -75,6 +79,53 @@ namespace BrickBreakerPong
             // Move the bottom wall to the bottom of the screen
             bottomWall.Margin = new Thickness(0, mainGrid.Height - bottomWall.Height, 0, 0);
 
+            //// Connect the view with the model
+            ////game = new Game();
+            //game.ball.Width = ball.Width;
+            //game.ball.Height = ball.Height;
+            //game.leftPaddle.Height = leftPaddle.Height;
+            //game.leftPaddle.Width = leftPaddle.Width;
+            //game.rightPaddle.Height = rightPaddle.Height;
+            //game.rightPaddle.Width = rightPaddle.Width;
+            //game.topWall.Height = topWall.Height;
+            //game.bottomWall.Height = bottomWall.Height;
+
+            //// Call game.Update any time you want the model to reflect the view
+            //// (USED AFTER YOU MAKE CHANGES TO THE MODEL)
+            //game.Update();
+
+            //// Call UpdateGrid any time you want the view to reflect the model
+            //UpdateGrid();
+
+            //// Reads a file to create the bricks
+            //level = new Level();
+            //levelNumber = 1;
+            //LoadLevel();
+
+
+            //// Event for stopping and playing the game
+            //CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
+
+            //// Create a reference to the media element in the xaml
+            //sfx = soundEffects;
+            //soundEffects.DefaultPlaybackRate = 6.0; // Plays sound effects faster
+
+            //timer = new DispatcherTimer();
+            //timer.Start();
+            //timer.Tick += timer_Tick;
+
+            //// Game Over Labels
+            //gameOverLabel.Visibility = Visibility.Collapsed;
+            //winningPlayer.Visibility = Visibility.Collapsed;
+            ////newGameLevel.Visibility = Visibility.Collapsed;
+            ////replayLevel.Visibility = Visibility.Collapsed;
+
+            // Play music!
+            musicPlayer.Play();
+        }
+
+        private void CreateGame(Game game)
+        {
             // Connect the view with the model
             //game = new Game();
             game.ball.Width = ball.Width;
@@ -115,9 +166,6 @@ namespace BrickBreakerPong
             winningPlayer.Visibility = Visibility.Collapsed;
             //newGameLevel.Visibility = Visibility.Collapsed;
             //replayLevel.Visibility = Visibility.Collapsed;
-
-            // Play music!
-            musicPlayer.Play();
         }
 
         void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
@@ -130,10 +178,23 @@ namespace BrickBreakerPong
 
         void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            string numberOfPlayers = e.NavigationParameter as string;
+
+            if(numberOfPlayers == "1")
+            {
+                numOfPlayers = 1;
+            }
+            else if(numberOfPlayers == "2")
+            {
+                numOfPlayers = 2;
+            }
+
+            game = new Game(this, numOfPlayers);
+            CreateGame(game);
             // Restore session data
             
             // Restore app data
-            
+
         }
 
         #region NavigationHelper registration
@@ -154,7 +215,6 @@ namespace BrickBreakerPong
         {
             return "";
         }
-
         private void StringToBricks(string Key)
         {
 

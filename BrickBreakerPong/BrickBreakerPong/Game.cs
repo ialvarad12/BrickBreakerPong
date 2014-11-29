@@ -39,8 +39,12 @@ namespace BrickBreakerPong
         public double boardHeight;
         public double boardWidth;
 
-        public Game(double boardWidth = 0.0, double boardHeight = 0.0)
+        int numPlayers;
+
+        public Game(GamePage mainPage, int numOfPlayers, double boardWidth = 0.0, double boardHeight = 0.0)
         {
+            this.numPlayers = numOfPlayers;
+
             if (boardWidth <= 0.0)
                 this.boardWidth = Window.Current.Bounds.Width;
             else
@@ -52,7 +56,7 @@ namespace BrickBreakerPong
                 this.boardHeight = boardHeight;
 
 
-            ball = new Ball();
+            ball = new Ball(mainPage);
 
             leftPaddle = new HumanPaddle("left");
             rightPaddle = new HumanPaddle("right");
@@ -207,21 +211,31 @@ namespace BrickBreakerPong
             byte[] keys = new byte[256];
             GetKeyboardState(keys);
 
-            //if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
-            if(rightPaddle.Position.Y + rightPaddle.Height / 2> ball.Position.Y + ball.Height / 2)
+            if (numPlayers == 1)
             {
-                if (rightPaddle.Position.Y - topWall.Height - HumanPaddle.Speed > 0.0)
-                    rightPaddle.MovePaddleUp();
-                else
-                    rightPaddle.Position.Y = topWall.Height;
+                //if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
+                if (rightPaddle.Position.Y + rightPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
+                {
+                    MoveRightPaddleUp();
+                }
+                //if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
+                else if (rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
+                {
+                    MoveRightPaddleDown();
+                }
             }
-            //if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
-            else if(rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
+            else if(numPlayers == 2)
             {
-                if (rightPaddle.Position.Y + rightPaddle.Height + HumanPaddle.Speed + bottomWall.Height < boardHeight)
-                    rightPaddle.MovePaddleDown();
-                else
-                    rightPaddle.Position.Y = boardHeight - rightPaddle.Height - bottomWall.Height;
+                if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
+                //if (rightPaddle.Position.Y + rightPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
+                {
+                    MoveRightPaddleUp();
+                }
+                if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
+                //else if (rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
+                {
+                    MoveRightPaddleDown();
+                }
             }
 
             if (keys[(int)VirtualKey.W] == 128 || keys[(int)VirtualKey.W] == 129)
@@ -244,6 +258,20 @@ namespace BrickBreakerPong
             //{
             //    game.gameOver = true;
             //}
+        }
+        private void MoveRightPaddleUp()
+        {
+            if (rightPaddle.Position.Y - topWall.Height - HumanPaddle.Speed > 0.0)
+                rightPaddle.MovePaddleUp();
+            else
+                rightPaddle.Position.Y = topWall.Height;
+        }
+        private void MoveRightPaddleDown()
+        {
+            if (rightPaddle.Position.Y + rightPaddle.Height + HumanPaddle.Speed + bottomWall.Height < boardHeight)
+                rightPaddle.MovePaddleDown();
+            else
+                rightPaddle.Position.Y = boardHeight - rightPaddle.Height - bottomWall.Height;
         }
 
         public void AddBrick(Rectangle brick)

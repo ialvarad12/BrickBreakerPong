@@ -90,8 +90,9 @@ namespace BrickBreakerPong
             }
         }
         #endregion
+        GamePage mainPage;
         TimeSpan bounce;
-        public Ball(double ballWidth = 50.0, double ballHeight = 50.0, double ballSpeed = 10.0)
+        public Ball(GamePage mainPage, double ballWidth = 50.0, double ballHeight = 50.0, double ballSpeed = 10.0)
         {
             this.Width = ballWidth;
             this.Height = ballHeight;
@@ -100,6 +101,7 @@ namespace BrickBreakerPong
             bounce = new TimeSpan(DateTime.Now.Ticks);
             currentAngle = Angle.BOTTOM_RIGHT;
             currentDirection = Direction.COUNTER_CLOCKWISE;
+            this.mainPage = mainPage;
 
         }
         public Collision[] WillCollide(List<Rectangle> objectBallMayCollideWith, bool deleteObject)
@@ -114,7 +116,8 @@ namespace BrickBreakerPong
             Collision[] whereBallWillCollide = new Collision[2]; 
             if (collidedObject.ElementAtOrDefault(0) != null)
             {
-                GamePage.sfx.Play();
+                //GamePage.sfx.Play();
+                mainPage.sfx.Play();
                 Rectangle rec = collidedObject.ElementAt(0);
                 if (ballCoordinates.All(p => p.Y + Speed >= rec.Margin.Top + rec.Height))
                     whereBallWillCollide[0] = Collision.BOTTOM;
