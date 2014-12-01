@@ -143,6 +143,9 @@ namespace BrickBreakerPong
                             return (rec.Equals(o));
                         });
                     objectBallMayCollideWith.RemoveAt(index);
+
+                    // Remove brick from the levelArray
+                    mainPage.RemoveCellAtIndex(index);
                 }
                  
             }

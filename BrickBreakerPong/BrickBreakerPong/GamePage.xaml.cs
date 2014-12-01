@@ -49,8 +49,8 @@ namespace BrickBreakerPong
             get { return this.navigationHelper; }
         }
 
-        // Made static in order for the Game class to have access
-        // to the sound effects
+        // Took off static and passed to game class
+        // static was causing audio issues when navigating through different pages
         public MediaElement sfx;
 
         Game game;
@@ -145,10 +145,12 @@ namespace BrickBreakerPong
             UpdateGrid();
 
             // Reads a file to create the bricks
-            level = new Level();
-            levelNumber = 1;
-            LoadLevel();
-
+            if (level == null)
+            {
+                level = new Level();
+                levelNumber = 1;
+                LoadLevel();
+            }
 
             // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
@@ -168,12 +170,34 @@ namespace BrickBreakerPong
             //replayLevel.Visibility = Visibility.Collapsed;
         }
 
+        public void RemoveCellAtIndex(int index)
+        {
+            int count = 0;
+            for(int row = 0; row < 25; row++)
+            {
+                for(int col = 0; col < 25; col++)
+                {
+                    if(count < index && level.levelArray[row, col] == 1)
+                    {
+                        count++;
+                    }
+                    else if(count == index && level.levelArray[row, col] == 1)
+                    {
+                        level.levelArray[row, col] = 0;
+                        row = 25; col = 25; // end the loops
+                    }
+                }
+            }
+        }
+
         void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
             // Save session data
+            e.PageState["bricksArray"] = BricksToString();
 
             // Save app data
-
+            Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            roamingSettings.Values["bricksArray"] = BricksToString();
         }
 
         void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
@@ -188,13 +212,20 @@ namespace BrickBreakerPong
             {
                 numOfPlayers = 2;
             }
+            
+            // Restore session data
+            if(e.PageState != null && e.PageState.ContainsKey("bricksArray"))
+            {
+                StringToBricks(e.PageState["bricksArray"].ToString());
+            }
+
+            // Restore app data
+            Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
+            if (roamingSettings.Values.ContainsKey("brickArray"))
+                StringToBricks(roamingSettings.Values["bricksArray"].ToString());
 
             game = new Game(this, numOfPlayers);
             CreateGame(game);
-            // Restore session data
-            
-            // Restore app data
-
         }
 
         #region NavigationHelper registration
@@ -213,11 +244,34 @@ namespace BrickBreakerPong
 
         private string BricksToString()
         {
-            return "";
+            string bricks = "";
+
+            for (int row = 0; row < 25; row++)
+            {
+                for (int col = 0; col < 25; col++)
+                {
+                    if (level.levelArray[row, col] == 0)
+                        bricks += "F";
+                    else if (level.levelArray[row, col] == 1)
+                        bricks += "T";
+                }
+            }
+
+            return bricks;
         }
         private void StringToBricks(string Key)
         {
-
+            for(int i = 0, j = 0; i < 25; i++, j++)
+            {
+                if(Key[j] == 'T')
+                {
+                    level.levelArray[i, j] = 1;
+                }
+                else if(Key[j] == 'F')
+                {
+                    level.levelArray[i, j] = 0;
+                }
+            }
         }
 
         private async void LoadLevel()
