@@ -56,12 +56,12 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='1' Label="Home" Icon="Home"                           />
-            <AppBarButton x:ConnectionId='2' Label="Help" Icon="Help"                           />
+            <AppBarButton x:ConnectionId='0' Label="Home" Icon="Home"                           />
+            <AppBarButton x:ConnectionId='0' Label="Help" Icon="Help"                           />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='3' Label="Restart Game" Icon="Redo"                                  />
-                <AppBarButton x:ConnectionId='4' Label="Next Level" Icon="Forward"                                />
+                <AppBarButton x:ConnectionId='0' Label="Restart Game" Icon="Redo"                                  />
+                <AppBarButton x:ConnectionId='0' Label="Next Level" Icon="Forward"                                />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
