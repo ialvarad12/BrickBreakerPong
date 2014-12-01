@@ -77,7 +77,7 @@ namespace BrickBreakerPong
             {
                 List<Point> pointLists = new List<Point>();
                 Point point;
-                for (int i = 0; i < 360; i = i + 24)
+                for (int i = 0; i < 360; i = i + 36)
                 {
                     point = new Point();
 
