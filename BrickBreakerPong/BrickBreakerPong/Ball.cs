@@ -145,7 +145,7 @@ namespace BrickBreakerPong
                     objectBallMayCollideWith.RemoveAt(index);
 
                     // Remove brick from the levelArray
-                    mainPage.game.RemoveCellAtIndex(index);
+                    mainPage.RemoveCellAtIndex(index);
                 }
                  
             }
