@@ -19,6 +19,10 @@ namespace BrickBreakerPong
         public static extern int GetKeyboardState(byte[] keystate);
 
         public Ball ball;
+        Level level;
+        GamePage mainPage;
+        public int levelNumber;
+       
         public List<Rectangle> bricks;
         public List<Rectangle> bricksCache;
         public Rectangle topWall;
@@ -44,6 +48,7 @@ namespace BrickBreakerPong
         public Game(GamePage mainPage, int numOfPlayers, double boardWidth = 0.0, double boardHeight = 0.0)
         {
             this.numPlayers = numOfPlayers;
+            this.mainPage = mainPage;
 
             if (boardWidth <= 0.0)
                 this.boardWidth = Window.Current.Bounds.Width;
@@ -55,8 +60,15 @@ namespace BrickBreakerPong
             else
                 this.boardHeight = boardHeight;
 
-
             ball = new Ball(mainPage);
+
+            // Reads a file to create the bricks
+            if (level == null)
+            {
+                level = new Level();
+                levelNumber = 1;
+                LoadLevel();
+            }
 
             leftPaddle = new HumanPaddle("left");
             rightPaddle = new HumanPaddle("right");
@@ -74,6 +86,79 @@ namespace BrickBreakerPong
 
             CreateWalls();
             Reset();
+        }
+
+        #region Handle Levels
+
+        private async void LoadLevel()
+        {
+            string text = await level.LoadFileAsync("lvl_" + levelNumber + ".txt");
+            if (text != null)
+            {
+                level.CreateLevel(mainPage, text, this);
+            }
+        }
+
+        public void RemoveCellAtIndex(int index)
+        {
+            int count = 0;
+            for (int row = 0; row < 25; row++)
+            {
+                for (int col = 0; col < 25; col++)
+                {
+                    if (count < index && level.levelArray[row, col] == 1)
+                    {
+                        count++;
+                    }
+                    else if (count == index && level.levelArray[row, col] == 1)
+                    {
+                        level.levelArray[row, col] = 0;
+                        row = 25; col = 25; // end the loops
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        public string BricksToString()
+        {
+            string bricks = "";
+
+            for (int row = 0; row < 25; row++)
+            {
+                for (int col = 0; col < 25; col++)
+                {
+                    if (level.levelArray[row, col] == 0)
+                        bricks += "F";
+                    else if (level.levelArray[row, col] == 1)
+                        bricks += "T";
+                }
+            }
+
+            return bricks;
+        }
+        public void StringToBricks(string Key)
+        {
+            for (int i = 0, j = 0; i < 25; i++, j++)
+            {
+                if (Key[j] == 'T')
+                {
+                    level.levelArray[i, j] = 1;
+                }
+                else if (Key[j] == 'F')
+                {
+                    level.levelArray[i, j] = 0;
+                }
+            }
+        }
+
+        public void NextGame()
+        {
+            if (++levelNumber > 3)
+                levelNumber = 1;
+
+            LoadLevel();
         }
 
         private void CreateWalls()
