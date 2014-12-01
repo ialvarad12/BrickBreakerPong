@@ -10,11 +10,11 @@
     <Page.Resources>
         <FontFamily x:Key="PixelFont">/Fonts/04B_19.TTF#04B_19</FontFamily>
     </Page.Resources>
-
+    
 
     <Grid x:FieldModifier="public" x:Name="mainGrid" Height="auto" Width="auto">
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="None"/>
+            <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="Uniform"/>
         </Grid.Background>
         <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
         <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
@@ -40,11 +40,11 @@
         <TextBox x:Name="restartLevelLabel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Restart Game: F5" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
         -->
         <TextBox x:FieldModifier="public" x:Name="scoreLeft" IsReadOnly="True" BorderBrush="Transparent" 
-                 Foreground="White" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" 
-                 Margin="98,0,1204,545" Width="auto" Height="207" Text="0" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="71"/>
+                 Foreground="White" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                 Margin="75,15,1204,545" Width="auto" Height="207" Text="0" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="71"/>
         <TextBox x:FieldModifier="public" x:Name="scoreRight" IsReadOnly="True" BorderBrush="Transparent" 
-                 Foreground="White" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" 
-                 Margin="1204,0,98,604" Width="auto" Height="148" Text="0" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="72"/>
+                 Foreground="White" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                 Margin="1204,15,75,604" Width="auto" Height="148" Text="0" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="72"/>
         <TextBox x:FieldModifier="public" x:Name="gameOverLabel" IsReadOnly="True" BorderBrush="Transparent"
                  Foreground="White" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"
                  Margin="336,242,336,382" Width="auto" Height="auto" Text="Game Over" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="100"/>
@@ -56,12 +56,12 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='0' Label="Home" Icon="Home"                           />
-            <AppBarButton x:ConnectionId='0' Label="Help" Icon="Help"                           />
+            <AppBarButton x:ConnectionId='1' Label="Home" Icon="Home"                           />
+            <AppBarButton x:ConnectionId='2' Label="Help" Icon="Help"                           />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='0' Label="Restart Game" Icon="Redo"                                  />
-                <AppBarButton x:ConnectionId='0' Label="Next Level" Icon="Forward"                                />
+                <AppBarButton x:ConnectionId='3' Label="Restart Game" Icon="Redo"                                  />
+                <AppBarButton x:ConnectionId='4' Label="Next Level" Icon="Forward"                                />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

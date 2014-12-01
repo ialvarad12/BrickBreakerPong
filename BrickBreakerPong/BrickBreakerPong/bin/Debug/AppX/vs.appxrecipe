@@ -23,7 +23,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-12-01T04:19:50.918</Modified>
+      <Modified>2014-12-01T04:25:50.207</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
@@ -127,11 +127,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf">
       <PackagePath>GamePage.xbf</PackagePath>
-      <Modified>2014-12-01T03:59:53.184</Modified>
+      <Modified>2014-12-01T04:25:50.013</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MenuPage.xbf">
       <PackagePath>MenuPage.xbf</PackagePath>
-      <Modified>2014-12-01T04:19:50.716</Modified>
+      <Modified>2014-12-01T04:24:35.003</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
