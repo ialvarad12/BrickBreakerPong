@@ -24,30 +24,47 @@ namespace BrickBreakerPong
         }
 
         // Loads the file into a 2d array
-        public void CreateLevel(GamePage mainPage, string text, Game game)
+        public void CreateLevel(GamePage mainPage, string text, Game game, bool IsNewLevel)
         {
-            int row = 0, col = 0;
-            foreach (var line in text)
+            if (IsNewLevel)
             {
-                
-                if (col == 27) // takes into account the '\n' in the text file
+                int row = 0, col = 0;
+                foreach (var line in text)
                 {
-                    row++;
-                    col = 0;
-                }
 
-                if (row < 25)
-                {
-                    if (line == '1')
+                    if (col == 27) // takes into account the '\n' in the text file
                     {
-                        levelArray[row, col] = 1;
+                        row++;
+                        col = 0;
                     }
-                    else
+
+                    if (row < 25)
                     {
-                        levelArray[row, col] = 0;
+                        if (line == '1')
+                        {
+                            levelArray[row, col] = 1;
+                        }
+                        else
+                        {
+                            levelArray[row, col] = 0;
+                        }
+                    }
+                    col++;
+                }
+            }
+            else
+            {
+                for(int row = 0, count = 0; row < 25; row++)
+                {
+                    for(int col = 0; col < 25; col++, count++)
+                    {
+                        if (text[count] == 'T')
+                            levelArray[row, col] = 1;
+                        else
+                            levelArray[row, col] = 0;
+
                     }
                 }
-                col++;
             }
 
             double distanceBetweenPaddles = (uint)(mainPage.rightPaddle.Margin.Left - (mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width));

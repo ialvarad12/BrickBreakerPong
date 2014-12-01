@@ -144,13 +144,13 @@ namespace BrickBreakerPong
             // Call UpdateGrid any time you want the view to reflect the model
             UpdateGrid();
 
-            // Reads a file to create the bricks
-            if (level == null)
-            {
-                level = new Level();
-                levelNumber = 1;
-                LoadLevel();
-            }
+            //// Reads a file to create the bricks
+            //if (level == null)
+            //{
+            //    level = new Level();
+            //    levelNumber = 1;
+            //    LoadLevel();
+            //}
 
             // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
@@ -226,6 +226,23 @@ namespace BrickBreakerPong
 
             game = new Game(this, numOfPlayers);
             CreateGame(game);
+
+            bool result = false;
+            AskUserToContinue(result, roamingSettings.Values["bricksArray"].ToString());
+            
+
+            //// Reads a file to create the bricks
+            //if (level == null)
+            //{
+            //    level = new Level();
+            //    levelNumber = 1;
+            //    LoadLevel();
+            //}
+            //else
+            //{
+            //    level = new Level();
+            //    level.CreateLevel(this, e.PageState["bricksArray"].ToString(), game, false);
+            //}
         }
 
         #region NavigationHelper registration
@@ -274,12 +291,34 @@ namespace BrickBreakerPong
             }
         }
 
+        private async void AskUserToContinue(bool result, string Key)
+        {
+            MessageDialog msg = new MessageDialog("Would you like to continue from your last saved game?", "Continue?");
+            msg.Commands.Add(new UICommand("Yes", null, "YES"));
+            msg.Commands.Add(new UICommand("No", null, "NO"));
+            var op = await msg.ShowAsync();
+            if ((string)op.Id == "YES")
+                result = true;
+
+            if (!result)
+            {
+                level = new Level();
+                levelNumber = 1;
+                LoadLevel();
+            }
+            else
+            {
+                level = new Level();
+                level.CreateLevel(this, Key, game, false);
+            }
+        }
+
         private async void LoadLevel()
         {
             string text = await level.LoadFileAsync("lvl_" + levelNumber + ".txt");
             if (text != null)
             {
-                level.CreateLevel(this, text, game);
+                level.CreateLevel(this, text, game, true);
             }
         }
 
