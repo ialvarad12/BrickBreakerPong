@@ -34,7 +34,7 @@ namespace BrickBreakerPong
         public int scoreRight;
         private int gamePoint;
 
-        private double LOSE_ZONE = 10.0;
+        private double LOSE_ZONE = -5.0;
         private const double SPEED = 10.0;
 
         public static double boardHeight;

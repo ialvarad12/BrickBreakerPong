@@ -23,11 +23,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-<<<<<<< HEAD
-      <Modified>2014-12-02T22:59:29.025</Modified>
-=======
-      <Modified>2014-12-02T22:35:09.291</Modified>
->>>>>>> 2009c164caf8d11f73b1d118b916511422dcfc17
+      <Modified>2014-12-02T23:28:15.415</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
@@ -135,11 +131,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AboutPage.xbf">
       <PackagePath>AboutPage.xbf</PackagePath>
-<<<<<<< HEAD
-      <Modified>2014-12-02T20:37:33.723</Modified>
-=======
-      <Modified>2014-12-02T22:35:09.086</Modified>
->>>>>>> 2009c164caf8d11f73b1d118b916511422dcfc17
+      <Modified>2014-12-02T23:02:35.699</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf">
       <PackagePath>GamePage.xbf</PackagePath>
