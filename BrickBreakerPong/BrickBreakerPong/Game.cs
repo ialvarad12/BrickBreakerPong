@@ -34,7 +34,7 @@ namespace BrickBreakerPong
         public int scoreRight;
         private int gamePoint;
 
-        private double LOSE_ZONE = -5.0;
+        private double LOSE_ZONE = 10.0;
         private const double SPEED = 10.0;
 
         public static double boardHeight;
@@ -81,16 +81,16 @@ namespace BrickBreakerPong
             topWall = new Rectangle();
             topWall.HorizontalAlignment = HorizontalAlignment.Left;
             topWall.VerticalAlignment = VerticalAlignment.Top;
-            topWall.Margin = new Thickness(0, 0, 0, 0);
             topWall.Width = boardWidth;
-            topWall.Height = 0.0;
+            topWall.Height = 50.0;
+            topWall.Margin = new Thickness(0, (topWall.Height * -1.0) + 5.0, 0, 0);
 
             bottomWall = new Rectangle();
             bottomWall.HorizontalAlignment = HorizontalAlignment.Left;
             bottomWall.VerticalAlignment = VerticalAlignment.Top;
             bottomWall.Width = boardWidth;
-            bottomWall.Height = 0.0;
-            bottomWall.Margin = new Thickness(0, boardHeight - bottomWall.Height, 0, 0);
+            bottomWall.Height = 50.0;
+            bottomWall.Margin = new Thickness(0, boardHeight - 5.0, 0, 0);
 
             walls.Add(topWall);
             walls.Add(bottomWall);
@@ -212,6 +212,19 @@ namespace BrickBreakerPong
                 }
             }
         }
+        private bool BallAndPaddleIntersects(HumanPaddle paddle)
+        {
+            double leftOfPaddle = paddle.Position.X;
+            double rightOfPaddle = leftOfPaddle + paddle.Width;
+            double topOfPaddle = paddle.Position.Y;
+            double bottomOfPaddle = topOfPaddle + paddle.Height;
+
+            return ball.Boundaries.Any(p =>
+                                        p.X >= paddle.Position.X  &&
+                                        p.X <= rightOfPaddle &&
+                                        p.Y <= bottomOfPaddle &&
+                                        p.Y >= topOfPaddle);
+        }
         private void CheckKeyboardPress()
         {
             byte[] keys = new byte[256];
@@ -223,11 +236,21 @@ namespace BrickBreakerPong
                 if (rightPaddle.Position.Y + rightPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleUp();
+                    if(BallAndPaddleIntersects(rightPaddle))
+                    {
+                        ball.Position.Y = rightPaddle.Position.Y - ball.Height;
+                        ball.Move();
+                    }
                 }
                 //if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
                 else if (rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleDown();
+                    if (BallAndPaddleIntersects(rightPaddle))
+                    {
+                        ball.Position.Y = rightPaddle.Position.Y + rightPaddle.Height;
+                        ball.Move();
+                    }
                 }
             }
             else if(numPlayers == 2)
@@ -236,48 +259,77 @@ namespace BrickBreakerPong
                 //if (rightPaddle.Position.Y + rightPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleUp();
+                    if (BallAndPaddleIntersects(rightPaddle))
+                    {
+                        ball.Position.Y = rightPaddle.Position.Y - ball.Height;
+                        ball.Move();
+                    }
                 }
                 if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
                 //else if (rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleDown();
+                    if (BallAndPaddleIntersects(rightPaddle))
+                    {
+                        ball.Position.Y = rightPaddle.Position.Y + rightPaddle.Height;
+                        ball.Move();
+                    }
                 }
             }
 
             if (keys[(int)VirtualKey.W] == 128 || keys[(int)VirtualKey.W] == 129)
             //if (leftPaddle.Position.Y + leftPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
             {
-                if (leftPaddle.Position.Y - HumanPaddle.Speed - topWall.Height > 0.0)
-                    leftPaddle.MovePaddleUp();
-                else
-                    leftPaddle.Position.Y = topWall.Height;
+                MoveLeftPaddleUp();
+
+                if (BallAndPaddleIntersects(leftPaddle))
+                {
+                    ball.Position.Y = leftPaddle.Position.Y - ball.Height;
+                    ball.Move();
+                }
             }
             if (keys[(int)VirtualKey.S] == 128 || keys[(int)VirtualKey.S] == 129)
             //else if(leftPaddle.Position.Y + leftPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
             {
-                if (leftPaddle.Position.Y + leftPaddle.Height + HumanPaddle.Speed  + bottomWall.Height < boardHeight)
-                    leftPaddle.MovePaddleDown();
-                else
-                    leftPaddle.Position.Y = boardHeight - leftPaddle.Height - bottomWall.Height;
+                MoveLeftPaddleDown();
+                if (BallAndPaddleIntersects(leftPaddle))
+                {
+                    ball.Position.Y = leftPaddle.Position.Y + leftPaddle.Height;
+                    ball.Move();
+                }
             }
             //if (keys[(int)VirtualKey.Escape] == 128 || keys[(int)VirtualKey.Escape] == 129)
             //{
             //    game.gameOver = true;
             //}
         }
+        private void MoveLeftPaddleUp()
+        {
+            if (leftPaddle.Position.Y - HumanPaddle.Speed > topWall.Margin.Top + topWall.Height)
+                leftPaddle.MovePaddleUp();
+            else
+                leftPaddle.Position.Y = topWall.Margin.Top + topWall.Height;
+        }
+        private void MoveLeftPaddleDown()
+        {
+            if (leftPaddle.Position.Y + leftPaddle.Height + HumanPaddle.Speed < bottomWall.Margin.Top)
+                leftPaddle.MovePaddleDown();
+            else
+                leftPaddle.Position.Y = bottomWall.Margin.Top - leftPaddle.Height;
+        }
         private void MoveRightPaddleUp()
         {
-            if (rightPaddle.Position.Y - topWall.Height - HumanPaddle.Speed > 0.0)
+            if (rightPaddle.Position.Y - HumanPaddle.Speed > (topWall.Margin.Top + topWall.Height))
                 rightPaddle.MovePaddleUp();
             else
-                rightPaddle.Position.Y = topWall.Height;
+                rightPaddle.Position.Y = topWall.Margin.Top + topWall.Height;
         }
         private void MoveRightPaddleDown()
         {
-            if (rightPaddle.Position.Y + rightPaddle.Height + HumanPaddle.Speed + bottomWall.Height < boardHeight)
+            if (rightPaddle.Position.Y + rightPaddle.Height + HumanPaddle.Speed < bottomWall.Margin.Top)
                 rightPaddle.MovePaddleDown();
             else
-                rightPaddle.Position.Y = boardHeight - rightPaddle.Height - bottomWall.Height;
+                rightPaddle.Position.Y = bottomWall.Margin.Top - rightPaddle.Height;
         }
 
         public void AddBrick(Rectangle brick)
