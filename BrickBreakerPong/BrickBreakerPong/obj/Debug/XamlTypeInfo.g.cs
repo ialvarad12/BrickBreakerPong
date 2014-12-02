@@ -624,3 +624,9 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
 }
 
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 9e1c20e07cff484176746db5da00cec0315dd006

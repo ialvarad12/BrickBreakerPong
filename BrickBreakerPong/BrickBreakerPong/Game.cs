@@ -56,7 +56,6 @@ namespace BrickBreakerPong
             else
                 Game.boardHeight = boardHeight;
 
-
             ball = new Ball(mainPage);
 
             leftPaddle = new HumanPaddle("left");
