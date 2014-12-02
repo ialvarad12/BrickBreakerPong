@@ -11,6 +11,7 @@ Assets\textures\brick_texture_4.png
 Assets\textures\left_paddle.png
 Assets\textures\right_paddle.png
 App.xbf
+BrickBreakerPong.xr.xml
 GamePage.xbf
 MenuPage.xbf
 Fonts\04B_19.TTF

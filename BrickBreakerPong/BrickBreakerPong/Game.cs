@@ -68,8 +68,8 @@ namespace BrickBreakerPong
             
             walls = new List<Rectangle>();
 
-            scoreLeft = 0;
-            scoreRight = 0;
+            scoreLeft = Convert.ToInt32(GamePage.leftScore);
+            scoreRight = Convert.ToInt32(GamePage.rightScore);
             gamePoint = 10000;
 
             CreateWalls();

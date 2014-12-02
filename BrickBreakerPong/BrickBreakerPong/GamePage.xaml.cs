@@ -53,6 +53,8 @@ namespace BrickBreakerPong
 
         public Game game;
         public static Level level;
+        public static string leftScore;
+        public static string rightScore;
         private int levelNumber;
         private DispatcherTimer timer;
         public static Grid MainGrid;
@@ -79,55 +81,18 @@ namespace BrickBreakerPong
             // Move the bottom wall to the bottom of the screen
             bottomWall.Margin = new Thickness(0, mainGrid.Height - bottomWall.Height, 0, 0);
 
-            //// Connect the view with the model
-            ////game = new Game();
-            //game.ball.Width = ball.Width;
-            //game.ball.Height = ball.Height;
-            //game.leftPaddle.Height = leftPaddle.Height;
-            //game.leftPaddle.Width = leftPaddle.Width;
-            //game.rightPaddle.Height = rightPaddle.Height;
-            //game.rightPaddle.Width = rightPaddle.Width;
-            //game.topWall.Height = topWall.Height;
-            //game.bottomWall.Height = bottomWall.Height;
-
-            //// Call game.Update any time you want the model to reflect the view
-            //// (USED AFTER YOU MAKE CHANGES TO THE MODEL)
-            //game.Update();
-
-            //// Call UpdateGrid any time you want the view to reflect the model
-            //UpdateGrid();
-
-            //// Reads a file to create the bricks
-            //level = new Level();
-            //levelNumber = 1;
-            //LoadLevel();
-
-
-            //// Event for stopping and playing the game
-            //CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
-
-            //// Create a reference to the media element in the xaml
-            //sfx = soundEffects;
-            //soundEffects.DefaultPlaybackRate = 6.0; // Plays sound effects faster
-
-            //timer = new DispatcherTimer();
-            //timer.Start();
-            //timer.Tick += timer_Tick;
-
-            //// Game Over Labels
-            //gameOverLabel.Visibility = Visibility.Collapsed;
-            //winningPlayer.Visibility = Visibility.Collapsed;
-            ////newGameLevel.Visibility = Visibility.Collapsed;
-            ////replayLevel.Visibility = Visibility.Collapsed;
-
             // Play music!
             musicPlayer.Play();
         }
 
         private void CreateGame(Game game)
         {
+            // static vars
+            MainGrid = mainGrid;
+            leftScore = scoreLeft.Text;
+            rightScore = scoreRight.Text;
+
             // Connect the view with the model
-            //game = new Game();
             game.ball.Width = ball.Width;
             game.ball.Height = ball.Height;
             game.leftPaddle.Height = leftPaddle.Height;
@@ -144,21 +109,13 @@ namespace BrickBreakerPong
             // Call UpdateGrid any time you want the view to reflect the model
             UpdateGrid();
 
-            //// Reads a file to create the bricks
-            //if (level == null)
-            //{
-            //    level = new Level();
-            //    levelNumber = 1;
-            //    LoadLevel();
-            //}
-
             // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
 
             // Create a reference to the media element in the xaml
             sfx = soundEffects;
             soundEffects.DefaultPlaybackRate = 6.0; // Plays sound effects faster
-            MainGrid = mainGrid;
+            
             timer = new DispatcherTimer();
             timer.Start();
             timer.Tick += timer_Tick;
@@ -166,69 +123,18 @@ namespace BrickBreakerPong
             // Game Over Labels
             gameOverLabel.Visibility = Visibility.Collapsed;
             winningPlayer.Visibility = Visibility.Collapsed;
-            //newGameLevel.Visibility = Visibility.Collapsed;
-            //replayLevel.Visibility = Visibility.Collapsed;
         }
 
-        
+        #region PageState
 
         void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
-            //ParamsList = new List<string>()
-            //{
-            //    numOfPlayers.ToString(),
-            //    BricksToString(),
-            //    scoreLeft.Text,
-            //    scoreRight.Text
-            //};
-
-
             // Save session data
             e.PageState["GameParams"] = GetParamsString(ParamsListFunc());
 
             // Save app data
             Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             roamingSettings.Values["GameParams"] = GetParamsString(ParamsList);
-        }
-
-        private List<string> ParamsListFunc()
-        {
-            ParamsList = new List<string>()
-            {
-                numOfPlayers.ToString(),
-                BricksToString(),
-                scoreLeft.Text,
-                scoreRight.Text
-            };
-
-            return ParamsList;
-        }
-        private string GetParamsString(List<string> ParamsList)
-        {
-            string result = "";
-
-            result += ParamsList[0];
-            result += ParamsList[1];
-            result += ParamsList[2];
-            result += ParamsList[3];
-
-            return result;
-        }
-        private void SetGameParams(string Key, ref string levelString)
-        {
-            // number of players
-            if (Key[0] == '1')
-                numOfPlayers = 1;
-            else
-                numOfPlayers = 2;
-
-            // levelArray
-            levelString = Key;
-            levelString = levelString.Remove(0, 1);
-            levelString = levelString.Remove((levelString.Count() - 2));
-            
-            // Scores
-
         }
 
         void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
@@ -245,31 +151,88 @@ namespace BrickBreakerPong
             if (roamingSettings.Values.ContainsKey("GameParams"))
                 SetGameParams(roamingSettings.Values["GameParams"].ToString(), ref levelString);
 
+            // Creates a new game 
             if (game == null)
             {
                 game = new Game(Convert.ToInt32(e.NavigationParameter.ToString()));
                 CreateGame(game);
             }
 
-            bool result = false; int left = 0; int right = 0;
-
+            bool result = false;
             if (e.PageState != null || roamingSettings.Values.ContainsKey("GameParams"))
-                AskUserToContinue(result, levelString, left, right);
+                AskUserToContinue(result, levelString);
         }
 
-        #region NavigationHelper registration
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private List<string> ParamsListFunc()
         {
-            navigationHelper.OnNavigatedTo(e);
-        }
+            ParamsList = new List<string>()
+            {
+                numOfPlayers.ToString(),
+                BricksToString(),
+                scoreLeft.Text,
+                scoreRight.Text,
+                levelNumber.ToString()
+            };
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
+            return ParamsList;
+        }
+        private string GetParamsString(List<string> ParamsList)
         {
-            navigationHelper.OnNavigatedFrom(e);
-        }
+            string result = "";
 
-        #endregion
+            result += ParamsList[0];
+            result += ParamsList[1];
+            result += "L" + ParamsList[2];
+            result += "R" + ParamsList[3];
+            result += "N" + ParamsList[4];
+
+            return result;
+        }
+        private void SetGameParams(string Key, ref string levelString)
+        {
+            // number of players
+            if (Key[0] == '1')
+                numOfPlayers = 1;
+            else
+                numOfPlayers = 2;
+
+            // levelArray
+            levelString = Key;
+            levelString = levelString.Remove(0, 1);
+            //levelString = levelString.Remove((levelString.Count() - 2));
+            bool checkLast = true;
+            while(checkLast)
+            {
+                if (levelString[levelString.Count() - 1] != 'T' && levelString[levelString.Count() - 1] != 'F')
+                    levelString = levelString.Remove(levelString.Count() - 1);
+                else
+                    checkLast = false;
+            }
+
+            // Scores
+            if (Key.Contains('L') && Key.Contains('R'))
+            {
+                string left = Key;
+                left = left.Remove(0, Key.IndexOf('L') + 1);
+                int index = left.IndexOf('R');
+                left = left.Remove(index);
+                string right = Key;
+                right = right.Remove(0, Key.IndexOf('R') + 1);
+                index = right.IndexOf('N');
+                right = right.Remove(index);
+
+                leftScore = left;
+                rightScore = right;
+            }
+
+            // Level number
+            if(Key.Contains('N'))
+            {
+                string lvlN = Key;
+                lvlN = lvlN.Remove(0, Key.IndexOf('N') + 1);
+                levelNumber = Convert.ToInt32(lvlN);
+            }
+        }
 
         public string BricksToString()
         {
@@ -285,7 +248,7 @@ namespace BrickBreakerPong
                             bricks += "T";
                     }
                 }
-            else if(game.bricks.Count == 0)
+            else if (game.bricks.Count == 0)
                 for (int row = 0; row < 25; row++)
                 {
                     for (int col = 0; col < 25; col++)
@@ -297,20 +260,20 @@ namespace BrickBreakerPong
         }
         private void StringToBricks(string Key)
         {
-            for(int i = 0, j = 0; i < 25; i++, j++)
+            for (int i = 0, j = 0; i < 25; i++, j++)
             {
-                if(Key[j] == 'T')
+                if (Key[j] == 'T')
                 {
                     level.levelArray[i, j] = 1;
                 }
-                else if(Key[j] == 'F')
+                else if (Key[j] == 'F')
                 {
                     level.levelArray[i, j] = 0;
                 }
             }
         }
 
-        private async void AskUserToContinue(bool result, string Key, int left, int right)
+        private async void AskUserToContinue(bool result, string Key)
         {
             MessageDialog msg = new MessageDialog("Would you like to continue from your last saved game?", "Continue?");
             msg.Commands.Add(new UICommand("Yes", null, "YES"));
@@ -323,17 +286,34 @@ namespace BrickBreakerPong
             {
                 level = new Level();
                 levelNumber = 1;
+                game.NewGame();
+                scoreLeft.Text = "0";
+                scoreRight.Text = "0";
                 LoadLevel();
             }
             else
             {
                 level = new Level();
                 level.CreateLevel(Key, game, false);
-                game.scoreLeft = left;
-                game.scoreRight = right;
                 UpdateGrid();
             }
         }
+
+        #endregion
+
+        #region NavigationHelper registration
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedFrom(e);
+        }
+
+        #endregion
 
         private async void LoadLevel()
         {
@@ -364,7 +344,6 @@ namespace BrickBreakerPong
                         musicPlayer.Pause();
                         game.Pause();
                         this.BottomAppBar.IsOpen = true;
-                        TurnOnInstructions();
                         timer.Stop();
                     }
                     else
@@ -372,33 +351,11 @@ namespace BrickBreakerPong
                         musicPlayer.Play();
                         game.Continue();
                         this.BottomAppBar.IsOpen = false;
-                        TurnOffInstructions();
                         timer.Start();
                     }
 
                 }
-
-                if (args.VirtualKey.ToString() == "F5")
-                {
-                    TurnOnInstructions();
-                    game.Restart();
-                    UpdateGrid();
-                    timer.Stop();
-                }
             }
-        }
-       
-        private void TurnOffInstructions()
-        {
-            //startGameLabel.Visibility = Visibility.Collapsed;
-            //restartLevelLabel.Visibility = Visibility.Collapsed;
-
-        }
-        
-        private void TurnOnInstructions()
-        {
-            //startGameLabel.Visibility = Visibility.Visible;
-            //restartLevelLabel.Visibility = Visibility.Visible;
         }
 
         // Have the view reflect the model
@@ -428,8 +385,6 @@ namespace BrickBreakerPong
                 winningPlayer.Visibility = Visibility.Visible;
 
                 this.BottomAppBar.IsOpen = true;
-                //newGameLevel.Visibility = Visibility.Visible;
-                //replayLevel.Visibility = Visibility.Visible;
             }
         }
 
@@ -467,7 +422,6 @@ namespace BrickBreakerPong
             //this.Frame.Navigate(typeof(MenuPage), GetParamsString(ParamsListFunc()));
             if (this.Frame.CanGoBack)
                 this.Frame.GoBack();
-
         }
 
         private void HelpButton_Clicked(object sender, RoutedEventArgs e)
