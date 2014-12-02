@@ -72,6 +72,9 @@
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_2.txt">
       <PackagePath>Levels\lvl_2.txt</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_5.txt">
+      <PackagePath>Levels\lvl_5.txt</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\testLevel.txt">
       <PackagePath>Levels\testLevel.txt</PackagePath>
     </AppxPackagedFile>

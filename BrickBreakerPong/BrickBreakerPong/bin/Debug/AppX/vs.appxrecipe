@@ -17,13 +17,13 @@
     <AppXManifest Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-02T20:25:06.430</Modified>
+      <Modified>2014-12-02T23:00:08.316</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-12-02T22:35:09.291</Modified>
+      <Modified>2014-12-02T23:03:59.493</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
@@ -87,7 +87,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_4.txt">
       <PackagePath>Levels\lvl_4.txt</PackagePath>
-      <Modified>2014-12-02T18:42:43.803</Modified>
+      <Modified>2014-12-02T22:53:19.197</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1.txt">
       <PackagePath>Levels\lvl_1.txt</PackagePath>
@@ -97,13 +97,17 @@
       <PackagePath>Levels\lvl_2.txt</PackagePath>
       <Modified>2014-12-02T18:42:43.802</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_5.txt">
+      <PackagePath>Levels\lvl_5.txt</PackagePath>
+      <Modified>2014-12-02T23:03:05.703</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\testLevel.txt">
       <PackagePath>Levels\testLevel.txt</PackagePath>
       <Modified>2014-12-02T18:42:43.803</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_3.txt">
       <PackagePath>Levels\lvl_3.txt</PackagePath>
-      <Modified>2014-12-02T18:42:43.802</Modified>
+      <Modified>2014-12-02T22:47:05.891</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Music\adagio_for_tron.mp3">
       <PackagePath>Music\adagio_for_tron.mp3</PackagePath>
@@ -143,7 +147,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-12-02T20:25:05.247</Modified>
+      <Modified>2014-12-02T23:00:07.857</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

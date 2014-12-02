@@ -443,7 +443,7 @@ namespace BrickBreakerPong
             gameOverLabel.Visibility = Visibility.Collapsed;
             winningPlayer.Visibility = Visibility.Collapsed;
 
-            if (++levelNumber > 3)
+            if (++levelNumber > 15)
                 levelNumber = 1;
 
             for (int i = 0; i < game.bricks.Count(); i++)

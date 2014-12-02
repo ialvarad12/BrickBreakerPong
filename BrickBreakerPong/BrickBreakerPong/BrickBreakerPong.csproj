@@ -149,6 +149,7 @@
     <Content Include="Levels\lvl_4.txt" />
     <Content Include="Levels\lvl_1.txt" />
     <Content Include="Levels\lvl_2.txt" />
+    <Content Include="Levels\lvl_5.txt" />
     <Content Include="Levels\testLevel.txt" />
     <Content Include="Levels\lvl_3.txt" />
     <Content Include="Music\adagio_for_tron.mp3" />
