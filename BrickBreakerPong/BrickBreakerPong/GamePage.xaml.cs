@@ -49,22 +49,20 @@ namespace BrickBreakerPong
             get { return this.navigationHelper; }
         }
 
-        // Took off static and passed to game class
-        // static was causing audio issues when navigating through different pages
-        public MediaElement sfx;
+        public static MediaElement sfx;
 
         public Game game;
-        Level level;
+        public static Level level;
         private int levelNumber;
         private DispatcherTimer timer;
-
+        public static Grid MainGrid;
         List<string> ParamsList;
 
         public int numOfPlayers;
         public GamePage()
         {
             //game = new Game(this, numOfPlayers);
-
+            MainGrid = mainGrid;
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
@@ -172,25 +170,7 @@ namespace BrickBreakerPong
             //replayLevel.Visibility = Visibility.Collapsed;
         }
 
-        public void RemoveCellAtIndex(int index)
-        {
-            int count = 0;
-            for(int row = 0; row < 25; row++)
-            {
-                for(int col = 0; col < 25; col++)
-                {
-                    if(count < index && level.levelArray[row, col] == 1)
-                    {
-                        count++;
-                    }
-                    else if(count == index && level.levelArray[row, col] == 1)
-                    {
-                        level.levelArray[row, col] = 0;
-                        row = 25; col = 25; // end the loops
-                    }
-                }
-            }
-        }
+        
 
         void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
@@ -265,8 +245,11 @@ namespace BrickBreakerPong
             if (roamingSettings.Values.ContainsKey("GameParams"))
                 SetGameParams(roamingSettings.Values["GameParams"].ToString(), ref levelString);
 
-            game = new Game(this, numOfPlayers);
-            CreateGame(game);
+            if (game == null)
+            {
+                game = new Game(numOfPlayers);
+                CreateGame(game);
+            }
 
             bool result = false; int left = 0; int right = 0;
             AskUserToContinue(result, levelString, left, right);
@@ -336,7 +319,7 @@ namespace BrickBreakerPong
             else
             {
                 level = new Level();
-                level.CreateLevel(this, Key, game, false);
+                level.CreateLevel(Key, game, false);
                 game.scoreLeft = left;
                 game.scoreRight = right;
                 UpdateGrid();
@@ -348,7 +331,7 @@ namespace BrickBreakerPong
             string text = await level.LoadFileAsync("lvl_" + levelNumber + ".txt");
             if (text != null)
             {
-                level.CreateLevel(this, text, game, true);
+                level.CreateLevel(text, game, true);
             }
         }
 

@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Shapes;
 
 namespace BrickBreakerPong
 {
-    class Level
+    public class Level
     {
         public int[,] levelArray;
 
@@ -24,7 +24,7 @@ namespace BrickBreakerPong
         }
 
         // Loads the file into a 2d array
-        public void CreateLevel(GamePage mainPage, string text, Game game, bool IsNewLevel)
+        public void CreateLevel(string text, Game game, bool IsNewLevel)
         {
             if (IsNewLevel)
             {
@@ -67,16 +67,17 @@ namespace BrickBreakerPong
                 }
             }
 
-            double distanceBetweenPaddles = (uint)(mainPage.rightPaddle.Margin.Left - (mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width));
-            double distanceBetweenWalls = Game.boardHeight - mainPage.topWall.Height - mainPage.bottomWall.Height;
+            double distanceBetweenPaddles = (uint)(game.rightPaddle.Position.X - (game.leftPaddle.Position.X + game.leftPaddle.Width));
+            double distanceBetweenWalls = Game.boardHeight - game.topWall.Height - game.bottomWall.Height;
 
-            CreateBricksForLevel(mainPage, game, levelArray, distanceBetweenPaddles, distanceBetweenWalls);
+            CreateBricksForLevel(game, levelArray, distanceBetweenPaddles, distanceBetweenWalls);
 
+            // WOOOOOOOOOOOOOWWWWWWWW
             int x = 9;
         }
 
         // uses the levelArray to create the gameboard
-        private void CreateBricksForLevel(GamePage mainPage, Game game, int[,] levelArray, double distanceBetweenPaddles, double distanceBetweenWalls)
+        private void CreateBricksForLevel(Game game, int[,] levelArray, double distanceBetweenPaddles, double distanceBetweenWalls)
         {
             Rectangle rect;
             Random rand = new Random();
@@ -92,23 +93,41 @@ namespace BrickBreakerPong
                     rect.Height = distanceBetweenWalls / ratio;
                     rect.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
                     rect.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
-                    rect.Margin = new Windows.UI.Xaml.Thickness(mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
-                                                                mainPage.topWall.Height + (row * distanceBetweenWalls / ratio), 0, 0);
-
+                    rect.Margin = new Windows.UI.Xaml.Thickness(game.leftPaddle.Position.X + game.leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
+                                                                game.topWall.Height + (row * distanceBetweenWalls / ratio), 0, 0);
                     // Don't know exactly why it goes out of bounds, but this prevents it :)
-                    if (mainPage.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
-                        mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
+                    if (game.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
+                        game.leftPaddle.Position.X + game.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
                     {
                         if (col < 25)
                         {
                             if (levelArray[row, col] == 1)
                             {
                                 // adds the brick to the page
-                                mainPage.mainGrid.Children.Add(rect);
+                                GamePage.MainGrid.Children.Add(rect);
                                 // adds to the bricks list
                                 game.AddBrick(rect);
                             }
                         }
+                    }
+                }
+            }
+        }
+        public void RemoveCellAtIndex(int index)
+        {
+            int count = 0;
+            for (int row = 0; row < 25; row++)
+            {
+                for (int col = 0; col < 25; col++)
+                {
+                    if (count < index && this.levelArray[row, col] == 1)
+                    {
+                        count++;
+                    }
+                    else if (count == index && this.levelArray[row, col] == 1)
+                    {
+                        this.levelArray[row, col] = 0;
+                        row = 25; col = 25; // end the loops
                     }
                 }
             }

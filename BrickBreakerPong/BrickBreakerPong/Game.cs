@@ -42,7 +42,7 @@ namespace BrickBreakerPong
 
         int numPlayers;
 
-        public Game(GamePage mainPage, int numOfPlayers, double boardWidth = 0.0, double boardHeight = 0.0)
+        public Game(int numOfPlayers, double boardWidth = 0.0, double boardHeight = 0.0)
         {
             this.numPlayers = numOfPlayers;
 
@@ -56,7 +56,7 @@ namespace BrickBreakerPong
             else
                 Game.boardHeight = boardHeight;
 
-            ball = new Ball(mainPage);
+            ball = new Ball();
 
             leftPaddle = new HumanPaddle("left");
             rightPaddle = new HumanPaddle("right");

@@ -91,11 +91,10 @@ namespace BrickBreakerPong
             }
         }
         #endregion
-        GamePage mainPage;
         TimeSpan bounce;
         int skipTick = 5;
         Rectangle lastCollapsed;
-        public Ball(GamePage mainPage, double ballWidth = 50.0, double ballHeight = 50.0, double ballSpeed = 10.0)
+        public Ball(double ballWidth = 50.0, double ballHeight = 50.0, double ballSpeed = 10.0)
         {
             this.Width = ballWidth;
             this.Height = ballHeight;
@@ -104,7 +103,6 @@ namespace BrickBreakerPong
             bounce = new TimeSpan(DateTime.Now.Ticks);
             currentAngle = Angle.BOTTOM_RIGHT;
             currentDirection = Direction.COUNTER_CLOCKWISE;
-            this.mainPage = mainPage;
             lastCollapsed = null;
         }
         //private bool checkBottomBreakCollapse(List<Rectangle> paddles)
@@ -213,16 +211,16 @@ namespace BrickBreakerPong
             {
                 //Rectangle rec = collidedObject.FirstOrDefault();
 
-                if (lastCollapsed == rec && skipTick > 0)
-                {
-                    skipTick--;
-                    return false;
-                }
-                else
-                {
-                    skipTick = 5;
-                    lastCollapsed = rec;
-                }
+                //if (lastCollapsed == rec && skipTick > 0)
+                //{
+                //    skipTick--;
+                //    return false;
+                //}
+                //else
+                //{
+                //    skipTick = 5;
+                //    lastCollapsed = rec;
+                //}
 
                 var nearCoordinates = ballCoordinates.Where(p =>
                                         p.X >= rec.Margin.Left - Speed &&
@@ -291,7 +289,7 @@ namespace BrickBreakerPong
                     objectBallMayCollideWith.RemoveAt(index);
 
                     // Remove brick from the levelArray
-                    mainPage.RemoveCellAtIndex(index);
+                    GamePage.level.RemoveCellAtIndex(index);
                 }
                 return true;
             }
@@ -311,7 +309,7 @@ namespace BrickBreakerPong
             if (collidedObject.ElementAtOrDefault(0) != null)
             {
                 //GamePage.sfx.Play();
-                mainPage.sfx.Play();
+                GamePage.sfx.Play();
                 Rectangle rec = collidedObject.FirstOrDefault();
                 if (ballCoordinates.All(p => p.Y + Speed >= rec.Margin.Top + rec.Height))
                     whereBallWillCollide[0] = Collision.BOTTOM;
@@ -336,7 +334,7 @@ namespace BrickBreakerPong
                     objectBallMayCollideWith.RemoveAt(index);
 
                     // Remove brick from the levelArray
-                    mainPage.RemoveCellAtIndex(index);
+                    GamePage.level.RemoveCellAtIndex(index);
                 }
                  
             }

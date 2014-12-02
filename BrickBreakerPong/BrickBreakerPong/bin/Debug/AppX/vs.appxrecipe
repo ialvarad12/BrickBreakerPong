@@ -23,11 +23,7 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-<<<<<<< HEAD
-      <Modified>2014-12-02T04:20:10.390</Modified>
-=======
-      <Modified>2014-12-02T04:18:25.525</Modified>
->>>>>>> 9e1c20e07cff484176746db5da00cec0315dd006
+      <Modified>2014-12-02T05:07:48.725</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
