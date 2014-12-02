@@ -110,12 +110,15 @@ namespace BrickBreakerPong
             if (this.Frame.CanGoForward)
                 this.Frame.GoForward();
             else
-                this.Frame.Navigate(typeof(GamePage));
+                this.Frame.Navigate(typeof(GamePage), "2");
         }
 
         private void PvCEvent_Clicked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GamePage));
+            if (this.Frame.CanGoForward)
+                this.Frame.GoForward();
+            else
+                this.Frame.Navigate(typeof(GamePage),"1");
         }
     }
 }

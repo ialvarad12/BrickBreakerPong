@@ -158,7 +158,7 @@ namespace BrickBreakerPong
             // Create a reference to the media element in the xaml
             sfx = soundEffects;
             soundEffects.DefaultPlaybackRate = 6.0; // Plays sound effects faster
-
+            MainGrid = mainGrid;
             timer = new DispatcherTimer();
             timer.Start();
             timer.Tick += timer_Tick;
@@ -247,12 +247,14 @@ namespace BrickBreakerPong
 
             if (game == null)
             {
-                game = new Game(numOfPlayers);
+                game = new Game(Convert.ToInt32(e.NavigationParameter.ToString()));
                 CreateGame(game);
             }
 
             bool result = false; int left = 0; int right = 0;
-            AskUserToContinue(result, levelString, left, right);
+
+            if (e.PageState != null || roamingSettings.Values.ContainsKey("GameParams"))
+                AskUserToContinue(result, levelString, left, right);
         }
 
         #region NavigationHelper registration
@@ -272,18 +274,25 @@ namespace BrickBreakerPong
         public string BricksToString()
         {
             string bricks = "";
-
-            for (int row = 0; row < 25; row++)
-            {
-                for (int col = 0; col < 25; col++)
+            if (game.bricks.Count > 0)
+                for (int row = 0; row < 25; row++)
                 {
-                    if (level.levelArray[row, col] == 0)
-                        bricks += "F";
-                    else if (level.levelArray[row, col] == 1)
-                        bricks += "T";
+                    for (int col = 0; col < 25; col++)
+                    {
+                        if (level.levelArray[row, col] == 0)
+                            bricks += "F";
+                        else if (level.levelArray[row, col] == 1)
+                            bricks += "T";
+                    }
                 }
-            }
-
+            else if(game.bricks.Count == 0)
+                for (int row = 0; row < 25; row++)
+                {
+                    for (int col = 0; col < 25; col++)
+                    {
+                        bricks += "F";
+                    }
+                }
             return bricks;
         }
         private void StringToBricks(string Key)
