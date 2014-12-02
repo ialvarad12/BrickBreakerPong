@@ -35,9 +35,10 @@ namespace BrickBreakerPong
         private int gamePoint;
 
         private double LOSE_ZONE = -5.0;
+        private const double SPEED = 10.0;
 
-        public double boardHeight;
-        public double boardWidth;
+        public static double boardHeight;
+        public static double boardWidth;
 
         int numPlayers;
 
@@ -46,14 +47,14 @@ namespace BrickBreakerPong
             this.numPlayers = numOfPlayers;
 
             if (boardWidth <= 0.0)
-                this.boardWidth = Window.Current.Bounds.Width;
+                Game.boardWidth = Window.Current.Bounds.Width;
             else
-                this.boardWidth = boardWidth;
+                Game.boardWidth = boardWidth;
 
             if (boardHeight <= 0.0)
-                this.boardHeight = Window.Current.Bounds.Height;
+                Game.boardHeight = Window.Current.Bounds.Height;
             else
-                this.boardHeight = boardHeight;
+                Game.boardHeight = boardHeight;
 
 
             ball = new Ball(mainPage);
@@ -120,7 +121,7 @@ namespace BrickBreakerPong
             Pause();
             Update();
             gameOver = false;
-            ball.Speed = 10.0;
+            ball.Speed = SPEED;
         }
 
         // Completely restarts the initial state of the game
@@ -132,7 +133,7 @@ namespace BrickBreakerPong
 
             ResetBricks();
             Reset();
-            ball.Speed = 10.0;
+            ball.Speed = SPEED;
         }
         public void NewGame()
         {
@@ -142,7 +143,7 @@ namespace BrickBreakerPong
             bricks.Clear();
             bricksCache.Clear();
             Reset();
-            ball.Speed = 10.0;
+            ball.Speed = SPEED;
         }
         private void ResetBricks()
         {
@@ -170,22 +171,28 @@ namespace BrickBreakerPong
         }
         public void Run()
         {
-            CheckKeyboardPress();
 
+            
+            CheckKeyboardPress();
+            
             paddles.Add(leftPaddle.GetRectangle);
             paddles.Add(rightPaddle.GetRectangle);
 
-            //ball.WillCollide(walls, false);
-            //ball.WillCollide(paddles, false);
-            //ball.WillCollide(bricks, true);
-            ball.SwitchDirection(ball.WillCollide(walls, false));
-            ball.SwitchDirection(ball.WillCollide(paddles, false));
-            ball.SwitchDirection(ball.WillCollide(bricks, true));
-            //if (ball.Collides(topWall) || ball.Collides(bottomWall))
-               // ball.SwitchDirection();
-            paddles.Clear();
+            //ball.SetAngle(paddles);
             ball.Move();
-
+            ball.CollidesWith(walls, false);
+            ball.CollidesWith(paddles, false);
+            ball.CollidesWith(bricks, true);
+            ////ball.WillCollide(walls, false);
+            ////ball.WillCollide(paddles, false);
+            ////ball.WillCollide(bricks, true);
+            //ball.SwitchDirection(ball.WillCollide(walls, false));
+            //ball.SwitchDirection(ball.WillCollide(paddles, false));
+            //ball.SwitchDirection(ball.WillCollide(bricks, true));
+            ////if (ball.Collides(topWall) || ball.Collides(bottomWall))
+            //// ball.SwitchDirection();
+            paddles.Clear();
+            
             if(bricks.Count == 0)
             {
                 if (scoreLeft > scoreRight)

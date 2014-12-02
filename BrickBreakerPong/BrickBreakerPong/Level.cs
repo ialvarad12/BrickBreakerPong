@@ -51,7 +51,7 @@ namespace BrickBreakerPong
             }
 
             double distanceBetweenPaddles = (uint)(mainPage.rightPaddle.Margin.Left - (mainPage.leftPaddle.Margin.Left + mainPage.leftPaddle.Width));
-            double distanceBetweenWalls = game.boardHeight - mainPage.topWall.Height - mainPage.bottomWall.Height;
+            double distanceBetweenWalls = Game.boardHeight - mainPage.topWall.Height - mainPage.bottomWall.Height;
 
             CreateBricksForLevel(mainPage, game, levelArray, distanceBetweenPaddles, distanceBetweenWalls);
 
