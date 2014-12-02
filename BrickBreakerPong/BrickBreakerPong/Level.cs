@@ -68,7 +68,7 @@ namespace BrickBreakerPong
             }
 
             double distanceBetweenPaddles = (uint)(game.rightPaddle.Position.X - (game.leftPaddle.Position.X + game.leftPaddle.Width));
-            double distanceBetweenWalls = Game.boardHeight - game.topWall.Height - game.bottomWall.Height;
+            double distanceBetweenWalls = game.bottomWall.Margin.Top - (game.topWall.Margin.Top + game.topWall.Height);
 
             CreateBricksForLevel(game, levelArray, distanceBetweenPaddles, distanceBetweenWalls);
 
@@ -94,7 +94,7 @@ namespace BrickBreakerPong
                     rect.HorizontalAlignment = Windows.UI.Xaml.HorizontalAlignment.Left;
                     rect.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
                     rect.Margin = new Windows.UI.Xaml.Thickness(game.leftPaddle.Position.X + game.leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
-                                                                game.topWall.Height + (row * distanceBetweenWalls / ratio), 0, 0);
+                                                                (game.topWall.Margin.Top + game.topWall.Height) + (row * distanceBetweenWalls / ratio), 0, 0);
                     // Don't know exactly why it goes out of bounds, but this prevents it :)
                     if (game.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
                         game.leftPaddle.Position.X + game.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
