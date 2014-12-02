@@ -17,3 +17,5 @@ TODO:
 ::Level Designs
 ::Collision
 	-When paddle is moving, it may overlap with the ball.
+::AI
+	-Paddle needs to be slower
