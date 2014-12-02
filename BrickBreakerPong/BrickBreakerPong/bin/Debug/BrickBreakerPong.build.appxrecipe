@@ -96,6 +96,9 @@
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AboutPage.xbf">
+      <PackagePath>AboutPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf">
       <PackagePath>GamePage.xbf</PackagePath>
     </AppxPackagedFile>

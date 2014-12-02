@@ -21,7 +21,7 @@ namespace BrickBreakerPong
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class MenuPage : Page
+    public sealed partial class AboutPage : Page
     {
 
         private NavigationHelper navigationHelper;
@@ -44,9 +44,8 @@ namespace BrickBreakerPong
             get { return this.navigationHelper; }
         }
 
-        List<string> ParamsList;
 
-        public MenuPage()
+        public AboutPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -95,7 +94,6 @@ namespace BrickBreakerPong
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
-            //ParamsList = e.Parameter as List<string>;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -104,34 +102,5 @@ namespace BrickBreakerPong
         }
 
         #endregion
-
-        private void PvPEvent_Clicked(object sender, RoutedEventArgs e)
-        {
-            //if (this.Frame.CanGoForward)
-            //{
-            //    GamePage.numOfPlayers = 2;
-            //    this.Frame.GoForward();
-            //}
-            //else
-            GamePage.numOfPlayers = 2;
-            this.Frame.Navigate(typeof(GamePage));
-        }
-
-        private void PvCEvent_Clicked(object sender, RoutedEventArgs e)
-        {
-            //if (this.Frame.CanGoForward)
-            //{
-            //    GamePage.numOfPlayers = 1;
-            //    this.Frame.GoForward();
-            //}
-            //else
-            GamePage.numOfPlayers = 1;
-            this.Frame.Navigate(typeof(GamePage));
-        }
-
-        private void AboutPageEvent_Clicked(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(AboutPage));
-        }
     }
 }

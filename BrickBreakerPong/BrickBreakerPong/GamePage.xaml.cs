@@ -441,14 +441,13 @@ namespace BrickBreakerPong
             timer.Stop();
             musicPlayer.Stop();
 
-            //this.Frame.Navigate(typeof(MenuPage), GetParamsString(ParamsListFunc()));
             if (this.Frame.CanGoBack)
                 this.Frame.GoBack();
         }
 
         private void HelpButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(AboutPage));
         }
     }
 }

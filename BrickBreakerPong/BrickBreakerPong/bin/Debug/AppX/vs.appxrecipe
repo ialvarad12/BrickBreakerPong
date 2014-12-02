@@ -17,13 +17,13 @@
     <AppXManifest Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-02T18:47:29.044</Modified>
+      <Modified>2014-12-02T20:25:06.430</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-12-02T20:00:06.088</Modified>
+      <Modified>2014-12-02T20:30:47.018</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
@@ -129,17 +129,21 @@
       <PackagePath>App.xbf</PackagePath>
       <Modified>2014-12-02T18:42:44.273</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AboutPage.xbf">
+      <PackagePath>AboutPage.xbf</PackagePath>
+      <Modified>2014-12-02T20:27:16.397</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf">
       <PackagePath>GamePage.xbf</PackagePath>
       <Modified>2014-12-02T18:42:44.280</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MenuPage.xbf">
       <PackagePath>MenuPage.xbf</PackagePath>
-      <Modified>2014-12-02T18:42:44.283</Modified>
+      <Modified>2014-12-02T20:27:16.397</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-12-02T18:47:27.726</Modified>
+      <Modified>2014-12-02T20:25:05.247</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -169,3 +169,8 @@ C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\o
 C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\qualifiers.txt.intermediate
 C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\ProjectArchitectures.txt
+C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AboutPage.xbf
+C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.g.i.cs
+C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.g.cs
+C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.xaml
+C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.xbf

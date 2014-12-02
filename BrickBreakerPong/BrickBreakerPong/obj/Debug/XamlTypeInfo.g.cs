@@ -124,8 +124,8 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[9];
-            _typeNameTable[0] = "BrickBreakerPong.GamePage";
+            _typeNameTable = new string[10];
+            _typeNameTable[0] = "BrickBreakerPong.AboutPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
             _typeNameTable[3] = "BrickBreakerPong.Common.ObservableDictionary";
@@ -133,10 +133,11 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
             _typeNameTable[5] = "String";
             _typeNameTable[6] = "BrickBreakerPong.Common.NavigationHelper";
             _typeNameTable[7] = "Windows.UI.Xaml.DependencyObject";
-            _typeNameTable[8] = "BrickBreakerPong.MenuPage";
+            _typeNameTable[8] = "BrickBreakerPong.GamePage";
+            _typeNameTable[9] = "BrickBreakerPong.MenuPage";
 
-            _typeTable = new global::System.Type[9];
-            _typeTable[0] = typeof(global::BrickBreakerPong.GamePage);
+            _typeTable = new global::System.Type[10];
+            _typeTable[0] = typeof(global::BrickBreakerPong.AboutPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
             _typeTable[3] = typeof(global::BrickBreakerPong.Common.ObservableDictionary);
@@ -144,7 +145,8 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
             _typeTable[5] = typeof(global::System.String);
             _typeTable[6] = typeof(global::BrickBreakerPong.Common.NavigationHelper);
             _typeTable[7] = typeof(global::Windows.UI.Xaml.DependencyObject);
-            _typeTable[8] = typeof(global::BrickBreakerPong.MenuPage);
+            _typeTable[8] = typeof(global::BrickBreakerPong.GamePage);
+            _typeTable[9] = typeof(global::BrickBreakerPong.MenuPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -179,9 +181,10 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_GamePage() { return new global::BrickBreakerPong.GamePage(); }
+        private object Activate_0_AboutPage() { return new global::BrickBreakerPong.AboutPage(); }
         private object Activate_3_ObservableDictionary() { return new global::BrickBreakerPong.Common.ObservableDictionary(); }
-        private object Activate_8_MenuPage() { return new global::BrickBreakerPong.MenuPage(); }
+        private object Activate_8_GamePage() { return new global::BrickBreakerPong.GamePage(); }
+        private object Activate_9_MenuPage() { return new global::BrickBreakerPong.MenuPage(); }
         private void MapAdd_3_ObservableDictionary(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.String, global::System.Object>)instance;
@@ -200,9 +203,9 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  BrickBreakerPong.GamePage
+            case 0:   //  BrickBreakerPong.AboutPage
                 userType = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_GamePage;
+                userType.Activator = Activate_0_AboutPage;
                 userType.AddMemberName("DefaultViewModel");
                 userType.AddMemberName("NavigationHelper");
                 xamlType = userType;
@@ -241,9 +244,17 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
                 xamlType = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 8:   //  BrickBreakerPong.MenuPage
+            case 8:   //  BrickBreakerPong.GamePage
                 userType = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_8_MenuPage;
+                userType.Activator = Activate_8_GamePage;
+                userType.AddMemberName("DefaultViewModel");
+                userType.AddMemberName("NavigationHelper");
+                xamlType = userType;
+                break;
+
+            case 9:   //  BrickBreakerPong.MenuPage
+                userType = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_9_MenuPage;
                 userType.AddMemberName("DefaultViewModel");
                 userType.AddMemberName("NavigationHelper");
                 xamlType = userType;
@@ -253,22 +264,32 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
         }
 
 
-        private object get_0_GamePage_DefaultViewModel(object instance)
+        private object get_0_AboutPage_DefaultViewModel(object instance)
+        {
+            var that = (global::BrickBreakerPong.AboutPage)instance;
+            return that.DefaultViewModel;
+        }
+        private object get_1_AboutPage_NavigationHelper(object instance)
+        {
+            var that = (global::BrickBreakerPong.AboutPage)instance;
+            return that.NavigationHelper;
+        }
+        private object get_2_GamePage_DefaultViewModel(object instance)
         {
             var that = (global::BrickBreakerPong.GamePage)instance;
             return that.DefaultViewModel;
         }
-        private object get_1_GamePage_NavigationHelper(object instance)
+        private object get_3_GamePage_NavigationHelper(object instance)
         {
             var that = (global::BrickBreakerPong.GamePage)instance;
             return that.NavigationHelper;
         }
-        private object get_2_MenuPage_DefaultViewModel(object instance)
+        private object get_4_MenuPage_DefaultViewModel(object instance)
         {
             var that = (global::BrickBreakerPong.MenuPage)instance;
             return that.DefaultViewModel;
         }
-        private object get_3_MenuPage_NavigationHelper(object instance)
+        private object get_5_MenuPage_NavigationHelper(object instance)
         {
             var that = (global::BrickBreakerPong.MenuPage)instance;
             return that.NavigationHelper;
@@ -281,28 +302,40 @@ namespace BrickBreakerPong.BrickBreakerPong_XamlTypeInfo
 
             switch (longMemberName)
             {
+            case "BrickBreakerPong.AboutPage.DefaultViewModel":
+                userType = (global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BrickBreakerPong.AboutPage");
+                xamlMember = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "BrickBreakerPong.Common.ObservableDictionary");
+                xamlMember.Getter = get_0_AboutPage_DefaultViewModel;
+                xamlMember.SetIsReadOnly();
+                break;
+            case "BrickBreakerPong.AboutPage.NavigationHelper":
+                userType = (global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BrickBreakerPong.AboutPage");
+                xamlMember = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlMember(this, "NavigationHelper", "BrickBreakerPong.Common.NavigationHelper");
+                xamlMember.Getter = get_1_AboutPage_NavigationHelper;
+                xamlMember.SetIsReadOnly();
+                break;
             case "BrickBreakerPong.GamePage.DefaultViewModel":
                 userType = (global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BrickBreakerPong.GamePage");
                 xamlMember = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "BrickBreakerPong.Common.ObservableDictionary");
-                xamlMember.Getter = get_0_GamePage_DefaultViewModel;
+                xamlMember.Getter = get_2_GamePage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "BrickBreakerPong.GamePage.NavigationHelper":
                 userType = (global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BrickBreakerPong.GamePage");
                 xamlMember = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlMember(this, "NavigationHelper", "BrickBreakerPong.Common.NavigationHelper");
-                xamlMember.Getter = get_1_GamePage_NavigationHelper;
+                xamlMember.Getter = get_3_GamePage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             case "BrickBreakerPong.MenuPage.DefaultViewModel":
                 userType = (global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BrickBreakerPong.MenuPage");
                 xamlMember = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlMember(this, "DefaultViewModel", "BrickBreakerPong.Common.ObservableDictionary");
-                xamlMember.Getter = get_2_MenuPage_DefaultViewModel;
+                xamlMember.Getter = get_4_MenuPage_DefaultViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "BrickBreakerPong.MenuPage.NavigationHelper":
                 userType = (global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BrickBreakerPong.MenuPage");
                 xamlMember = new global::BrickBreakerPong.BrickBreakerPong_XamlTypeInfo.XamlMember(this, "NavigationHelper", "BrickBreakerPong.Common.NavigationHelper");
-                xamlMember.Getter = get_3_MenuPage_NavigationHelper;
+                xamlMember.Getter = get_5_MenuPage_NavigationHelper;
                 xamlMember.SetIsReadOnly();
                 break;
             }
