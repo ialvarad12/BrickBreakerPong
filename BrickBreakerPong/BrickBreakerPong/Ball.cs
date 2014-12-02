@@ -207,9 +207,10 @@ namespace BrickBreakerPong
                                                                     p.Y <= s.Margin.Top + s.Height + Speed &&
                                                                     p.Y >= s.Margin.Top - Speed));
 
-            foreach(Rectangle rec in collidedObject)
+            if(collidedObject.Count() > 0)
             {
-                //Rectangle rec = collidedObject.FirstOrDefault();
+                GamePage.sfx.Play();
+                Rectangle rec = collidedObject.FirstOrDefault();
 
                 //if (lastCollapsed == rec && skipTick > 0)
                 //{
@@ -310,6 +311,7 @@ namespace BrickBreakerPong
             {
                 //GamePage.sfx.Play();
                 GamePage.sfx.Play();
+
                 Rectangle rec = collidedObject.FirstOrDefault();
                 if (ballCoordinates.All(p => p.Y + Speed >= rec.Margin.Top + rec.Height))
                     whereBallWillCollide[0] = Collision.BOTTOM;

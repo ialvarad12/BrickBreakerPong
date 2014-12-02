@@ -65,12 +65,15 @@ namespace BrickBreakerPong
         public GamePage()
         {
             //game = new Game(this, numOfPlayers);
-            MainGrid = mainGrid;
-
+            
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+
+            MainGrid = mainGrid;
+            sfx = soundEffects;
+            soundEffects.DefaultPlaybackRate = 6.0; // Plays sound effects faster
 
             // Get the size of the screen
             mainGrid.Height = Window.Current.Bounds.Height;
@@ -81,8 +84,8 @@ namespace BrickBreakerPong
             bottomWall.Width = mainGrid.Width;
 
             // Move the bottom wall to the bottom of the screen
-            bottomWall.Margin = new Thickness(0, mainGrid.Height - bottomWall.Height, 0, 0);
-
+            bottomWall.Margin = new Thickness(0, mainGrid.Height - 5.0, 0, 0);
+            topWall.Margin = new Thickness(0, (topWall.Height * -1.0) + 5.0, 0, 0);
             // Play music!
             musicPlayer.Play();
         }
@@ -190,16 +193,13 @@ namespace BrickBreakerPong
             }
 
             // Creates a new game 
-            if (game == null)
+            game = new Game(numOfPlayers);
+            CreateGame(game);
+            if (newGame)
             {
-                game = new Game(numOfPlayers);
-                CreateGame(game);
-                if (newGame)
-                {
-                    game.NewGame();
-                    scoreLeft.Text = "0";
-                    scoreRight.Text = "0";
-                }
+                game.NewGame();
+                scoreLeft.Text = "0";
+                scoreRight.Text = "0";
             }
 
             if (continuePlaying)
@@ -325,9 +325,10 @@ namespace BrickBreakerPong
 
             if (!result)
             {
+                game.NewGame();
                 level = new Level();
                 levelNumber = 1;
-                game.NewGame();
+                
                 scoreLeft.Text = "0";
                 scoreRight.Text = "0";
                 LoadLevel();

@@ -16,8 +16,8 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="Uniform"/>
         </Grid.Background>
-        <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
-        <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="5" Fill="White" />
+        <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="50" Fill="White" />
+        <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="50" Fill="White" />
         <Rectangle x:FieldModifier="public" x:Name="leftPaddle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="50" Height="200" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Assets/textures/left_paddle.png"/>
@@ -56,12 +56,12 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='0' Label="Home" Icon="Home"                           />
-            <AppBarButton x:ConnectionId='0' Label="Help" Icon="Help"                           />
+            <AppBarButton x:ConnectionId='1' Label="Home" Icon="Home"                           />
+            <AppBarButton x:ConnectionId='2' Label="Help" Icon="Help"                           />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='0' Label="Restart Game" Icon="Redo"                                  />
-                <AppBarButton x:ConnectionId='0' Label="Next Level" Icon="Forward"                                />
+                <AppBarButton x:ConnectionId='3' Label="Restart Game" Icon="Redo"                                  />
+                <AppBarButton x:ConnectionId='4' Label="Next Level" Icon="Forward"                                />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
