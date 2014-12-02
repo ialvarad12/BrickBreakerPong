@@ -108,7 +108,10 @@ namespace BrickBreakerPong
         private void PvPEvent_Clicked(object sender, RoutedEventArgs e)
         {
             if (this.Frame.CanGoForward)
+            {
+                GamePage.numOfPlayers = 2;
                 this.Frame.GoForward();
+            }
             else
                 this.Frame.Navigate(typeof(GamePage), "2");
         }
@@ -116,9 +119,12 @@ namespace BrickBreakerPong
         private void PvCEvent_Clicked(object sender, RoutedEventArgs e)
         {
             if (this.Frame.CanGoForward)
+            {
+                GamePage.numOfPlayers = 1;
                 this.Frame.GoForward();
+            }
             else
-                this.Frame.Navigate(typeof(GamePage),"1");
+                this.Frame.Navigate(typeof(GamePage), "1");
         }
     }
 }

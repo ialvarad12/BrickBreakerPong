@@ -60,11 +60,13 @@ namespace BrickBreakerPong
         public static Grid MainGrid;
         List<string> ParamsList;
 
-        public int numOfPlayers;
+        public static int numOfPlayers;
+        private static int prevNumOfPlayers;
         public GamePage()
         {
             //game = new Game(this, numOfPlayers);
             MainGrid = mainGrid;
+
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
@@ -150,17 +152,39 @@ namespace BrickBreakerPong
             Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             if (roamingSettings.Values.ContainsKey("GameParams"))
                 SetGameParams(roamingSettings.Values["GameParams"].ToString(), ref levelString);
+            
+            bool result = false;
+            bool newGame = false;
+            if (e.PageState != null || roamingSettings.Values.ContainsKey("GameParams"))
+            {
+                if (prevNumOfPlayers != numOfPlayers)
+                {
+                    prevNumOfPlayers = numOfPlayers;
+                    level = new Level();
+                    levelNumber = 1;
+                    //game.NewGame();
+                    newGame = true;
+                    scoreLeft.Text = "0";
+                    scoreRight.Text = "0";
+                    LoadLevel();
+                }
+                else
+                    AskUserToContinue(result, levelString);
+            }
 
             // Creates a new game 
             if (game == null)
             {
-                game = new Game(Convert.ToInt32(e.NavigationParameter.ToString()));
+                game = new Game(numOfPlayers);
                 CreateGame(game);
+                if (newGame)
+                {
+                    game.NewGame();
+                    scoreLeft.Text = "0";
+                    scoreRight.Text = "0";
+                }
             }
-
-            bool result = false;
-            if (e.PageState != null || roamingSettings.Values.ContainsKey("GameParams"))
-                AskUserToContinue(result, levelString);
+                
         }
 
         private List<string> ParamsListFunc()
@@ -191,10 +215,10 @@ namespace BrickBreakerPong
         private void SetGameParams(string Key, ref string levelString)
         {
             // number of players
-            if (Key[0] == '1')
-                numOfPlayers = 1;
-            else
-                numOfPlayers = 2;
+            //if (Key[0] == '1')
+            //    numOfPlayers = 1;
+            //else
+            //    numOfPlayers = 2;
 
             // levelArray
             levelString = Key;
@@ -233,7 +257,6 @@ namespace BrickBreakerPong
                 levelNumber = Convert.ToInt32(lvlN);
             }
         }
-
         public string BricksToString()
         {
             string bricks = "";
@@ -272,7 +295,6 @@ namespace BrickBreakerPong
                 }
             }
         }
-
         private async void AskUserToContinue(bool result, string Key)
         {
             MessageDialog msg = new MessageDialog("Would you like to continue from your last saved game?", "Continue?");
