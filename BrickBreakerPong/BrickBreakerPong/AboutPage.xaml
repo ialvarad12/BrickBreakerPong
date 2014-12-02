@@ -47,5 +47,22 @@
             <TextBlock x:Name="pageTitle" Text="About / Help" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40" FontFamily="{StaticResource PixelFont}"/>
         </Grid>
+        <Image Grid.Row="1" Source="/Assets/SplashScreen.scale-100.png" HorizontalAlignment="Center" Height="325" VerticalAlignment="Top" Width="681" Margin="0,0,0,0"/>
+        <TextBlock Grid.Row="1" x:Name="Names" Text="By: Austin Andrews &amp; Isaac Alvarado" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,305,0,0" TextAlignment="Left"
+                   FontFamily="{StaticResource PixelFont}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+        <TextBlock x:Name="info" Width="675" Grid.Column="0" Grid.Row="1" Style="{StaticResource BodyTextBlockStyle}"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,475,0,0" TextAlignment="Left" FontFamily="{StaticResource PixelFont}" FontSize="18" FontWeight="ExtraLight"
+                   Text="How To Play:&#x0a;To win Brick Breaker Pong, a player must have a higher score than his/her opponent. Each time a player scores, his/her score increments by 1. During the game, the bricks in the middle will disappear when the ball collides with them. The game will continue until all of the bricks are gone. Once all the bricks have been &quot;broken&quot; the player with the higher score will be on game point, he/she only needs one more point to win, while the player with the lower score will need to continue scoring until he ties the game and scores one more. The ball will gain speed once all the bricks are gone!"/>
+
+        <TextBlock x:Name="player1Controls" Text="Player 1 Controls:" Grid.Column="0" Grid.Row="1" Style="{StaticResource HeaderTextBlockStyle}"
+                   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,475,450,0" TextAlignment="Left" FontFamily="{StaticResource PixelFont}" FontSize="55"/>
+        <TextBlock x:Name="player1Keys" Text="&quot;W/S&quot;" Grid.Row="1" Style="{StaticResource HeaderTextBlockStyle}"
+                   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,475,100,0" TextAlignment="Left" FontFamily="{StaticResource PixelFont}" Width="286"/>
+
+        <TextBlock x:Name="player2Controls" Text="Player 2 Controls: " Grid.Column="0" Grid.Row="2" Style="{StaticResource HeaderTextBlockStyle}"
+                   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,600,450,0" TextAlignment="Left" FontFamily="{StaticResource PixelFont}" FontSize="55"/>
+        <TextBlock x:Name="player2Keys" Text="&quot;Up/Down&quot;" Grid.Column="1" Grid.Row="2" Style="{StaticResource HeaderTextBlockStyle}"
+                   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,600,90,0" TextAlignment="Left" FontFamily="{StaticResource PixelFont}" />
     </Grid>
 </Page>

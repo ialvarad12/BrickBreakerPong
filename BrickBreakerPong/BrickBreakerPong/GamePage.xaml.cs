@@ -158,21 +158,38 @@ namespace BrickBreakerPong
             
             bool result = false;
             bool newGame = false;
+            bool continuePlaying = false;
+            // checks to see if there are any saved games
             if (e.PageState != null || roamingSettings.Values.ContainsKey("GameParams"))
             {
+                // If there is a saved game for single to multiplayer
                 if (prevNumOfPlayers != numOfPlayers)
                 {
                     prevNumOfPlayers = numOfPlayers;
                     level = new Level();
                     levelNumber = 1;
-                    //game.NewGame();
                     newGame = true;
                     scoreLeft.Text = "0";
                     scoreRight.Text = "0";
                     LoadLevel();
                 }
                 else
-                    AskUserToContinue(result, levelString);
+                {
+                    // Checks to see what the last page that was Navigated from
+                    // If it is the AboutPage, we want to auto-continue playing
+                    // Any other page needs to ask if the players want to continue
+                    try
+                    {
+                        if (this.Frame.ForwardStack[this.Frame.ForwardStack.Count() - 1].SourcePageType.Name == "AboutPage")
+                            continuePlaying = true;
+                        else
+                            AskUserToContinue(result, levelString);
+                    }
+                    catch(ArgumentOutOfRangeException)
+                    {
+                        AskUserToContinue(result, levelString);
+                    }
+                }
             }
 
             // Creates a new game 
@@ -184,7 +201,9 @@ namespace BrickBreakerPong
                 scoreLeft.Text = "0";
                 scoreRight.Text = "0";
             }
-                
+
+            if (continuePlaying)
+                ContinuePlaying(levelString);
         }
 
         private List<string> ParamsListFunc()
@@ -315,11 +334,13 @@ namespace BrickBreakerPong
                 LoadLevel();
             }
             else
-            {
-                level = new Level();
-                level.CreateLevel(Key, game, false);
-                UpdateGrid();
-            }
+                ContinuePlaying(Key);
+        }
+        private void ContinuePlaying(string Key)
+        {
+            level = new Level();
+            level.CreateLevel(Key, game, false);
+            UpdateGrid();
         }
 
         #endregion
