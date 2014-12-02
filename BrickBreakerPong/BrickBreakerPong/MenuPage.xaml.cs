@@ -44,7 +44,7 @@ namespace BrickBreakerPong
             get { return this.navigationHelper; }
         }
 
-        Game newGame;
+        List<string> ParamsList;
 
         public MenuPage()
         {
@@ -95,6 +95,7 @@ namespace BrickBreakerPong
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
+            //ParamsList = e.Parameter as List<string>;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -106,12 +107,15 @@ namespace BrickBreakerPong
 
         private void PvPEvent_Clicked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GamePage), "2");
+            if (this.Frame.CanGoForward)
+                this.Frame.GoForward();
+            else
+                this.Frame.Navigate(typeof(GamePage));
         }
 
         private void PvCEvent_Clicked(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(GamePage), "1");
+            this.Frame.Navigate(typeof(GamePage));
         }
     }
 }

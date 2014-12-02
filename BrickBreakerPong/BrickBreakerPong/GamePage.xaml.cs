@@ -53,12 +53,14 @@ namespace BrickBreakerPong
         // static was causing audio issues when navigating through different pages
         public MediaElement sfx;
 
-        Game game;
+        public Game game;
         Level level;
         private int levelNumber;
         private DispatcherTimer timer;
 
-        int numOfPlayers;
+        List<string> ParamsList;
+
+        public int numOfPlayers;
         public GamePage()
         {
             //game = new Game(this, numOfPlayers);
@@ -192,57 +194,82 @@ namespace BrickBreakerPong
 
         void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
         {
+            //ParamsList = new List<string>()
+            //{
+            //    numOfPlayers.ToString(),
+            //    BricksToString(),
+            //    scoreLeft.Text,
+            //    scoreRight.Text
+            //};
+
+
             // Save session data
-            e.PageState["bricksArray"] = BricksToString();
+            e.PageState["GameParams"] = GetParamsString(ParamsListFunc());
 
             // Save app data
             Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            roamingSettings.Values["bricksArray"] = BricksToString();
+            roamingSettings.Values["GameParams"] = GetParamsString(ParamsList);
+        }
+
+        private List<string> ParamsListFunc()
+        {
+            ParamsList = new List<string>()
+            {
+                numOfPlayers.ToString(),
+                BricksToString(),
+                scoreLeft.Text,
+                scoreRight.Text
+            };
+
+            return ParamsList;
+        }
+        private string GetParamsString(List<string> ParamsList)
+        {
+            string result = "";
+
+            result += ParamsList[0];
+            result += ParamsList[1];
+            result += ParamsList[2];
+            result += ParamsList[3];
+
+            return result;
+        }
+        private void SetGameParams(string Key, ref string levelString)
+        {
+            // number of players
+            if (Key[0] == '1')
+                numOfPlayers = 1;
+            else
+                numOfPlayers = 2;
+
+            // levelArray
+            levelString = Key;
+            levelString = levelString.Remove(0, 1);
+            levelString = levelString.Remove((levelString.Count() - 2));
+            
+            // Scores
+
         }
 
         void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            string numberOfPlayers = e.NavigationParameter as string;
-
-            if(numberOfPlayers == "1")
+            string levelString = "";
+            // Restore Session Data
+            if(e.PageState != null && e.PageState.ContainsKey("GameParams"))
             {
-                numOfPlayers = 1;
-            }
-            else if(numberOfPlayers == "2")
-            {
-                numOfPlayers = 2;
-            }
-            
-            // Restore session data
-            if(e.PageState != null && e.PageState.ContainsKey("bricksArray"))
-            {
-                StringToBricks(e.PageState["bricksArray"].ToString());
+                SetGameParams(e.PageState["GameParams"].ToString(), ref levelString);
             }
 
-            // Restore app data
+            // Restore App data
             Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
-            if (roamingSettings.Values.ContainsKey("brickArray"))
-                StringToBricks(roamingSettings.Values["bricksArray"].ToString());
+            if (roamingSettings.Values.ContainsKey("GameParams"))
+                SetGameParams(roamingSettings.Values["GameParams"].ToString(), ref levelString);
 
             game = new Game(this, numOfPlayers);
             CreateGame(game);
 
-            bool result = false;
-            AskUserToContinue(result, roamingSettings.Values["bricksArray"].ToString());
-            
-
-            //// Reads a file to create the bricks
-            //if (level == null)
-            //{
-            //    level = new Level();
-            //    levelNumber = 1;
-            //    LoadLevel();
-            //}
-            //else
-            //{
-            //    level = new Level();
-            //    level.CreateLevel(this, e.PageState["bricksArray"].ToString(), game, false);
-            //}
+            bool result = false; int left = 0; int right = 0;
+            AskUserToContinue(result, levelString, left, right);
         }
 
         #region NavigationHelper registration
@@ -259,7 +286,7 @@ namespace BrickBreakerPong
 
         #endregion
 
-        private string BricksToString()
+        public string BricksToString()
         {
             string bricks = "";
 
@@ -291,7 +318,7 @@ namespace BrickBreakerPong
             }
         }
 
-        private async void AskUserToContinue(bool result, string Key)
+        private async void AskUserToContinue(bool result, string Key, int left, int right)
         {
             MessageDialog msg = new MessageDialog("Would you like to continue from your last saved game?", "Continue?");
             msg.Commands.Add(new UICommand("Yes", null, "YES"));
@@ -310,6 +337,9 @@ namespace BrickBreakerPong
             {
                 level = new Level();
                 level.CreateLevel(this, Key, game, false);
+                game.scoreLeft = left;
+                game.scoreRight = right;
+                UpdateGrid();
             }
         }
 
@@ -359,38 +389,6 @@ namespace BrickBreakerPong
                 if (args.VirtualKey.ToString() == "F5")
                 {
                     TurnOnInstructions();
-                    game.Restart();
-                    UpdateGrid();
-                    timer.Stop();
-                }
-            }
-            else
-            {
-                // game over screen 
-                if (args.VirtualKey.ToString() == "F4")
-                {
-                    //newGameLevel.Visibility = Visibility.Collapsed;
-                    //replayLevel.Visibility = Visibility.Collapsed;
-                    gameOverLabel.Visibility = Visibility.Collapsed;
-                    winningPlayer.Visibility = Visibility.Collapsed;
-
-                    if (++levelNumber > 3)
-                        levelNumber = 1;
-
-                    LoadLevel();
-                    game.NewGame();
-                    UpdateGrid();
-                    timer.Stop();
-                }
-
-                if(args.VirtualKey.ToString() == "F6")
-                {
-                    //newGameLevel.Visibility = Visibility.Collapsed;
-                    //replayLevel.Visibility = Visibility.Collapsed;
-                    gameOverLabel.Visibility = Visibility.Collapsed;
-                    winningPlayer.Visibility = Visibility.Collapsed;
-
-                    //LoadLevel();
                     game.Restart();
                     UpdateGrid();
                     timer.Stop();
@@ -473,7 +471,11 @@ namespace BrickBreakerPong
         {
             timer.Stop();
             musicPlayer.Stop();
-            this.Frame.Navigate(typeof(MenuPage));
+
+            //this.Frame.Navigate(typeof(MenuPage), GetParamsString(ParamsListFunc()));
+            if (this.Frame.CanGoBack)
+                this.Frame.GoBack();
+
         }
 
         private void HelpButton_Clicked(object sender, RoutedEventArgs e)
