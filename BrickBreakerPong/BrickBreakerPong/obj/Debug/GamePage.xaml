@@ -33,12 +33,7 @@
                 <ImageBrush ImageSource="/Assets/textures/ball_texture.png"/>
             </Ellipse.Fill>
         </Ellipse>
-        <!--
-        <TextBox x:Name="startGameLabel" Text="Start/Pause Game: Space"  IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50"  Width="auto" Height="auto" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
-        <TextBox x:Name="newGameLevel" Text="Start New Game: F4"  IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50"  Width="auto" Height="auto" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
-        <TextBox x:Name="replayLevel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Replay Current Level: F6" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
-        <TextBox x:Name="restartLevelLabel" IsReadOnly="True" BorderBrush="Transparent" Foreground="#29A9C6" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50"  Width="auto" Height="auto" Text="Restart Game: F5" TextAlignment="Center" FontFamily="{StaticResource PixelFont}"/>
-        -->
+
         <TextBox x:FieldModifier="public" x:Name="scoreLeft" IsReadOnly="True" BorderBrush="Transparent" 
                  Foreground="White" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Left" 
                  Margin="75,15,1204,545" Width="auto" Height="207" Text="0" TextAlignment="Center" FontFamily="{StaticResource PixelFont}" FontSize="71"/>
@@ -56,12 +51,12 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='1' Label="Home" Icon="Home"                           />
-            <AppBarButton x:ConnectionId='2' Label="Help" Icon="Help"                           />
+            <AppBarButton x:ConnectionId='0' Label="Home" Icon="Home"                           />
+            <AppBarButton x:ConnectionId='0' Label="Help" Icon="Help"                           />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='3' x:Name="NextLevelAppBar" Label="Next Level" Icon="Forward"                                 Visibility="Collapsed"/>
-                <AppBarButton x:ConnectionId='4' Label="Restart Game" Icon="Redo"                                  />
+                <AppBarButton x:ConnectionId='0' x:Name="NextLevelAppBar" Label="Next Level" Icon="Forward"                                 Visibility="Collapsed"/>
+                <AppBarButton x:ConnectionId='0' Label="Restart Game" Icon="Redo"                                  />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

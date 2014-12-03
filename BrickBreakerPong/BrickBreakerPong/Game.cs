@@ -99,7 +99,6 @@ namespace BrickBreakerPong
         {
             leftPaddle.Position = new Point(LOSE_ZONE, boardHeight / 2.0 - leftPaddle.Height / 2.0);
             rightPaddle.Position = new Point(boardWidth + (LOSE_ZONE * -1.0) - rightPaddle.Width, boardHeight / 2.0 - rightPaddle.Height / 2.0);
-            //ball.Position = new Point(boardWidth / 2.0 + 30.0, boardHeight / 2.0 + 30.0);
 
             if (isLeftPlayersTurn)
             {
@@ -113,7 +112,6 @@ namespace BrickBreakerPong
                 ball.currentAngle = Ball.Angle.BOTTOM_LEFT;
                 ball.currentDirection = Ball.Direction.CLOCKWISE;
             }
-            //ball.Position = new Point(boardWidth / 2.0, boardHeight / 2.0);
         }
         public void Reset()
         {
@@ -177,19 +175,10 @@ namespace BrickBreakerPong
             paddles.Add(leftPaddle.GetRectangle);
             paddles.Add(rightPaddle.GetRectangle);
 
-            //ball.SetAngle(paddles);
             ball.Move();
             ball.CollidesWith(walls, false);
             ball.CollidesWith(paddles, false);
             ball.CollidesWith(bricks, true);
-            ////ball.WillCollide(walls, false);
-            ////ball.WillCollide(paddles, false);
-            ////ball.WillCollide(bricks, true);
-            //ball.SwitchDirection(ball.WillCollide(walls, false));
-            //ball.SwitchDirection(ball.WillCollide(paddles, false));
-            //ball.SwitchDirection(ball.WillCollide(bricks, true));
-            ////if (ball.Collides(topWall) || ball.Collides(bottomWall))
-            //// ball.SwitchDirection();
             paddles.Clear();
             
             if(bricks.Count == 0)
@@ -232,7 +221,6 @@ namespace BrickBreakerPong
 
             if (numPlayers == 1)
             {
-                //if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
                 if (rightPaddle.Position.Y + rightPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleUp();
@@ -242,7 +230,6 @@ namespace BrickBreakerPong
                         ball.Move();
                     }
                 }
-                //if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
                 else if (rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleDown();
@@ -256,7 +243,6 @@ namespace BrickBreakerPong
             else if(numPlayers == 2)
             {
                 if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
-                //if (rightPaddle.Position.Y + rightPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleUp();
                     if (BallAndPaddleIntersects(rightPaddle))
@@ -266,7 +252,6 @@ namespace BrickBreakerPong
                     }
                 }
                 if (keys[(int)VirtualKey.Down] == 128 || keys[(int)VirtualKey.Down] == 129)
-                //else if (rightPaddle.Position.Y + rightPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
                 {
                     MoveRightPaddleDown();
                     if (BallAndPaddleIntersects(rightPaddle))
@@ -278,7 +263,6 @@ namespace BrickBreakerPong
             }
 
             if (keys[(int)VirtualKey.W] == 128 || keys[(int)VirtualKey.W] == 129)
-            //if (leftPaddle.Position.Y + leftPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
             {
                 MoveLeftPaddleUp();
 
@@ -289,7 +273,6 @@ namespace BrickBreakerPong
                 }
             }
             if (keys[(int)VirtualKey.S] == 128 || keys[(int)VirtualKey.S] == 129)
-            //else if(leftPaddle.Position.Y + leftPaddle.Height / 2 < ball.Position.Y + ball.Height / 2)
             {
                 MoveLeftPaddleDown();
                 if (BallAndPaddleIntersects(leftPaddle))
@@ -298,10 +281,6 @@ namespace BrickBreakerPong
                     ball.Move();
                 }
             }
-            //if (keys[(int)VirtualKey.Escape] == 128 || keys[(int)VirtualKey.Escape] == 129)
-            //{
-            //    game.gameOver = true;
-            //}
         }
         private void MoveLeftPaddleUp()
         {
