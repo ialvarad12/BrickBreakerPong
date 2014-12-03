@@ -14,7 +14,7 @@
 
     <Grid x:FieldModifier="public" x:Name="mainGrid" Height="auto" Width="auto">
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="Uniform"/>
+            <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="50" Fill="White" />
         <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="50" Fill="White" />

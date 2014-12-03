@@ -14,7 +14,7 @@
 
     <Grid x:FieldModifier="public" x:Name="mainGrid" Height="auto" Width="auto">
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="Uniform"/>
+            <ImageBrush ImageSource="/Assets/textures/background_texture.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <Rectangle x:FieldModifier="public" x:Name="topWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="50" Fill="White" />
         <Rectangle x:FieldModifier="public" x:Name="bottomWall" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Width="auto" Height="50" Fill="White" />
@@ -51,12 +51,12 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='0' Label="Home" Icon="Home"                           />
-            <AppBarButton x:ConnectionId='0' Label="Help" Icon="Help"                           />
+            <AppBarButton x:ConnectionId='1' Label="Home" Icon="Home"                           />
+            <AppBarButton x:ConnectionId='2' Label="Help" Icon="Help"                           />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='0' x:Name="NextLevelAppBar" Label="Next Level" Icon="Forward"                                 Visibility="Collapsed"/>
-                <AppBarButton x:ConnectionId='0' Label="Restart Game" Icon="Redo"                                  />
+                <AppBarButton x:ConnectionId='3' x:Name="NextLevelAppBar" Label="Next Level" Icon="Forward"                                 Visibility="Collapsed"/>
+                <AppBarButton x:ConnectionId='4' Label="Restart Game" Icon="Redo"                                  />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

@@ -179,3 +179,8 @@ C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\Bri
 C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.g.cs
 C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.xaml
 C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.xbf
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AboutPage.xbf
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.g.i.cs
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.g.cs
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.xaml
+C:\Users\A5mer_000\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\obj\Debug\AboutPage.xbf
