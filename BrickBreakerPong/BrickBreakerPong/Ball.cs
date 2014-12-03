@@ -92,7 +92,7 @@ namespace BrickBreakerPong
         }
         #endregion
         TimeSpan bounce;
-        int skipTick = 1000;
+        int skipTick = 100;
         Rectangle lastCollapsed;
         public Ball(double ballWidth = 50.0, double ballHeight = 50.0, double ballSpeed = 10.0)
         {
@@ -209,17 +209,17 @@ namespace BrickBreakerPong
             //foreach(Rectangle rec in collidedObject)
             if(collidedObject.Count() > 0)
             {
-                GamePage.sfx.Play();
+                 GamePage.sfx.Play();
                 Rectangle rec = collidedObject.FirstOrDefault();
 
-                if (lastCollapsed == rec && skipTick > 0)
+                if (lastCollapsed == rec && skipTick > 0 && lastCollapsed.Width != Game.boardWidth)
                 {
                     skipTick--;
                     return false;
                 }
                 else
                 {
-                    skipTick = 1000;
+                    skipTick = 500;
                     lastCollapsed = rec;
                 }
 

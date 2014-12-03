@@ -17,13 +17,13 @@
     <AppXManifest Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-12-03T03:04:42.502</Modified>
+      <Modified>2014-12-03T03:48:30.846</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\BrickBreakerPong.exe">
       <PackagePath>BrickBreakerPong.exe</PackagePath>
-      <Modified>2014-12-03T03:16:00.936</Modified>
+      <Modified>2014-12-03T04:45:28.672</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Assets\textures\background_texture.png">
       <PackagePath>Assets\textures\background_texture.png</PackagePath>
@@ -85,13 +85,17 @@
       <PackagePath>Fonts\04B_19.TTF</PackagePath>
       <Modified>2014-12-02T20:37:31.161</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1 - Copy.txt">
+      <PackagePath>Levels\lvl_1 - Copy.txt</PackagePath>
+      <Modified>2014-12-03T03:48:00.078</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_4.txt">
       <PackagePath>Levels\lvl_4.txt</PackagePath>
       <Modified>2014-12-03T03:02:19.886</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1.txt">
       <PackagePath>Levels\lvl_1.txt</PackagePath>
-      <Modified>2014-12-03T00:49:00.866</Modified>
+      <Modified>2014-12-03T03:48:29.289</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_2.txt">
       <PackagePath>Levels\lvl_2.txt</PackagePath>
@@ -143,15 +147,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\GamePage.xbf">
       <PackagePath>GamePage.xbf</PackagePath>
-      <Modified>2014-12-03T03:04:40.983</Modified>
+      <Modified>2014-12-03T03:18:05.613</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\MenuPage.xbf">
       <PackagePath>MenuPage.xbf</PackagePath>
-      <Modified>2014-12-03T03:04:40.983</Modified>
+      <Modified>2014-12-03T03:18:05.613</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-12-03T03:04:41.603</Modified>
+      <Modified>2014-12-03T03:48:30.636</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

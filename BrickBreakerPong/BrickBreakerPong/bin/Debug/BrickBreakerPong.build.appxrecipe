@@ -63,6 +63,9 @@
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Fonts\04B_19.TTF">
       <PackagePath>Fonts\04B_19.TTF</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_1 - Copy.txt">
+      <PackagePath>Levels\lvl_1 - Copy.txt</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\Levels\lvl_4.txt">
       <PackagePath>Levels\lvl_4.txt</PackagePath>
     </AppxPackagedFile>
