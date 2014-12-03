@@ -29,27 +29,29 @@ namespace BrickBreakerPong
             if (IsNewLevel)
             {
                 int row = 0, col = 0;
-                foreach (var line in text)
+                foreach (char line in text)
                 {
-
-                    if (col == 27) // takes into account the '\n' in the text file
+                    if (line == '1' || line == '0')
                     {
-                        row++;
-                        col = 0;
-                    }
+                        if (col == 25) // takes into account the '\n' in the text file
+                        {
+                            row++;
+                            col = 0;
+                        }
 
-                    if (row < 25)
-                    {
-                        if (line == '1')
+                        if (row < 25)
                         {
-                            levelArray[row, col] = 1;
+                            if (line == '1')
+                            {
+                                levelArray[row, col] = 1;
+                            }
+                            else if (line == '0')
+                            {
+                                levelArray[row, col] = 0;
+                            }
                         }
-                        else
-                        {
-                            levelArray[row, col] = 0;
-                        }
+                        col++;
                     }
-                    col++;
                 }
             }
             else
