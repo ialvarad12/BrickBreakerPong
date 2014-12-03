@@ -61,7 +61,7 @@ namespace BrickBreakerPong
         List<string> ParamsList;
 
         public static int numOfPlayers;
-        private static int prevNumOfPlayers;
+        private  int prevNumOfPlayers;
         public GamePage()
         {
             //game = new Game(this, numOfPlayers);
@@ -88,12 +88,12 @@ namespace BrickBreakerPong
             topWall.Margin = new Thickness(0, (topWall.Height * -1.0) + 5.0, 0, 0);
             // Play music!
             musicPlayer.Play();
+            game = new Game();
         }
 
-        private void CreateGame(Game game)
+        private void CreateGame()
         {
             // static vars
-            MainGrid = mainGrid;
             leftScore = scoreLeft.Text;
             rightScore = scoreRight.Text;
 
@@ -117,9 +117,7 @@ namespace BrickBreakerPong
             // Event for stopping and playing the game
             CoreWindow.GetForCurrentThread().KeyDown += MainPage_KeyDown;
 
-            // Create a reference to the media element in the xaml
-            sfx = soundEffects;
-            soundEffects.DefaultPlaybackRate = 6.0; // Plays sound effects faster
+            
             
             timer = new DispatcherTimer();
             timer.Start();
@@ -140,6 +138,8 @@ namespace BrickBreakerPong
             // Save app data
             Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             roamingSettings.Values["GameParams"] = GetParamsString(ParamsList);
+            game.bricks.Clear();
+            game.bricksCache.Clear();
         }
 
         void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
@@ -165,6 +165,7 @@ namespace BrickBreakerPong
             if (e.PageState != null || roamingSettings.Values.ContainsKey("GameParams"))
             {
                 // If there is a saved game for single to multiplayer
+                // Load first time ever
                 if (prevNumOfPlayers != numOfPlayers)
                 {
                     prevNumOfPlayers = numOfPlayers;
@@ -172,8 +173,8 @@ namespace BrickBreakerPong
                     levelNumber = 1;
                     newGame = true;
                 }
-                else
-                {
+                // Different type of game (pvp or pvc)
+                else{
                     // Checks to see what the last page that was Navigated from
                     // If it is the AboutPage, we want to auto-continue playing
                     // Any other page needs to ask if the players want to continue
@@ -184,16 +185,22 @@ namespace BrickBreakerPong
                         else
                             AskUserToContinue(result, levelString);
                     }
-                    catch(ArgumentOutOfRangeException)
+                    catch (ArgumentOutOfRangeException)
                     {
                         AskUserToContinue(result, levelString);
                     }
                 }
             }
+            else
+            {
+                levelNumber = 1;
+                level = new Level();
+                newGame = true;
+            }
 
             // Creates a new game 
-            game = new Game(numOfPlayers);
-            CreateGame(game);
+            //game = new Game(numOfPlayers);
+            CreateGame();
             if (newGame)
             {
                 game.NewGame();
@@ -210,7 +217,7 @@ namespace BrickBreakerPong
         {
             ParamsList = new List<string>()
             {
-                numOfPlayers.ToString(),
+                prevNumOfPlayers.ToString(),
                 BricksToString(),
                 scoreLeft.Text,
                 scoreRight.Text,
@@ -233,6 +240,8 @@ namespace BrickBreakerPong
         }
         private void SetGameParams(string Key, ref string levelString)
         {
+            prevNumOfPlayers = Convert.ToInt32(Key[0].ToString());
+
             // levelArray
             levelString = Key;
             levelString = levelString.Remove(0, 1);

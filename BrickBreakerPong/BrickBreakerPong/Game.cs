@@ -40,11 +40,11 @@ namespace BrickBreakerPong
         public static double boardHeight;
         public static double boardWidth;
 
-        int numPlayers;
+        //int numPlayers;
 
-        public Game(int numOfPlayers, double boardWidth = 0.0, double boardHeight = 0.0)
+        public Game(double boardWidth = 0.0, double boardHeight = 0.0)
         {
-            this.numPlayers = numOfPlayers;
+            //this.numPlayers = numOfPlayers;
 
             if (boardWidth <= 0.0)
                 Game.boardWidth = Window.Current.Bounds.Width;
@@ -75,7 +75,6 @@ namespace BrickBreakerPong
             CreateWalls();
             Reset();
         }
-
         private void CreateWalls()
         {
             topWall = new Rectangle();
@@ -118,9 +117,24 @@ namespace BrickBreakerPong
             Pause();
             Update();
             gameOver = false;
-            ball.Speed = SPEED;
+            ResetBallMovement();
         }
+        public void ResetBallMovement()
+        {
+            
+            ball.Speed = SPEED;
+            if (isLeftPlayersTurn)
+            {
+                ball.currentAngle = Ball.Angle.BOTTOM_RIGHT;
+                ball.currentDirection = Ball.Direction.COUNTER_CLOCKWISE;
+            }
+            else
+            {
+                ball.currentAngle = Ball.Angle.BOTTOM_LEFT;
+                ball.currentDirection = Ball.Direction.CLOCKWISE;
+            }
 
+        }
         // Completely restarts the initial state of the game
         public void Restart()
         {
@@ -130,7 +144,6 @@ namespace BrickBreakerPong
 
             ResetBricks();
             Reset();
-            ball.Speed = SPEED;
         }
         public void NewGame()
         {
@@ -140,7 +153,6 @@ namespace BrickBreakerPong
             bricks.Clear();
             bricksCache.Clear();
             Reset();
-            ball.Speed = SPEED;
         }
         private void ResetBricks()
         {
@@ -219,7 +231,7 @@ namespace BrickBreakerPong
             byte[] keys = new byte[256];
             GetKeyboardState(keys);
 
-            if (numPlayers == 1)
+            if (GamePage.numOfPlayers == 1)
             {
                 if (rightPaddle.Position.Y + rightPaddle.Height / 2 > ball.Position.Y + ball.Height / 2)
                 {
@@ -240,7 +252,7 @@ namespace BrickBreakerPong
                     }
                 }
             }
-            else if(numPlayers == 2)
+            else if (GamePage.numOfPlayers == 2)
             {
                 if (keys[(int)VirtualKey.Up] == 128 || keys[(int)VirtualKey.Up] == 129)
                 {

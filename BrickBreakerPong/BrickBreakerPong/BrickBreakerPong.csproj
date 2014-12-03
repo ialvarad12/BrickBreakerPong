@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Levels\lvl_1 - Copy.txt" />
     <Content Include="Levels\lvl_4.txt" />
     <Content Include="Levels\lvl_1.txt" />
     <Content Include="Levels\lvl_2.txt" />
