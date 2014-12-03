@@ -156,8 +156,6 @@ namespace BrickBreakerPong
             if (roamingSettings.Values.ContainsKey("GameParams"))
                 SetGameParams(roamingSettings.Values["GameParams"].ToString(), ref levelString);
 
-           
-
             bool result = false;
             bool newGame = false;
             bool continuePlaying = false;
@@ -199,7 +197,6 @@ namespace BrickBreakerPong
             }
 
             // Creates a new game 
-            //game = new Game(numOfPlayers);
             CreateGame();
             if (newGame)
             {

@@ -105,32 +105,7 @@ namespace BrickBreakerPong
             currentDirection = Direction.COUNTER_CLOCKWISE;
             lastCollapsed = null;
         }
-        //private bool checkBottomBreakCollapse(List<Rectangle> paddles)
-        //{
-        //    foreach(Rectangle paddle in paddles)
-        //    {
-        //        double _RTBrick = paddle.Margin.Top;
-        //        double _RLBrick = paddle.Margin.Left;
-        //        double _RRBrick = paddle.Margin.Left + paddle.Width;
-        //        double _ballBottom = this.Position.Y + this.Width;
-        //        double _ballLeft = this.Position.X + (this.Width / 2);
 
-        //        if ((_ballBottom >= _RTBrick && _ballLeft > _RLBrick && _ballLeft < _RRBrick))
-        //        {
-        //            if (currentAngle == Angle.BOTTOM_RIGHT)
-        //            {
-        //                currentAngle = Angle.TOP_RIGHT;
-        //            }
-        //            else if (currentAngle == Angle.BOTTOM_LEFT)
-        //            {
-        //                currentAngle = Angle.TOP_LEFT;
-        //            }
-
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
         public void SetAngle(List<Rectangle> paddles)
         {
             double leftOfBall = this.Position.X;
@@ -194,12 +169,6 @@ namespace BrickBreakerPong
         }
         public bool CollidesWith(List<Rectangle> objectBallMayCollideWith, bool deleteObject)
         {
-            //List<Point> ballCoordinates = Boundaries;
-            //var collidedObject = objectBallMayCollideWith.Where(s => ballCoordinates.Any(p =>
-            //                                                        p.X >= s.Margin.Left &&
-            //                                                        p.X <= s.Margin.Left + s.Width &&
-            //                                                        p.Y <= s.Margin.Top + s.Height &&
-            //                                                        p.Y >= s.Margin.Top));
             List<Point> ballCoordinates = Boundaries;
             var collidedObject = objectBallMayCollideWith.Where(s => ballCoordinates.Any(p =>
                                                                     p.X >= s.Margin.Left - Speed &&
@@ -228,11 +197,6 @@ namespace BrickBreakerPong
                                         p.X <= rec.Margin.Left + rec.Width + Speed &&
                                         p.Y <= rec.Margin.Top + rec.Height + Speed &&
                                         p.Y >= rec.Margin.Top - Speed);
-                //var nearCoordinates = ballCoordinates.Where(p =>
-                //                        p.X >= rec.Margin.Left &&
-                //                        p.X <= rec.Margin.Left + rec.Width &&
-                //                        p.Y <= rec.Margin.Top + rec.Height &&
-                //                        p.Y >= rec.Margin.Top);
 
                 var xmin = nearCoordinates.Min(s => s.X);
                 var ymin = nearCoordinates.Min(s => s.Y);
@@ -519,10 +483,6 @@ namespace BrickBreakerPong
         }
         public void Move()
         {
-            // TODO
-            //if (Collides())
-                //SwitchDirection();
-
             // Move [currentDirection] at a [currentAngle] angle
             switch (currentAngle)
             {
