@@ -80,9 +80,9 @@ namespace BrickBreakerPong
             Random rand = new Random();
             double ratio = 25.0;
 
-            for (int row = 0; row < 25; row++)
+            for (double row = 0; row < 25; row++)
             {
-                for (int col = 0; col <= 27; col++)
+                for (double col = 0; col < 25; col++)
                 {
                     rect = new Rectangle();
                     SetBrickTextures(rect, rand);
@@ -93,20 +93,21 @@ namespace BrickBreakerPong
                     rect.Margin = new Windows.UI.Xaml.Thickness(game.leftPaddle.Position.X + game.leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
                                                                 (game.topWall.Margin.Top + game.topWall.Height) + (row * distanceBetweenWalls / ratio), 0, 0);
                     // Don't know exactly why it goes out of bounds, but this prevents it :)
-                    if (game.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
-                        game.leftPaddle.Position.X + game.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
-                    {
-                        if (col < 25)
-                        {
-                            if (levelArray[row, col] == 1)
+                    //if (game.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
+                    //    game.leftPaddle.Position.X + game.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
+                    //{
+                    //    if (col < 25)
+                    //    {
+                            if (levelArray[(int)row, (int)col] == 1)
                             {
                                 // adds the brick to the page
                                 GamePage.MainGrid.Children.Add(rect);
                                 // adds to the bricks list
                                 game.AddBrick(rect);
                             }
-                        }
-                    }
+                    //    }
+                    //}
+
                 }
             }
         }
