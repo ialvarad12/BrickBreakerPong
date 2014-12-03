@@ -155,7 +155,9 @@ namespace BrickBreakerPong
             Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             if (roamingSettings.Values.ContainsKey("GameParams"))
                 SetGameParams(roamingSettings.Values["GameParams"].ToString(), ref levelString);
-            
+
+           
+
             bool result = false;
             bool newGame = false;
             bool continuePlaying = false;
@@ -169,9 +171,6 @@ namespace BrickBreakerPong
                     level = new Level();
                     levelNumber = 1;
                     newGame = true;
-                    scoreLeft.Text = "0";
-                    scoreRight.Text = "0";
-                    LoadLevel();
                 }
                 else
                 {
@@ -200,6 +199,7 @@ namespace BrickBreakerPong
                 game.NewGame();
                 scoreLeft.Text = "0";
                 scoreRight.Text = "0";
+                LoadLevel();
             }
 
             if (continuePlaying)
@@ -427,6 +427,7 @@ namespace BrickBreakerPong
                     winningPlayer.Text = "Player 2 Wins!";
 
                 winningPlayer.Visibility = Visibility.Visible;
+                NextLevelAppBar.Visibility = Visibility.Visible;
 
                 this.BottomAppBar.IsOpen = true;
             }
@@ -443,6 +444,7 @@ namespace BrickBreakerPong
         {
             gameOverLabel.Visibility = Visibility.Collapsed;
             winningPlayer.Visibility = Visibility.Collapsed;
+            NextLevelAppBar.Visibility = Visibility.Collapsed;
 
             if (++levelNumber > 15)
                 levelNumber = 1;

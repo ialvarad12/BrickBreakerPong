@@ -1,1 +1,1 @@
-C:\Users\ialvarad\Documents\Visual Studio 2013\Repositories\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong.csproj;neutral
+C:\Users\aandrew1\Documents\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong\BrickBreakerPong.csproj;neutral
