@@ -94,22 +94,14 @@ namespace BrickBreakerPong
                     rect.VerticalAlignment = Windows.UI.Xaml.VerticalAlignment.Top;
                     rect.Margin = new Windows.UI.Xaml.Thickness(game.leftPaddle.Position.X + game.leftPaddle.Width + (col * distanceBetweenPaddles / ratio),
                                                                 (game.topWall.Margin.Top + game.topWall.Height) + (row * distanceBetweenWalls / ratio), 0, 0);
-                    // Don't know exactly why it goes out of bounds, but this prevents it :)
-                    //if (game.topWall.Height + (col * distanceBetweenWalls / ratio) < distanceBetweenWalls &&
-                    //    game.leftPaddle.Position.X + game.leftPaddle.Width + (row * distanceBetweenPaddles / ratio) < distanceBetweenPaddles)
-                    //{
-                    //    if (col < 25)
-                    //    {
-                            if (levelArray[(int)row, (int)col] == 1)
-                            {
-                                // adds the brick to the page
-                                GamePage.MainGrid.Children.Add(rect);
-                                // adds to the bricks list
-                                game.AddBrick(rect);
-                            }
-                    //    }
-                    //}
 
+                    if (levelArray[(int)row, (int)col] == 1)
+                    {
+                        // adds the brick to the page
+                        GamePage.MainGrid.Children.Add(rect);
+                        // adds to the bricks list
+                        game.AddBrick(rect);
+                    }
                 }
             }
         }

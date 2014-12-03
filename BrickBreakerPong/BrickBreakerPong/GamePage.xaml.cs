@@ -233,16 +233,9 @@ namespace BrickBreakerPong
         }
         private void SetGameParams(string Key, ref string levelString)
         {
-            // number of players
-            //if (Key[0] == '1')
-            //    numOfPlayers = 1;
-            //else
-            //    numOfPlayers = 2;
-
             // levelArray
             levelString = Key;
             levelString = levelString.Remove(0, 1);
-            //levelString = levelString.Remove((levelString.Count() - 2));
             bool checkLast = true;
             while(checkLast)
             {
