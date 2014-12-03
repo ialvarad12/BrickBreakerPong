@@ -60,8 +60,8 @@
             <AppBarButton x:ConnectionId='2' Label="Help" Icon="Help"                           />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:ConnectionId='3' Label="Restart Game" Icon="Redo"                                  />
-                <AppBarButton x:ConnectionId='4' Label="Next Level" Icon="Forward"                                />
+                <AppBarButton x:ConnectionId='3' x:Name="NextLevelAppBar" Label="Next Level" Icon="Forward"                                 Visibility="Collapsed"/>
+                <AppBarButton x:ConnectionId='4' Label="Restart Game" Icon="Redo"                                  />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

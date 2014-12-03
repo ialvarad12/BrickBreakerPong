@@ -60,8 +60,8 @@
             <AppBarButton Label="Help" Icon="Help" Click="HelpButton_Clicked"/>
 
             <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="NextLevelAppBar" Label="Next Level" Icon="Forward" Click="NextLevelButton_Clicked" Visibility="Collapsed"/>
                 <AppBarButton Label="Restart Game" Icon="Redo" Click="RestartGameButton_Clicked"/>
-                <AppBarButton Label="Next Level" Icon="Forward" Click="NextLevelButton_Clicked"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
